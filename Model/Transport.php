@@ -36,7 +36,7 @@ class Transport extends \Zend_Mail_Transport_Smtp implements \Magento\Framework\
 
          $smtpHost = $this->_scopeConfig->getValue('system/gmailsmtpapp/smtphost', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
          $smtpConf = array(
-            'auth' => $this->_scopeConfig->getValue('system/gmailsmtpapp/auth', \Magento\Store\Model\ScopeInterface::SCOPE_STORE),
+            'auth' => strtolower($this->_scopeConfig->getValue('system/gmailsmtpapp/auth', \Magento\Store\Model\ScopeInterface::SCOPE_STORE)),
             'ssl' => $this->_scopeConfig->getValue('system/gmailsmtpapp/ssl', \Magento\Store\Model\ScopeInterface::SCOPE_STORE),
             'username' => $this->_scopeConfig->getValue('system/gmailsmtpapp/username', \Magento\Store\Model\ScopeInterface::SCOPE_STORE),
             'password' => $this->_scopeConfig->getValue('system/gmailsmtpapp/password', \Magento\Store\Model\ScopeInterface::SCOPE_STORE)
@@ -45,7 +45,7 @@ class Transport extends \Zend_Mail_Transport_Smtp implements \Magento\Framework\
         parent::__construct($smtpHost, $smtpConf);
         $this->_message = $message;
 
-            
+
     }
 
     /**
@@ -57,7 +57,7 @@ class Transport extends \Zend_Mail_Transport_Smtp implements \Magento\Framework\
     public function sendMessage()
     {
 
-        try { 
+        try {
             parent::send($this->_message);
         } catch (\Exception $e) {
             throw new \Magento\Framework\Exception\MailException(new \Magento\Framework\Phrase($e->getMessage()), $e);
