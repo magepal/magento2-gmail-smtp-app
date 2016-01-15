@@ -13,12 +13,12 @@
                 <field id="auth" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Authentication method</label>
                     <source_model>Magento\Config\Model\Config\Source\Email\Smtpauth</source_model>
-                    <comment>Use "login" for Gmail.</comment>
+                    <comment>Use "login" for Gmail or Google Apps.</comment>
                 </field>
                 <field id="ssl" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>SSL type</label>
                     <source_model>MagePal\GmailSmtpApp\Model\Config\Source\Authtype</source_model>
-                    <comment>Use "tls" for Gmail.</comment>
+                    <comment>Use "ssl" for Gmail or Google Apps.</comment>
                 </field>
                 <field id="smtphost" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>SMTP Host</label>
