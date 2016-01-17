@@ -9,7 +9,7 @@
     <default>
         <system>
             <gmailsmtpapp>
-                <ssl>tls</ssl>
+                <ssl>ssl</ssl>
                 <auth>LOGIN</auth>
                 <smtphost>smtp.gmail.com</smtphost>
                 <password backend_model="Magento\Config\Model\Config\Backend\Encrypted" />

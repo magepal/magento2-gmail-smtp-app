@@ -32,6 +32,20 @@
                     <label>Password</label>
                     <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
+                <group id="debug" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="100">
+                        <label>Test Settings</label>
+                        <attribute type="expanded">0</attribute>
+                        <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                        <field id="email" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Email address</label>
+                            <comment>Email address to send test to.</comment>
+                            <source_model>Magento\Config\Model\Config\Source\Design\Robots</source_model>
+                        </field>
+                        <field id="button" translate="label comment" type="button" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label></label>
+                            <frontend_model>MagePal\GmailSmtpApp\Block\Adminhtml\System\Config\TestButton</frontend_model>
+                        </field>
+                    </group>
             </group>
         </section>
     </system>

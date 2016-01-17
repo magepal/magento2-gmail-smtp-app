@@ -15,10 +15,6 @@ class Transport extends \Zend_Mail_Transport_Smtp implements \Magento\Framework\
      */
     protected $_message;
 
-    /**
-     * @var \Magento\Framework\App\Config\ScopeConfigInterface
-     */
-    protected $_scopeConfig;
 
     /**
      * @param MessageInterface $message
@@ -26,26 +22,23 @@ class Transport extends \Zend_Mail_Transport_Smtp implements \Magento\Framework\
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
      * @throws \InvalidArgumentException
      */
-    public function __construct(\Magento\Framework\Mail\MessageInterface $message, \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig)
+    public function __construct(\Magento\Framework\Mail\MessageInterface $message, \MagePal\GmailSmtpApp\Helper\Data $dataHelper)
     {
         if (!$message instanceof \Zend_Mail) {
             throw new \InvalidArgumentException('The message should be an instance of \Zend_Mail');
         }
 
-        $this->_scopeConfig = $scopeConfig;
-
-         $smtpHost = $this->_scopeConfig->getValue('system/gmailsmtpapp/smtphost', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+         $smtpHost = $dataHelper->getConfigSmtpHost(\Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+         
          $smtpConf = array(
-            'auth' => strtolower($this->_scopeConfig->getValue('system/gmailsmtpapp/auth', \Magento\Store\Model\ScopeInterface::SCOPE_STORE)),
-            'ssl' => $this->_scopeConfig->getValue('system/gmailsmtpapp/ssl', \Magento\Store\Model\ScopeInterface::SCOPE_STORE),
-            'username' => $this->_scopeConfig->getValue('system/gmailsmtpapp/username', \Magento\Store\Model\ScopeInterface::SCOPE_STORE),
-            'password' => $this->_scopeConfig->getValue('system/gmailsmtpapp/password', \Magento\Store\Model\ScopeInterface::SCOPE_STORE)
+            'auth' => strtolower($dataHelper->getConfigAuth(\Magento\Store\Model\ScopeInterface::SCOPE_STORE)),
+            'ssl' => $dataHelper->getConfigSsl(\Magento\Store\Model\ScopeInterface::SCOPE_STORE),
+            'username' => $dataHelper->getConfigUsername(\Magento\Store\Model\ScopeInterface::SCOPE_STORE),
+            'password' => $dataHelper->getConfigPassword(\Magento\Store\Model\ScopeInterface::SCOPE_STORE)
          );
-
+                 
         parent::__construct($smtpHost, $smtpConf);
         $this->_message = $message;
-
-
     }
 
     /**

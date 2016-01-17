@@ -1,0 +1,48 @@
+<?php
+/**
+ * Copyright © 2015 MagePal. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var $block MagePal\GmailSmtpApp\Block\Adminhtml\System\Config\TestButton
+ * @var $jsonHelper \Magento\Framework\Json\Helper\Data
+ */
+$jsonHelper = $this->helper('Magento\Framework\Json\Helper\Data');
+?>
+
+<script>
+    require([
+        'jquery',
+        'Magento_Ui/js/modal/alert'
+    ], function ($, alert) {
+        window.gmailSmtpAppDebugTest = function(){
+            
+            $.ajax({
+                url: '<?php echo $block->getAdminUrl() ?>',
+                type: 'post',
+                dataType: 'html',
+                data: {
+                    form_key: FORM_KEY,
+                    auth: $('#system_gmailsmtpapp_auth').val(),
+                    ssl:$('#system_gmailsmtpapp_ssl').val(),
+                    smtphost:$('#system_gmailsmtpapp_smtphost').val(),
+                    username:$('#system_gmailsmtpapp_username').val(),
+                    password:$('#system_gmailsmtpapp_password').val(),
+                    email:$('#system_gmailsmtpapp_debug_email').val()
+
+                },
+                showLoader: true
+            }).done(function(data) {
+                alert({
+                    title:'Result',
+                    content:data
+                });
+            });
+        }
+    });
+</script>
+
+<?php echo $block->getButtonHtml() ?>
