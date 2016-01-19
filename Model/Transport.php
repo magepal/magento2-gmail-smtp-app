@@ -28,15 +28,15 @@ class Transport extends \Zend_Mail_Transport_Smtp implements \Magento\Framework\
             throw new \InvalidArgumentException('The message should be an instance of \Zend_Mail');
         }
 
-         $smtpHost = $dataHelper->getConfigSmtpHost(\Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+         $smtpHost = $dataHelper->getConfigSmtpHost();
+       
+         $smtpConf = [
+            'auth' => strtolower($dataHelper->getConfigAuth()),
+            'ssl' => $dataHelper->getConfigSsl(),
+            'username' => $dataHelper->getConfigUsername(),
+            'password' => $dataHelper->getConfigPassword()
+         ];
          
-         $smtpConf = array(
-            'auth' => strtolower($dataHelper->getConfigAuth(\Magento\Store\Model\ScopeInterface::SCOPE_STORE)),
-            'ssl' => $dataHelper->getConfigSsl(\Magento\Store\Model\ScopeInterface::SCOPE_STORE),
-            'username' => $dataHelper->getConfigUsername(\Magento\Store\Model\ScopeInterface::SCOPE_STORE),
-            'password' => $dataHelper->getConfigPassword(\Magento\Store\Model\ScopeInterface::SCOPE_STORE)
-         );
-                 
         parent::__construct($smtpHost, $smtpConf);
         $this->_message = $message;
     }
