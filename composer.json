@@ -1,6 +1,6 @@
 {
     "name": "magepal/magento2-gmailsmtpapp",
-    "description":"",
+    "description":"Configure Magento 2 to use Google/Gmail SMTP server to send email",
     "require": {
         "php": "~5.5.0|~5.6.0|~7.0.0",
         "magento/module-backend": "100.0.*",
@@ -12,14 +12,6 @@
         "OSL-3.0",
         "AFL-3.0"
     ],
-    "extra": {
-        "map": [
-            [
-                "*",
-                "MagePal/GmailSmtpApp"
-            ]
-        ]
-    },
     "autoload": {
         "files": [
             "registration.php"
