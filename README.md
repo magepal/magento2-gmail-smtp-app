@@ -14,15 +14,15 @@ Since Google's SMTP server does not use Port 25, you'll reduce the probability t
 Install Gmail Smtp App for Magento2
  * Download the extension
  * Unzip the file
- * Create a folder {Magento root}/app/code/MagePal/GmailSmptApp
+ * Create a folder {Magento root}/app/code/MagePal/GmailSmtpApp
  * Copy the content from the unzip folder
 
- * php -f bin/magento module:enable --clear-static-content MagePal_GmailSmptApp
+ * php -f bin/magento module:enable --clear-static-content MagePal_GmailSmtpApp
  * php -f bin/magento setup:upgrade
 
 #### Using Composer
 
-``composer config repositories.magepal-gmailsmptapp git git@github.com:magepal/magento2-gmailsmtpapp.git``
+``composer config repositories.magepal-gmailsmtpapp git git@github.com:magepal/magento2-gmailsmtpapp.git``
 ``composer require magepal/magento2-gmailsmtpapp:master``
 
-Log into your Magetno Admin, then goto Store -> System -> Gmail/Google Apps SMPT Pro and enter your email credentials
+Log into your Magetno Admin, then goto Store -> System -> Gmail/Google Apps SMTP Pro and enter your email credentials
