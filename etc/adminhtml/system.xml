@@ -41,6 +41,11 @@
                             <comment>Email address to send test to.</comment>
                             <frontend_class>validate-email</frontend_class>
                         </field>
+                        <field id="from_email" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>From Email Address</label>
+                            <comment>Leave blank to use Username instead</comment>
+                            <source_model>Magento\Config\Model\Config\Source\Design\Robots</source_model>
+                        </field>
                         <field id="button" translate="label comment" type="button" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
                             <label></label>
                             <frontend_model>MagePal\GmailSmtpApp\Block\Adminhtml\System\Config\TestButton</frontend_model>

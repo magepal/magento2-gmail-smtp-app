@@ -73,10 +73,16 @@ class Index extends \Magento\Backend\App\Action
         );
         
         $transport = new \Zend_Mail_Transport_Smtp($smtpHost, $smtpConf);
-        
+
+        $from = $request->getPost('from_email');
+
+        if ($from == '') {
+            $from = $username;
+        }
+
         //Create email
         $mail = new \Zend_Mail();
-        $mail->setFrom($username, $name);
+        $mail->setFrom($from, $name);
         $mail->addTo($to, $to);
         $mail->setSubject('Hello from MagePal');
         $mail->setBodyText('Thank you for choosing MagePal extension.');
