@@ -39,7 +39,7 @@
                         <field id="email" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
                             <label>Email address</label>
                             <comment>Email address to send test to.</comment>
-                            <source_model>Magento\Config\Model\Config\Source\Design\Robots</source_model>
+                            <frontend_class>validate-email</frontend_class>
                         </field>
                         <field id="button" translate="label comment" type="button" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
                             <label></label>
