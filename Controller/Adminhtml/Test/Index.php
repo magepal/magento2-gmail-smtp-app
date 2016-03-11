@@ -3,8 +3,9 @@ namespace MagePal\GmailSmtpApp\Controller\Adminhtml\Test;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
+use \Magento\Backend\App\Action;
 
-class Index extends \Magento\Backend\App\Action
+class Index extends Action
 {
 
     /**
@@ -13,14 +14,15 @@ class Index extends \Magento\Backend\App\Action
     protected $_resultPageFactory;
     
     /**
-     * @var Data
+     * @var \MagePal\GmailSmtpApp\Helper\Data
      */
     protected $_dataHelper;
 
     /**
+     * Index constructor.
      * @param Context $context
      * @param PageFactory $resultPageFactory
-     * @param MagePal\GmailSmtpApp\Helper\Data $dataHelper
+     * @param \MagePal\GmailSmtpApp\Helper\Data $dataHelper
      */
     public function __construct(
         Context $context,
@@ -30,7 +32,6 @@ class Index extends \Magento\Backend\App\Action
         $this->_resultPageFactory = $resultPageFactory;
         $this->_dataHelper = $dataHelper;
         parent::__construct($context);
-        
     }
 
     /**
@@ -73,10 +74,14 @@ class Index extends \Magento\Backend\App\Action
         );
         
         $transport = new \Zend_Mail_Transport_Smtp($smtpHost, $smtpConf);
-        
+
+        $from = trim($request->getPost('from_email'));
+        $from = \Zend_Validate::is($from, 'EmailAddress') ? $from : $username;
+
+
         //Create email
         $mail = new \Zend_Mail();
-        $mail->setFrom($username, $name);
+        $mail->setFrom($from, $name);
         $mail->addTo($to, $to);
         $mail->setSubject('Hello from MagePal');
         $mail->setBodyText('Thank you for choosing MagePal extension.');
