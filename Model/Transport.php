@@ -17,10 +17,9 @@ class Transport extends \Zend_Mail_Transport_Smtp implements \Magento\Framework\
 
 
     /**
-     * @param MessageInterface $message
-     * @param null $parameters
-     * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
-     * @throws \InvalidArgumentException
+     * @param \Magento\Framework\Mail\MessageInterface $message
+     * @param \MagePal\GmailSmtpApp\Helper\Data $dataHelper
+     * @throws \Zend_Mail_Exception
      */
     public function __construct(\Magento\Framework\Mail\MessageInterface $message, \MagePal\GmailSmtpApp\Helper\Data $dataHelper)
     {
@@ -28,15 +27,38 @@ class Transport extends \Zend_Mail_Transport_Smtp implements \Magento\Framework\
             throw new \InvalidArgumentException('The message should be an instance of \Zend_Mail');
         }
 
-         $smtpHost = $dataHelper->getConfigSmtpHost();
+        //Set reply-to path
+        $setReturnPath = $dataHelper->getConfigSetReturnPath();
+        switch ($setReturnPath) {
+            case 1:
+                $returnPathEmail = $message->getFrom();
+                break;
+            case 2:
+                $returnPathEmail = $dataHelper->getConfigReturnPathEmail();
+                break;
+            default:
+                $returnPathEmail = null;
+                break;
+        }
+        
+        if ($returnPathEmail !== null && $dataHelper->getConfigSetReturnPath()) {
+            $message->setReturnPath($returnPathEmail);
+        }
+
+        if ($message->getReplyTo() === NULL && $dataHelper->getConfigSetReplyTo()) {
+            $message->setReplyTo($returnPathEmail);
+        }
        
-         $smtpConf = [
-            'auth' => strtolower($dataHelper->getConfigAuth()),
-            'ssl' => $dataHelper->getConfigSsl(),
-            'username' => $dataHelper->getConfigUsername(),
-            'password' => $dataHelper->getConfigPassword()
-         ];
-         
+        //set config
+        $smtpConf = [
+           'auth' => strtolower($dataHelper->getConfigAuth()),
+           'ssl' => $dataHelper->getConfigSsl(),
+           'username' => $dataHelper->getConfigUsername(),
+           'password' => $dataHelper->getConfigPassword()
+        ];
+        
+        
+        $smtpHost = $dataHelper->getConfigSmtpHost();
         parent::__construct($smtpHost, $smtpConf);
         $this->_message = $message;
     }

@@ -12,6 +12,8 @@
                 <ssl>ssl</ssl>
                 <auth>LOGIN</auth>
                 <smtphost>smtp.gmail.com</smtphost>
+                <set_return_path>1</set_return_path>
+                <set_reply_to>1</set_reply_to>
                 <password backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
             </gmailsmtpapp>
         </system>
