@@ -1,7 +1,7 @@
 ## Gmail Smtp App for Magento2
 Configure Magento 2 to send all transactional email using Google App, Gmail, Amazon Simple Email Service (SES) and other SMTP server. 
 
-All you need is either a (i) free Gmail account, (ii) paid Google Apps account or any other smpt service (i.e Amazon Simple Email Service / Amazon SES )
+All you need is either a (i) free Gmail account, (ii) paid Google Apps account or any other SMTP service (i.e Amazon Simple Email Service / Amazon SES )
 
 ###Benefits
 Since Google's SMTP server does not use Port 25, you'll reduce the probability that an ISP might block your email or flag it as SPAM. Also all your emails sent from Magento will be searchable and backed-up in your email account on Google's servers. 
