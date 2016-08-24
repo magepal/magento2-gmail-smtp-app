@@ -54,7 +54,8 @@ class Transport extends \Zend_Mail_Transport_Smtp implements \Magento\Framework\
            'auth' => strtolower($dataHelper->getConfigAuth()),
            'ssl' => $dataHelper->getConfigSsl(),
            'username' => $dataHelper->getConfigUsername(),
-           'password' => $dataHelper->getConfigPassword()
+           'password' => $dataHelper->getConfigPassword(),
+           'port' => $dataHelper->getConfigSmtpPort(),
         ];
         
         
