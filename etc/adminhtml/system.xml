@@ -27,7 +27,8 @@
                 <field id="smtpport" translate="label" type="text" sortOrder="17" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>SMTP Port</label>
                     <validate>validate-number</validate>
-                    <comment>Use 465 or 587 if port 25 is throttled or blocked.</comment>
+                    <frontend_class>validate-number</frontend_class>
+                    <comment>Use 465 (ssl) or 587 (tls) if port 25 is throttled or blocked.</comment>
                 </field>
                 <field id="username" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Username</label>
