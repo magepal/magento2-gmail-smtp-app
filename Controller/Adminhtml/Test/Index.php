@@ -70,7 +70,8 @@ class Index extends Action
             'auth' => strtolower($request->getPost('auth')),
             'ssl' => $request->getPost('ssl'),
             'username' => $username,
-            'password' => $password
+            'password' => $password,
+            'port' => $request->getPost('smtpport')
         );
         
         $transport = new \Zend_Mail_Transport_Smtp($smtpHost, $smtpConf);
