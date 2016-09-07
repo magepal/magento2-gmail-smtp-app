@@ -47,7 +47,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     }    
     
     /**
-     * Get system config password
+     * Get system config auth
      * 
      * @param \Magento\Store\Model\ScopeInterface::SCOPE_STORE $store
      * @return string
@@ -67,13 +67,23 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     }
     
     /**
-     * Get system config password
+     * Get system config host
      * 
      * @param \Magento\Store\Model\ScopeInterface::SCOPE_STORE $store
      * @return string
      */
     public function getConfigSmtpHost($store_id = null){
         return $this->scopeConfig->getValue('system/gmailsmtpapp/smtphost', \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $store_id);
+    }
+
+    /**
+     * Get system config port
+     *
+     * @param \Magento\Store\Model\ScopeInterface::SCOPE_STORE $store
+     * @return string
+     */
+    public function getConfigSmtpPort($store_id = null){
+        return $this->scopeConfig->getValue('system/gmailsmtpapp/smtpport', \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $store_id);
     }
     
     /**

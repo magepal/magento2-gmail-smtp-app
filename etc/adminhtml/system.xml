@@ -24,6 +24,12 @@
                     <label>SMTP Host</label>
                     <comment>Use "smtp.gmail.com" for Gmail or Google Apps.</comment>
                 </field>
+                <field id="smtpport" translate="label" type="text" sortOrder="17" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>SMTP Port</label>
+                    <validate>validate-number</validate>
+                    <frontend_class>validate-number</frontend_class>
+                    <comment>Use 465 (ssl) or 587 (tls) if port 25 is throttled or blocked.</comment>
+                </field>
                 <field id="username" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Username</label>
                     <comment>Email Address.</comment>
