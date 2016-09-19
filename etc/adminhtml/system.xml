@@ -10,6 +10,10 @@
         <section id="system">
             <group id="gmailsmtpapp" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Gmail/Google Apps SMTP Pro</label>
+                <field id="version" translate="label" type="label" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Version</label>
+                    <frontend_model>MagePal\GmailSmtpApp\Block\Adminhtml\System\Config\Version</frontend_model>
+                </field>
                 <field id="auth" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Authentication method</label>
                     <source_model>Magento\Config\Model\Config\Source\Email\Smtpauth</source_model>
@@ -71,7 +75,7 @@
                         <field id="button" translate="label comment" type="button" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
                             <frontend_model>MagePal\GmailSmtpApp\Block\Adminhtml\System\Config\TestButton</frontend_model>
                         </field>
-                    </group>
+                </group>
             </group>
         </section>
     </system>
