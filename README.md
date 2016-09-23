@@ -27,4 +27,4 @@ composer require magepal/magento2-gmailsmtpapp
  * php -f bin/magento setup:upgrade
 
 ####3 - Config Gmail Smtp App
-Log into your Magetno Admin, then goto Stores -> Configuration -> Advanced -> System -> Gmail/Google Apps SMTP Pro and enter your email credentials
+Log into your Magento Admin, then goto Stores -> Configuration -> Advanced -> System -> Gmail/Google Apps SMTP Pro and enter your email credentials
