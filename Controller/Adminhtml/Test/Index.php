@@ -67,6 +67,7 @@ class Index extends Action
         $smtpHost = $request->getPost('smtphost');
         
         $smtpConf = array(
+            'name' => $request->getPost('name'),
             'auth' => strtolower($request->getPost('auth')),
             'ssl' => $request->getPost('ssl'),
             'username' => $username,

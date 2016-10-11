@@ -25,6 +25,16 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     }
     
     /**
+     * Get local client name
+     *
+     * @param \Magento\Store\Model\ScopeInterface::SCOPE_STORE $store
+     * @return string
+     */
+    public function getConfigName($store_id = null){
+        return $this->scopeConfig->getValue('system/gmailsmtpapp/name', \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $store_id);
+    }
+
+    /**
      * Get system config password
      * 
      * @param \Magento\Store\Model\ScopeInterface::SCOPE_STORE $store
