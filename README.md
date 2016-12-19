@@ -13,12 +13,12 @@ Install Gmail Smtp App for Magento2
  * Unzip the file
  * Create a folder {Magento root}/app/code/MagePal/GmailSmtpApp
  * Copy the content from the unzip folder
+ * Flush cache
 
 
 #####Using Composer
 
 ```
-composer config repositories.magepal-gmailsmtpapp git git@github.com:magepal/magento2-gmailsmtpapp.git
 composer require magepal/magento2-gmailsmtpapp
 ```
 
