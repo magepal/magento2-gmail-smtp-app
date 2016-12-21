@@ -51,17 +51,17 @@ class Transport extends \Zend_Mail_Transport_Smtp implements \Magento\Framework\
 
         //set config
         $smtpConf = [
-            'auth' => strtolower($dataHelper->getConfigAuth()),
-            'username' => $dataHelper->getConfigUsername(),
-            'password' => $dataHelper->getConfigPassword(),
-            'port' => $dataHelper->getConfigSmtpPort(),
+           'name' => $dataHelper->getConfigName(),
+           'auth' => strtolower($dataHelper->getConfigAuth()),
+           'username' => $dataHelper->getConfigUsername(),
+           'password' => $dataHelper->getConfigPassword(),
+           'port' => $dataHelper->getConfigSmtpPort(),
         ];
 
         $ssl = $dataHelper->getConfigSsl();
         if ($ssl != 'none') {
             $smtpConf['ssl'] = $ssl;
         }
-
 
         $smtpHost = $dataHelper->getConfigSmtpHost();
         parent::__construct($smtpHost, $smtpConf);
@@ -76,7 +76,6 @@ class Transport extends \Zend_Mail_Transport_Smtp implements \Magento\Framework\
      */
     public function sendMessage()
     {
-
         try {
             parent::send($this->_message);
         } catch (\Exception $e) {

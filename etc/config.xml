@@ -9,6 +9,7 @@
     <default>
         <system>
             <gmailsmtpapp>
+                <name>localhost</name>
                 <ssl>ssl</ssl>
                 <auth>LOGIN</auth>
                 <smtphost>smtp.gmail.com</smtphost>
