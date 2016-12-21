@@ -14,7 +14,7 @@
                     <label>Version</label>
                     <frontend_model>MagePal\GmailSmtpApp\Block\Adminhtml\System\Config\Version</frontend_model>
                 </field>
-                <field id="name" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="name" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Local client name (domain or IP)</label>
                     <comment>Default: localhost</comment>
                 </field>
