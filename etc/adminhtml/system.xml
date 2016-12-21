@@ -14,6 +14,10 @@
                     <label>Version</label>
                     <frontend_model>MagePal\GmailSmtpApp\Block\Adminhtml\System\Config\Version</frontend_model>
                 </field>
+                <field id="name" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Local client name (domain or IP)</label>
+                    <comment>Default: localhost</comment>
+                </field>
                 <field id="auth" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Authentication method</label>
                     <source_model>Magento\Config\Model\Config\Source\Email\Smtpauth</source_model>
