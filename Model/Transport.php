@@ -40,7 +40,7 @@ class Transport extends \Zend_Mail_Transport_Smtp implements \Magento\Framework\
                 $returnPathEmail = null;
                 break;
         }
-        
+
         if ($returnPathEmail !== null && $dataHelper->getConfigSetReturnPath()) {
             $message->setReturnPath($returnPathEmail);
         }
@@ -48,17 +48,21 @@ class Transport extends \Zend_Mail_Transport_Smtp implements \Magento\Framework\
         if ($message->getReplyTo() === NULL && $dataHelper->getConfigSetReplyTo()) {
             $message->setReplyTo($returnPathEmail);
         }
-       
+
         //set config
         $smtpConf = [
-           'auth' => strtolower($dataHelper->getConfigAuth()),
-           'ssl' => $dataHelper->getConfigSsl(),
-           'username' => $dataHelper->getConfigUsername(),
-           'password' => $dataHelper->getConfigPassword(),
-           'port' => $dataHelper->getConfigSmtpPort(),
+            'auth' => strtolower($dataHelper->getConfigAuth()),
+            'username' => $dataHelper->getConfigUsername(),
+            'password' => $dataHelper->getConfigPassword(),
+            'port' => $dataHelper->getConfigSmtpPort(),
         ];
-        
-        
+
+        $ssl = $dataHelper->getConfigSsl();
+        if ($ssl != 'none') {
+            $smtpConf['ssl'] = $ssl;
+        }
+
+
         $smtpHost = $dataHelper->getConfigSmtpHost();
         parent::__construct($smtpHost, $smtpConf);
         $this->_message = $message;

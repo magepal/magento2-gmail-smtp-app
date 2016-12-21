@@ -12,7 +12,7 @@ class Index extends Action
      * @var PageFactory
      */
     protected $_resultPageFactory;
-    
+
     /**
      * @var \MagePal\GmailSmtpApp\Helper\Data
      */
@@ -43,12 +43,12 @@ class Index extends Action
 
         $request = $this->getRequest();
         $store_id = $request->getParam('store', null);
-        
-        
+
+
         $name = 'MagePal Gmail Smtp App Test';
         $username = $request->getPost('username');
         $password = $request->getPost('password');
-        
+
         //if default view 
         //see https://github.com/magento/magento2/issues/3019
         if(!$request->getParam('store', false)){
@@ -60,20 +60,24 @@ class Index extends Action
 
         //if password mask (6 stars)
         $password = ($password == '******') ? $this->_dataHelper->getConfigPassword($store_id) : $password;
-        
+
         $to = $request->getPost('email') ? $request->getPost('email') : $username;
 
         //SMTP server configuration
         $smtpHost = $request->getPost('smtphost');
-        
+
         $smtpConf = array(
             'auth' => strtolower($request->getPost('auth')),
-            'ssl' => $request->getPost('ssl'),
             'username' => $username,
             'password' => $password,
             'port' => $request->getPost('smtpport')
         );
-        
+
+        $ssl = $request->getPost('ssl');
+        if ($ssl != 'none') {
+            $smtpConf['ssl'] = $ssl;
+        }
+
         $transport = new \Zend_Mail_Transport_Smtp($smtpHost, $smtpConf);
 
         $from = trim($request->getPost('from_email'));
@@ -86,20 +90,20 @@ class Index extends Action
         $mail->addTo($to, $to);
         $mail->setSubject('Hello from MagePal');
         $mail->setBodyText('Thank you for choosing MagePal extension.');
-        
-        
+
+
         $result = __('Sent... Please check your email') . ' ' . $to;
-        
+
         try {
             //only way to prevent zend from giving a error
             if (!$mail->send($transport) instanceof \Zend_Mail){}
         } catch (\Exception $e) {
             $result = __($e->getMessage());
         }
-        
+
         $this->getResponse()->setBody($this->makeClickableLinks($result));
     }
-    
+
     /**
      * Make link clickable
      * @param string $s

@@ -13,6 +13,7 @@ class Authtype implements \Magento\Framework\Option\ArrayInterface
     public function toOptionArray()
     {
         return [
+            ['value' => 'none', 'label' => __('None')],
             ['value' => 'ssl', 'label' => 'SSL (Gmail / Google Apps)'],
             ['value' => 'tls', 'label' => 'TLS (Gmail / Google Apps)']
         ];
