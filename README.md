@@ -31,3 +31,4 @@ Log into your Magento Admin, then goto Stores -> Configuration -> Advanced -> Sy
 
 ## Preview
 ![image](https://cloud.githubusercontent.com/assets/1415141/18802388/7302402a-81b6-11e6-8c19-7a7f01be8743.png)
+

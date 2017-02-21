@@ -48,6 +48,11 @@ class Transport extends \Zend_Mail_Transport_Smtp implements \Magento\Framework\
         if ($message->getReplyTo() === NULL && $dataHelper->getConfigSetReplyTo()) {
             $message->setReplyTo($returnPathEmail);
         }
+        
+        if ($returnPathEmail !== null && $dataHelper->getConfigSetFrom()) {
+        	$message->clearFrom();
+            $message->setFrom($returnPathEmail);
+        }
 
         //set config
         $smtpConf = [
