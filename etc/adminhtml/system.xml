@@ -14,45 +14,76 @@
                     <label>Version</label>
                     <frontend_model>MagePal\GmailSmtpApp\Block\Adminhtml\System\Config\Version</frontend_model>
                 </field>
+                <field id="active" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
                 <field id="name" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Local client name (domain or IP)</label>
                     <comment>Default: localhost</comment>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                    </depends>
                 </field>
                 <field id="auth" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Authentication method</label>
                     <source_model>Magento\Config\Model\Config\Source\Email\Smtpauth</source_model>
                     <comment>Use "login" for Gmail or Google Apps.</comment>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                    </depends>
                 </field>
                 <field id="ssl" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>SSL type</label>
                     <source_model>MagePal\GmailSmtpApp\Model\Config\Source\Authtype</source_model>
                     <comment>Use "ssl" for Gmail or Google Apps.</comment>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                    </depends>
                 </field>
                 <field id="smtphost" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>SMTP Host</label>
                     <comment>Use "smtp.gmail.com" for Gmail or Google Apps.</comment>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                    </depends>
                 </field>
                 <field id="smtpport" translate="label" type="text" sortOrder="17" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>SMTP Port</label>
                     <validate>validate-number</validate>
                     <frontend_class>validate-number</frontend_class>
                     <comment>Use 465 (ssl) or 587 (tls) if port 25 is throttled or blocked.</comment>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                    </depends>
                 </field>
                 <field id="username" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Username</label>
-                    <comment>Email Address.</comment>
+                    <comment>Email Address or Account ID.</comment>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                    </depends>
                 </field>
                 <field id="password" translate="label" type="obscure" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Password</label>
                     <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                    </depends>
                 </field>
                 <field id="set_reply_to" translate="label" type="select" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Set Reply-to</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                    </depends>
                 </field>
                 <field id="set_return_path" translate="label" type="select" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Set Return-Path</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesnocustom</source_model>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                    </depends>
                 </field>
                 <field id="return_path_email" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Return-Path Email</label>
@@ -60,25 +91,29 @@
                     <backend_model>Magento\Config\Model\Config\Backend\Email\Address</backend_model>
                     <depends>
                         <field id="set_return_path">2</field>
+                        <field id="*/*/active">1</field>
                     </depends>
                 </field>
                 <group id="debug" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="100">
-                        <label>Test Settings</label>
-                        <attribute type="expanded">0</attribute>
-                        <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
-                        <field id="email" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
-                            <label>Email address</label>
-                            <comment>Email address to send test to.</comment>
-                            <frontend_class>validate-email</frontend_class>
-                        </field>
-                        <field id="from_email" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
-                            <label>From Email Address</label>
-                            <comment>Leave blank to use Username instead</comment>
-                            <frontend_class>validate-email</frontend_class>
-                        </field>
-                        <field id="button" translate="label comment" type="button" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
-                            <frontend_model>MagePal\GmailSmtpApp\Block\Adminhtml\System\Config\TestButton</frontend_model>
-                        </field>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                    </depends>
+                    <label>Test Email Server Configuration Settings</label>
+                    <attribute type="expanded">0</attribute>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                    <field id="email" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Email address</label>
+                        <comment>Email address to send test to.</comment>
+                        <frontend_class>validate-email</frontend_class>
+                    </field>
+                    <field id="from_email" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>From Email Address</label>
+                        <comment>Leave blank to use Username instead</comment>
+                        <frontend_class>validate-email</frontend_class>
+                    </field>
+                    <field id="button" translate="label comment" type="button" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <frontend_model>MagePal\GmailSmtpApp\Block\Adminhtml\System\Config\TestButton</frontend_model>
+                    </field>
                 </group>
             </group>
         </section>

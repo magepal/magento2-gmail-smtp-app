@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 /**
- * Copyright © 2015 MagePal. All rights reserved.
+ * Copyright © 2015-2017 MagePal. All rights reserved.
  * See COPYING.txt for license details.
  */
 -->
@@ -9,6 +9,7 @@
     <default>
         <system>
             <gmailsmtpapp>
+                <active>1</active>
                 <name>localhost</name>
                 <ssl>ssl</ssl>
                 <auth>LOGIN</auth>

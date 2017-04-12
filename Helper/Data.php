@@ -1,12 +1,13 @@
 <?php
 /**
- * MagePal_GmailSmtpApp Magento component
+ * Mail Transport
+ * Copyright © 2015-2017 MagePal. All rights reserved.
+ * See COPYING.txt for license details.
  *
  * @category    MagePal
  * @package     MagePal_GmailSmtpApp
  * @author      MagePal Team <info@magepal.com>
  * @copyright   MagePal (http://www.magepal.com)
- * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 namespace MagePal\GmailSmtpApp\Helper;
@@ -15,13 +16,11 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
 
     /**
-     * @param \Magento\Framework\App\Helper\Context $context
+     * @param null $store_id
+     * @return bool
      */
-    public function __construct(
-        \Magento\Framework\App\Helper\Context $context
-    )
-    {
-        parent::__construct($context);
+    public function isActive($store_id = null){
+        return $this->scopeConfig->isSetFlag('system/gmailsmtpapp/active', \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $store_id);
     }
     
     /**
@@ -103,9 +102,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     public function getConfigSetReplyTo($store_id = null){
         return $this->scopeConfig->getValue('system/gmailsmtpapp/set_reply_to', \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $store_id);
     }
-    
-    
-    
+
     /**
      * Get system config set return path
      * 
