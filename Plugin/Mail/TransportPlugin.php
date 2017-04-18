@@ -39,44 +39,53 @@ class TransportPlugin extends \Zend_Mail_Transport_Smtp
      * @throws \Magento\Framework\Exception\MailException
      */
     public function sendSmtpMessage(\Magento\Framework\Mail\MessageInterface $message){
-        //Set reply-to path
-        $setReturnPath = $this->dataHelper->getConfigSetReturnPath();
+        $dataHelper = $this->dataHelper;
 
+        //Set reply-to path
+        $setReturnPath = $dataHelper->getConfigSetReturnPath();
         switch ($setReturnPath) {
             case 1:
                 $returnPathEmail = $message->getFrom();
                 break;
             case 2:
-                $returnPathEmail = $this->dataHelper->getConfigReturnPathEmail();
+                $returnPathEmail = $dataHelper->getConfigReturnPathEmail();
                 break;
             default:
                 $returnPathEmail = null;
                 break;
         }
 
-        if ($returnPathEmail !== null && $this->dataHelper->getConfigSetReturnPath()) {
+        if ($returnPathEmail !== null && $dataHelper->getConfigSetReturnPath()) {
             $message->setReturnPath($returnPathEmail);
         }
 
-        if ($message->getReplyTo() === NULL && $this->dataHelper->getConfigSetReplyTo()) {
+        if ($message->getReplyTo() === NULL && $dataHelper->getConfigSetReplyTo()) {
             $message->setReplyTo($returnPathEmail);
+        }
+
+        if ($returnPathEmail !== null && $dataHelper->getConfigSetFrom()) {
+            $message->clearFrom();
+            $message->setFrom($returnPathEmail);
         }
 
         //set config
         $smtpConf = [
-            'name' => $this->dataHelper->getConfigName(),
-            'auth' => strtolower($this->dataHelper->getConfigAuth()),
-            'username' => $this->dataHelper->getConfigUsername(),
-            'password' => $this->dataHelper->getConfigPassword(),
-            'port' => $this->dataHelper->getConfigSmtpPort(),
+            'name' => $dataHelper->getConfigName(),
+            'port' => $dataHelper->getConfigSmtpPort(),
         ];
 
-        $ssl = $this->dataHelper->getConfigSsl();
+        $auth = strtolower($dataHelper->getConfigAuth());
+        if ($auth != 'none') {
+            $smtpConf['auth'] = $auth;
+            $smtpConf['username'] = $dataHelper->getConfigUsername();
+            $smtpConf['password'] = $dataHelper->getConfigPassword();
+        }
+
+        $ssl = $dataHelper->getConfigSsl();
         if ($ssl != 'none') {
             $smtpConf['ssl'] = $ssl;
         }
-
-        $smtpHost = $this->dataHelper->getConfigSmtpHost();
+        $smtpHost = $dataHelper->getConfigSmtpHost();
         $this->initialize($smtpHost, $smtpConf);
 
         try {
