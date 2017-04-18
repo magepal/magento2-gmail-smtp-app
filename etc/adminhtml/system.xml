@@ -78,6 +78,11 @@
                         <field id="*/*/active">1</field>
                     </depends>
                 </field>
+                <field id="set_from" translate="label" type="select" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Set From</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Use Return-Path email address for the From address rather than the Magento supplied value.</comment>
+                </field>
                 <field id="set_return_path" translate="label" type="select" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Set Return-Path</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesnocustom</source_model>

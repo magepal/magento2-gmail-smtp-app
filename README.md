@@ -1,4 +1,8 @@
 ## Gmail Smtp App for Magento2
+
+[![Total Downloads](https://poser.pugx.org/magepal/magento2-gmailsmtpapp/downloads)](https://packagist.org/packages/magepal/magento2-gmailsmtpapp)
+[![Latest Stable Version](https://poser.pugx.org/magepal/magento2-gmailsmtpapp/v/stable)](https://packagist.org/packages/magepal/magento2-gmailsmtpapp)
+
 Configure Magento 2 to send all transactional email using Google App, Gmail, Amazon Simple Email Service (SES) and other SMTP server. 
 
 All you need is either a (i) free Gmail account, (ii) paid Google Apps account or any other SMTP service (i.e Amazon Simple Email Service / Amazon SES )
@@ -31,3 +35,4 @@ Log into your Magento Admin, then goto Stores -> Configuration -> Advanced -> Sy
 
 ## Preview
 ![image](https://cloud.githubusercontent.com/assets/1415141/18802388/7302402a-81b6-11e6-8c19-7a7f01be8743.png)
+

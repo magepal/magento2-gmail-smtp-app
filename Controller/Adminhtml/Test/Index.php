@@ -48,11 +48,12 @@ class Index extends Action
         $name = 'MagePal Gmail Smtp App Test';
         $username = $request->getPost('username');
         $password = $request->getPost('password');
+        $auth = strtolower($request->getPost('auth'));
 
         //if default view 
         //see https://github.com/magento/magento2/issues/3019
         if(!$request->getParam('store', false)){
-            if(empty($username) || empty($password)){
+            if($auth != 'none' && (empty($username) || empty($password))) {
                 $this->getResponse()->setBody(__('Please enter a valid username/password'));
                 return;
             }
@@ -68,11 +69,14 @@ class Index extends Action
 
         $smtpConf = array(
             'name' => $request->getPost('name'),
-            'auth' => strtolower($request->getPost('auth')),
-            'username' => $username,
-            'password' => $password,
             'port' => $request->getPost('smtpport')
         );
+        if ($auth != 'none') {
+            $smtpConf['auth'] = $auth;
+            $smtpConf['username'] = $username;
+            $smtpConf['password'] = $password;
+
+        }
 
         $ssl = $request->getPost('ssl');
         if ($ssl != 'none') {

@@ -124,4 +124,14 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         return $this->scopeConfig->getValue('system/gmailsmtpapp/return_path_email', \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $store_id);
     }
     
+    /**
+     * Get system config from
+     * 
+     * @param \Magento\Store\Model\ScopeInterface::SCOPE_STORE $store
+     * @return bool
+     */
+    public function getConfigSetFrom($store_id = null){
+        return $this->scopeConfig->getValue('system/gmailsmtpapp/set_from', \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $store_id);
+    }
+    
 }
