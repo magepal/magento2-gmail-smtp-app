@@ -26,7 +26,7 @@ Install Gmail Smtp App for Magento2
 composer require magepal/magento2-gmailsmtpapp
 ```
 
-####2 -  Enable Gmail Smtp App
+#### 2 -  Enable Gmail Smtp App
  * php -f bin/magento module:enable --clear-static-content MagePal_GmailSmtpApp
  * php -f bin/magento setup:upgrade
 
