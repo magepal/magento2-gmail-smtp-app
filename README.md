@@ -10,7 +10,7 @@ All you need is either a (i) free Gmail account, (ii) paid Google Apps account o
 ###Benefits
 Since Google's SMTP server does not use Port 25, you'll reduce the probability that an ISP might block your email or flag it as SPAM. Also all your emails sent from Magento will be searchable and backed-up in your email account on Google's servers. 
 
-####1 - Installation  Gmail Smtp App
+#### 1 - Installation  Gmail Smtp App
 ##### Manual Installation
 Install Gmail Smtp App for Magento2
  * Download the extension
@@ -20,7 +20,7 @@ Install Gmail Smtp App for Magento2
  * Flush cache
 
 
-#####Using Composer
+##### Using Composer
 
 ```
 composer require magepal/magento2-gmailsmtpapp
@@ -30,7 +30,7 @@ composer require magepal/magento2-gmailsmtpapp
  * php -f bin/magento module:enable --clear-static-content MagePal_GmailSmtpApp
  * php -f bin/magento setup:upgrade
 
-####3 - Config Gmail Smtp App
+#### 3 - Config Gmail Smtp App
 Log into your Magento Admin, then goto Stores -> Configuration -> Advanced -> System -> Gmail/Google Apps SMTP Pro and enter your email credentials
 
 ## Preview
