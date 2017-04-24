@@ -1,6 +1,6 @@
 {
     "name": "magepal/magento2-gmailsmtpapp",
-    "description":"Configure Magento 2 to use Google/Gmail SMTP server to send email",
+    "description":"Configure Magento 2 to send email using Google App, Gmail, Amazon Simple Email Service (SES) and many other SMTP servers",
     "keywords": [
         "magento 2",
         "gmail smtp",
