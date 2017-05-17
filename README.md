@@ -10,6 +10,26 @@ All you need is either a (i) free Gmail account, (ii) paid Google Apps account o
 ### Benefits
 Since Google's SMTP server does not use Port 25, you'll reduce the probability that an ISP might block your email or flag it as SPAM. Also all your emails sent from Magento will be searchable and backed-up in your email account on Google's servers. 
 
+### SMTP Service Providers
+ * Gmail
+ * Google App
+ * Amazon Simple Email Service (SES)
+ * Microsoft Office365
+ * SparkPost
+ * Mandrill
+ * MailGun
+ * SendGrid
+ * Elastic Email
+ * Hotmail
+ * Postmark
+ * O2 Mail
+ * Zoho
+ * Mailjet
+ * Mail.com
+ * Your Company SMTP Server
+ * and many other SMTP servers
+
+
 #### 1 - Installation  Gmail Smtp App
 ##### Manual Installation
 Install Gmail Smtp App for Magento2
