@@ -50,6 +50,8 @@ composer require magepal/magento2-gmailsmtpapp
 ```
  php -f bin/magento module:enable --clear-static-content MagePal_GmailSmtpApp
  php -f bin/magento setup:upgrade
+ php -f bin/magento setup:static-content:deploy
+ php -f bin/magento cache:flush
 ```
 
 #### 3 - Config Gmail Smtp App
