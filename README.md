@@ -40,7 +40,7 @@ Install Gmail Smtp App for Magento2
  * Flush cache
 
 
-##### Using Composer
+##### Using Composer (from Magento Root Dir run)
 
 ```
 composer require magepal/magento2-gmailsmtpapp
