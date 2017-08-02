@@ -58,5 +58,5 @@ composer require magepal/magento2-gmailsmtpapp
 Log into your Magento Admin, then goto Stores -> Configuration -> Advanced -> System -> Gmail/Google Apps SMTP Pro and enter your email credentials
 
 ## Preview
-![image](https://cloud.githubusercontent.com/assets/1415141/18802388/7302402a-81b6-11e6-8c19-7a7f01be8743.png)
+![image](https://user-images.githubusercontent.com/1415141/28881062-ecfa0cf0-7774-11e7-9af7-52824e5f9568.png)
 
