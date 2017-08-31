@@ -60,3 +60,6 @@ Log into your Magento Admin, then goto Stores -> Configuration -> Advanced -> Sy
 ## Preview
 ![image](https://user-images.githubusercontent.com/1415141/28881062-ecfa0cf0-7774-11e7-9af7-52824e5f9568.png)
 
+----
+
+Need help setting up or want to customize this extension to meet your business needs? Please email support@magepal.com and if we like your idea we will add this feature for free or at a discounted rate.
