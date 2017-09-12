@@ -16,12 +16,17 @@ Since Google's SMTP server does not use Port 25, you'll reduce the probability t
  * Google App
  * Amazon Simple Email Service (SES)
  * Microsoft Office365
+ * Outlook
  * SparkPost
  * Mandrill
  * MailGun
  * SendGrid
  * Elastic Email
  * Hotmail
+ * AOL Mail
+ * Yahoo Mail
+ * AT&T
+ * Verizon
  * Postmark
  * O2 Mail
  * Zoho
