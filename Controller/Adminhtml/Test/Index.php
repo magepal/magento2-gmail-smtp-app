@@ -94,7 +94,7 @@ class Index extends Action
         $mail->setFrom($from, $name);
         $mail->addTo($to, $to);
         $mail->setSubject('Hello from MagePal');
-        $mail->setBodyText('Thank you for choosing MagePal extension.');
+        $mail->setBodyHtml('Thank you for choosing MagePal extension. <br><br>Like our extension? Please feel free to try our other free modules available at <a href="https://packagist.org/packages/magepal/">https://packagist.org/packages/magepal/</a>');
 
 
         $result = __('Sent... Please check your email') . ' ' . $to;
