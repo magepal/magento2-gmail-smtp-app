@@ -15,7 +15,7 @@
         "magento/framework": "100.0.*|100.1.*|100.2.*|101.0.*"
     },
     "type": "magento2-module",
-    "version": "1.4.6",
+    "version": "1.4.7",
     "license": [
         "OSL-3.0",
         "AFL-3.0"
