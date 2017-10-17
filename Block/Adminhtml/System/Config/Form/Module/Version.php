@@ -4,7 +4,7 @@
  * See COPYING.txt for license details.
  */
 
-namespace MagePal\GmailSmtpApp\Block\Adminhtml\System\Config;
+namespace MagePal\GmailSmtpApp\Block\Adminhtml\System\Config\Form\Module;
 
 class Version extends \Magento\Config\Block\System\Config\Form\Field
 {
