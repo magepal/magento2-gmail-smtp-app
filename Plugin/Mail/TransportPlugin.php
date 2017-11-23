@@ -41,6 +41,10 @@ class TransportPlugin extends \Zend_Mail_Transport_Smtp
     public function sendSmtpMessage(\Magento\Framework\Mail\MessageInterface $message){
         $dataHelper = $this->dataHelper;
 
+        if($message instanceof \Zend_mail) {
+            if($message->getDate() === null) $message->setDate();
+        }
+        
         //Set reply-to path
         $setReturnPath = $dataHelper->getConfigSetReturnPath();
         switch ($setReturnPath) {
