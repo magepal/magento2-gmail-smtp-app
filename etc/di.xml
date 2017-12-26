@@ -17,4 +17,3 @@
 		<plugin sortOrder="100" name="magePalGmailSmtpAppTransportInterface" type="MagePal\GmailSmtpApp\Plugin\Mail\TransportPlugin"/>
 	</type>
 </config>
-
