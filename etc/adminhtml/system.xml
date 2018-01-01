@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 /**
- * Copyright © 2017 MagePal LLC. All rights reserved.
+ * Copyright © MagePal LLC. All rights reserved.
  * See COPYING.txt for license details.
  */
 -->
@@ -11,7 +11,7 @@
             <label>MagePal</label>
         </tab>
         <section id="magepal_gmailsmtpapp" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="5" translate="label">
-            <label>Gmail/Google Apps SMTP Pro</label>
+            <label>SMTP Configuration</label>
             <tab>magepal</tab>
             <resource>MagePal_GmailSmtpApp::magepal_gmailsmtpapp</resource>
             <group id="about" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="0" translate="label">

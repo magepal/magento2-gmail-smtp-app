@@ -1,7 +1,7 @@
 <?php
 /**
  * Mail Transport
- * Copyright © 2017 MagePal LLC. All rights reserved.
+ * Copyright © MagePal LLC. All rights reserved.
  * See COPYING.txt for license details.
  *
  * @category    MagePal
@@ -19,7 +19,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      * @param null $store_id
      * @return bool
      */
-    public function isActive($store_id = null){
+    public function isActive($store_id = null)
+    {
         return $this->scopeConfig->isSetFlag('system/gmailsmtpapp/active', \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $store_id);
     }
 
@@ -29,7 +30,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      * @param \Magento\Store\Model\ScopeInterface::SCOPE_STORE $store
      * @return string
      */
-    public function getConfigName($store_id = null){
+    public function getConfigName($store_id = null)
+    {
         return $this->getConfigValue('name', $store_id);
     }
 
@@ -39,7 +41,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      * @param \Magento\Store\Model\ScopeInterface::SCOPE_STORE $store
      * @return string
      */
-    public function getConfigPassword($store_id = null){
+    public function getConfigPassword($store_id = null)
+    {
         return $this->getConfigValue('password', $store_id);
     }
 
@@ -49,7 +52,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      * @param \Magento\Store\Model\ScopeInterface::SCOPE_STORE $store
      * @return string
      */
-    public function getConfigUsername($store_id = null){
+    public function getConfigUsername($store_id = null)
+    {
         return $this->getConfigValue('username', $store_id);
     }
 
@@ -59,7 +63,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      * @param \Magento\Store\Model\ScopeInterface::SCOPE_STORE $store
      * @return string
      */
-    public function getConfigAuth($store_id = null){
+    public function getConfigAuth($store_id = null)
+    {
         return $this->getConfigValue('auth', $store_id);
     }
 
@@ -69,7 +74,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      * @param \Magento\Store\Model\ScopeInterface::SCOPE_STORE $store
      * @return string
      */
-    public function getConfigSsl($store_id = null){
+    public function getConfigSsl($store_id = null)
+    {
         return $this->getConfigValue('ssl', $store_id);
     }
 
@@ -79,7 +85,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      * @param \Magento\Store\Model\ScopeInterface::SCOPE_STORE $store
      * @return string
      */
-    public function getConfigSmtpHost($store_id = null){
+    public function getConfigSmtpHost($store_id = null)
+    {
         return $this->getConfigValue('smtphost', $store_id);
     }
 
@@ -89,7 +96,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      * @param \Magento\Store\Model\ScopeInterface::SCOPE_STORE $store
      * @return string
      */
-    public function getConfigSmtpPort($store_id = null){
+    public function getConfigSmtpPort($store_id = null)
+    {
         return $this->getConfigValue('smtpport', $store_id);
     }
 
@@ -99,7 +107,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      * @param \Magento\Store\Model\ScopeInterface::SCOPE_STORE $store
      * @return bool
      */
-    public function getConfigSetReplyTo($store_id = null){
+    public function getConfigSetReplyTo($store_id = null)
+    {
         return $this->getConfigValue('set_reply_to', $store_id);
     }
 
@@ -109,10 +118,10 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      * @param \Magento\Store\Model\ScopeInterface::SCOPE_STORE $store
      * @return int
      */
-    public function getConfigSetReturnPath($store_id = null){
+    public function getConfigSetReturnPath($store_id = null)
+    {
         return $this->getConfigValue('set_return_path', $store_id);
     }
-
 
     /**
      * Get system config return path email
@@ -120,7 +129,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      * @param \Magento\Store\Model\ScopeInterface::SCOPE_STORE $store
      * @return string
      */
-    public function getConfigReturnPathEmail($store_id = null){
+    public function getConfigReturnPathEmail($store_id = null)
+    {
         return $this->getConfigValue('return_path_email', $store_id);
     }
 
@@ -130,7 +140,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      * @param \Magento\Store\Model\ScopeInterface::SCOPE_STORE $store
      * @return string
      */
-    public function getConfigSetFrom($store_id = null){
+    public function getConfigSetFrom($store_id = null)
+    {
         return  $this->getConfigValue('set_from', $store_id);
     }
 
@@ -141,8 +152,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      * @param \Magento\Store\Model\ScopeInterface::SCOPE_STORE $store
      * @return string
      */
-    public function getConfigValue($path, $store_id = null){
+    public function getConfigValue($path, $store_id = null)
+    {
         return $this->scopeConfig->getValue("system/gmailsmtpapp/{$path}", \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $store_id);
     }
-
 }

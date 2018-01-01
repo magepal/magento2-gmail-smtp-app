@@ -1,7 +1,7 @@
 <?php
 /**
  * Mail Transport
- * Copyright © 2017 MagePal LLC. All rights reserved.
+ * Copyright © MagePal LLC. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace MagePal\GmailSmtpApp\Plugin\Mail;
@@ -10,7 +10,7 @@ class TransportPlugin extends \Zend_Mail_Transport_Smtp
 {
     /** @var \MagePal\GmailSmtpApp\Helper\Data */
     protected $dataHelper;
-    
+
     /**
      * @param \MagePal\GmailSmtpApp\Helper\Data $dataHelper
      */
@@ -23,13 +23,12 @@ class TransportPlugin extends \Zend_Mail_Transport_Smtp
      * @param \Magento\Framework\Mail\TransportInterface $subject
      * @param \Closure $proceed
      */
-    public function aroundSendMessage(\Magento\Framework\Mail\TransportInterface $subject, \Closure $proceed){
-
-        if($this->dataHelper->isActive()){
+    public function aroundSendMessage(\Magento\Framework\Mail\TransportInterface $subject, \Closure $proceed)
+    {
+        if ($this->dataHelper->isActive()) {
             $message = $subject->getMessage();
             $this->sendSmtpMessage($message);
-        }
-        else{
+        } else {
             $proceed();
         }
     }
@@ -38,7 +37,8 @@ class TransportPlugin extends \Zend_Mail_Transport_Smtp
      * @param \Magento\Framework\Mail\MessageInterface $message
      * @throws \Magento\Framework\Exception\MailException
      */
-    public function sendSmtpMessage(\Magento\Framework\Mail\MessageInterface $message){
+    public function sendSmtpMessage(\Magento\Framework\Mail\MessageInterface $message)
+    {
         $dataHelper = $this->dataHelper;
 
         //Set reply-to path
@@ -59,7 +59,7 @@ class TransportPlugin extends \Zend_Mail_Transport_Smtp
             $message->setReturnPath($returnPathEmail);
         }
 
-        if ($message->getReplyTo() === NULL && $dataHelper->getConfigSetReplyTo()) {
+        if ($message->getReplyTo() === null && $dataHelper->getConfigSetReplyTo()) {
             $message->setReplyTo($returnPathEmail);
         }
 
@@ -99,7 +99,7 @@ class TransportPlugin extends \Zend_Mail_Transport_Smtp
      * @param string $host
      * @param array $config
      */
-    public function initialize($host = '127.0.0.1', Array $config = array())
+    public function initialize($host = '127.0.0.1', array $config = [])
     {
         if (isset($config['name'])) {
             $this->_name = $config['name'];

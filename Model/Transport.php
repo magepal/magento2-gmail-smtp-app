@@ -1,11 +1,10 @@
 <?php
 /**
  * Mail Transport
- * Copyright © 2017 MagePal LLC. All rights reserved.
+ * Copyright © MagePal LLC. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace MagePal\GmailSmtpApp\Model;
-
 
 class Transport extends \Zend_Mail_Transport_Sendmail implements \Magento\Framework\Mail\TransportInterface
 {
@@ -15,9 +14,8 @@ class Transport extends \Zend_Mail_Transport_Sendmail implements \Magento\Framew
     protected $_message;
 
     /**
-     * @param MessageInterface $message
+     * @param \Magento\Framework\Mail\MessageInterface $message
      * @param null $parameters
-     * @throws \InvalidArgumentException
      */
     public function __construct(\Magento\Framework\Mail\MessageInterface $message, $parameters = null)
     {
@@ -44,7 +42,8 @@ class Transport extends \Zend_Mail_Transport_Sendmail implements \Magento\Framew
         }
     }
 
-    public function getMessage(){
+    public function getMessage()
+    {
         return $this->_message;
     }
 }

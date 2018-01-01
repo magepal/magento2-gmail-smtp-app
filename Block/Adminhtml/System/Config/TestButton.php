@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2017 MagePal LLC. All rights reserved.
+ * Copyright © MagePal LLC. All rights reserved.
  * See COPYING.txt for license details.
  */
 
@@ -14,7 +14,7 @@ class TestButton extends \Magento\Config\Block\System\Config\Form\Field
 {
     /** @var UrlInterface */
     protected $_urlBuilder;
-    
+
     /**
      * @param \Magento\Backend\Block\Template\Context $context
      * @param array $data
@@ -57,8 +57,9 @@ class TestButton extends \Magento\Config\Block\System\Config\Form\Field
 
         return $button->toHtml();
     }
-    
-    public function getAdminUrl(){
+
+    public function getAdminUrl()
+    {
         return $this->_urlBuilder->getUrl('magepalGmailsmtpapp/test', ['store' => $this->_request->getParam('store')]);
     }
 

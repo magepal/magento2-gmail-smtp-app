@@ -1,9 +1,9 @@
 <?php
 namespace MagePal\GmailSmtpApp\Controller\Adminhtml\Test;
 
+use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
-use \Magento\Backend\App\Action;
 
 class Index extends Action
 {
@@ -39,21 +39,20 @@ class Index extends Action
      *
      * @return \Magento\Backend\Model\View\Result\Page
      */
-    public function execute() {
-
+    public function execute()
+    {
         $request = $this->getRequest();
         $store_id = $request->getParam('store', null);
-
 
         $name = 'MagePal Gmail Smtp App Test';
         $username = $request->getPost('username');
         $password = $request->getPost('password');
         $auth = strtolower($request->getPost('auth'));
 
-        //if default view 
+        //if default view
         //see https://github.com/magento/magento2/issues/3019
-        if(!$request->getParam('store', false)){
-            if($auth != 'none' && (empty($username) || empty($password))) {
+        if (!$request->getParam('store', false)) {
+            if ($auth != 'none' && (empty($username) || empty($password))) {
                 $this->getResponse()->setBody(__('Please enter a valid username/password'));
                 return;
             }
@@ -67,15 +66,14 @@ class Index extends Action
         //SMTP server configuration
         $smtpHost = $request->getPost('smtphost');
 
-        $smtpConf = array(
+        $smtpConf = [
             'name' => $request->getPost('name'),
             'port' => $request->getPost('smtpport')
-        );
+        ];
         if ($auth != 'none') {
             $smtpConf['auth'] = $auth;
             $smtpConf['username'] = $username;
             $smtpConf['password'] = $password;
-
         }
 
         $ssl = $request->getPost('ssl');
@@ -88,7 +86,6 @@ class Index extends Action
         $from = trim($request->getPost('from_email'));
         $from = \Zend_Validate::is($from, 'EmailAddress') ? $from : $username;
 
-
         //Create email
         $mail = new \Zend_Mail();
         $mail->setFrom($from, $name);
@@ -96,12 +93,12 @@ class Index extends Action
         $mail->setSubject('Hello from MagePal');
         $mail->setBodyHtml('Thank you for choosing MagePal extension. <br><br>Like our extension? Please feel free to try our other free modules available at <a href="https://packagist.org/packages/magepal/">https://packagist.org/packages/magepal/</a>');
 
-
         $result = __('Sent... Please check your email') . ' ' . $to;
 
         try {
             //only way to prevent zend from giving a error
-            if (!$mail->send($transport) instanceof \Zend_Mail){}
+            if (!$mail->send($transport) instanceof \Zend_Mail) {
+            }
         } catch (\Exception $e) {
             $result = __($e->getMessage());
         }
@@ -114,7 +111,8 @@ class Index extends Action
      * @param string $s
      * @return string
      */
-    public function makeClickableLinks($s) {
+    public function makeClickableLinks($s)
+    {
         return preg_replace('@(https?://([-\w\.]+[-\w])+(:\d+)?(/([\w/_\.#-]*(\?\S+)?[^\.\s])?)?)@', '<a href="$1" target="_blank">$1</a>', $s);
     }
 
@@ -127,6 +125,4 @@ class Index extends Action
     {
         return $this->_authorization->isAllowed('MagePal_GmailSmtpApp');
     }
-
-
 }

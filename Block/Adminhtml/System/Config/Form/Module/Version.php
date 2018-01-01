@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2017 MagePal LLC. All rights reserved.
+ * Copyright © MagePal LLC. All rights reserved.
  * See COPYING.txt for license details.
  */
 
@@ -41,7 +41,6 @@ class Version extends \Magento\Config\Block\System\Config\Form\Field
         return parent::render($element);
     }
 
-
     /**
      * Return element html
      *
@@ -54,13 +53,13 @@ class Version extends \Magento\Config\Block\System\Config\Form\Field
         return 'v' . $this->getVersion();
     }
 
-
     /**
      * Get Module version number
      *
      * @return string
      */
-    public function getVersion(){
+    public function getVersion()
+    {
         $moduleInfo = $this->_moduleList->getOne($this->getModuleName());
         return $moduleInfo['setup_version'];
     }
