@@ -61,6 +61,10 @@ class TransportPlugin extends \Zend_Mail_Transport_Smtp
         $dataHelper = $this->dataHelper;
         $dataHelper->setStoreId($this->storeModel->getStoreId());
 
+        if($message instanceof \Zend_mail) {
+            if($message->getDate() === null) $message->setDate();
+        }
+        
         //Set reply-to path
         $setReturnPath = $dataHelper->getConfigSetReturnPath();
         switch ($setReturnPath) {
