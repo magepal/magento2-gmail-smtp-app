@@ -8,24 +8,43 @@ namespace MagePal\GmailSmtpApp\Plugin\Mail;
 
 class TransportPlugin extends \Zend_Mail_Transport_Smtp
 {
-    /** @var \MagePal\GmailSmtpApp\Helper\Data */
+    /**
+     * @var \MagePal\GmailSmtpApp\Helper\Data
+     */
     protected $dataHelper;
+
+    /**
+     * @var \MagePal\GmailSmtpApp\Model\Store
+     */
+    protected $storeModel;
 
     /**
      * @param \MagePal\GmailSmtpApp\Helper\Data $dataHelper
      */
-    public function __construct(\MagePal\GmailSmtpApp\Helper\Data $dataHelper)
-    {
+    public function __construct(
+        \MagePal\GmailSmtpApp\Helper\Data $dataHelper,
+        \MagePal\GmailSmtpApp\Model\Store $storeModel
+    ) {
         $this->dataHelper = $dataHelper;
+        $this->storeModel = $storeModel;
     }
 
     /**
      * @param \Magento\Framework\Mail\TransportInterface $subject
      * @param \Closure $proceed
+     * @throws \Magento\Framework\Exception\MailException
      */
-    public function aroundSendMessage(\Magento\Framework\Mail\TransportInterface $subject, \Closure $proceed)
-    {
+    public function aroundSendMessage(
+        \Magento\Framework\Mail\TransportInterface $subject,
+        \Closure $proceed
+    ) {
+
         if ($this->dataHelper->isActive()) {
+
+            if(method_exists($subject, 'getStoreId')){
+                $this->storeModel->setStoreId($subject->getStoreId());
+            }
+
             $message = $subject->getMessage();
             $this->sendSmtpMessage($message);
         } else {
@@ -40,6 +59,7 @@ class TransportPlugin extends \Zend_Mail_Transport_Smtp
     public function sendSmtpMessage(\Magento\Framework\Mail\MessageInterface $message)
     {
         $dataHelper = $this->dataHelper;
+        $dataHelper->setStoreId($this->storeModel->getStoreId());
 
         //Set reply-to path
         $setReturnPath = $dataHelper->getConfigSetReturnPath();

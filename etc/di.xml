@@ -16,4 +16,9 @@
 	<type name="\Magento\Framework\Mail\TransportInterface">
 		<plugin sortOrder="100" name="magePalGmailSmtpAppTransportInterface" type="MagePal\GmailSmtpApp\Plugin\Mail\TransportPlugin"/>
 	</type>
+
+	<type name="Magento\Framework\Mail\Template\TransportBuilder">
+		<plugin sortOrder="1" name="magePalGmailSmtpAppTransportBuilder"
+				type="MagePal\GmailSmtpApp\Plugin\Mail\Template\TransportBuilderPlugin"/>
+	</type>
 </config>

@@ -90,8 +90,8 @@ class Index extends Action
         $mail = new \Zend_Mail();
         $mail->setFrom($from, $name);
         $mail->addTo($to, $to);
-        $mail->setSubject('Hello from MagePal');
-        $mail->setBodyHtml('Thank you for choosing MagePal extension. <br><br>Like our extension? Please feel free to try our other free modules available at <a href="https://packagist.org/packages/magepal/">https://packagist.org/packages/magepal/</a>');
+        $mail->setSubject('Hello from MagePal SMTP');
+        $mail->setBodyHtml('Thanks for choosing MagePal. <br><br>Like our extensions? Find more great free extensions from MagePal at <a href="http://bit.ly/mp4smtp">https://packagist.org/packages/MagePal/</a>');
 
         $result = __('Sent... Please check your email') . ' ' . $to;
 
