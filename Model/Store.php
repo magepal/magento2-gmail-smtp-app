@@ -7,12 +7,10 @@
 
 namespace MagePal\GmailSmtpApp\Model;
 
-
 class Store
 {
     /** @var int/null  */
     protected $store_id = null;
-
 
     /**
      * @return null

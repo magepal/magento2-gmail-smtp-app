@@ -22,7 +22,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function isActive($store_id = null)
     {
-        if($store_id == null && $this->getStoreId() > 0){
+        if ($store_id == null && $this->getStoreId() > 0) {
             $store_id = $this->getStoreId();
         }
 
@@ -159,7 +159,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getConfigValue($path, $store_id = null)
     {
-        if($store_id === null && $this->getStoreId() > 0){
+        if ($store_id === null && $this->getStoreId() > 0) {
             $store_id = $this->getStoreId();
         }
 

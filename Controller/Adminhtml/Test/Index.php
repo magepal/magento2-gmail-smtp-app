@@ -19,6 +19,11 @@ class Index extends Action
     protected $_dataHelper;
 
     /**
+     * @var \MagePal\GmailSmtpApp\Model\Email
+     */
+    protected $_email;
+
+    /**
      * Index constructor.
      * @param Context $context
      * @param PageFactory $resultPageFactory
@@ -27,24 +32,28 @@ class Index extends Action
     public function __construct(
         Context $context,
         PageFactory $resultPageFactory,
-        \MagePal\GmailSmtpApp\Helper\Data $dataHelper
+        \MagePal\GmailSmtpApp\Helper\Data $dataHelper,
+        \MagePal\GmailSmtpApp\Model\Email $email
     ) {
         $this->_resultPageFactory = $resultPageFactory;
         $this->_dataHelper = $dataHelper;
+        $this->_email = $email;
         parent::__construct($context);
     }
 
     /**
      * Index action
      *
-     * @return \Magento\Backend\Model\View\Result\Page
+     * @return void
+     * @throws \Zend_Mail_Exception
+     * @throws \Zend_Validate_Exception
      */
     public function execute()
     {
         $request = $this->getRequest();
         $store_id = $request->getParam('store', null);
 
-        $name = 'MagePal Gmail Smtp App Test';
+        $name = 'Test from MagePal SMTP';
         $username = $request->getPost('username');
         $password = $request->getPost('password');
         $auth = strtolower($request->getPost('auth'));
@@ -70,6 +79,7 @@ class Index extends Action
             'name' => $request->getPost('name'),
             'port' => $request->getPost('smtpport')
         ];
+
         if ($auth != 'none') {
             $smtpConf['auth'] = $auth;
             $smtpConf['username'] = $username;
@@ -91,7 +101,10 @@ class Index extends Action
         $mail->setFrom($from, $name);
         $mail->addTo($to, $to);
         $mail->setSubject('Hello from MagePal SMTP');
-        $mail->setBodyHtml('Thanks for choosing MagePal. <br><br>Like our extensions? Find more great free extensions from MagePal at <a href="http://bit.ly/mp4smtp">https://packagist.org/packages/MagePal/</a>');
+
+        $htmlBody = $this->_email->setTemplateVars(['hash' => time() . '.' . rand(300000, 900000)])->getEmailBody();
+
+        $mail->setBodyHtml($htmlBody);
 
         $result = __('Sent... Please check your email') . ' ' . $to;
 

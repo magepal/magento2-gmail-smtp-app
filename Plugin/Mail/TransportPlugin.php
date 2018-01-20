@@ -33,15 +33,14 @@ class TransportPlugin extends \Zend_Mail_Transport_Smtp
      * @param \Magento\Framework\Mail\TransportInterface $subject
      * @param \Closure $proceed
      * @throws \Magento\Framework\Exception\MailException
+     * @throws \Zend_Mail_Exception
      */
     public function aroundSendMessage(
         \Magento\Framework\Mail\TransportInterface $subject,
         \Closure $proceed
     ) {
-
         if ($this->dataHelper->isActive()) {
-
-            if(method_exists($subject, 'getStoreId')){
+            if (method_exists($subject, 'getStoreId')) {
                 $this->storeModel->setStoreId($subject->getStoreId());
             }
 
@@ -55,16 +54,19 @@ class TransportPlugin extends \Zend_Mail_Transport_Smtp
     /**
      * @param \Magento\Framework\Mail\MessageInterface $message
      * @throws \Magento\Framework\Exception\MailException
+     * @throws \Zend_Mail_Exception
      */
     public function sendSmtpMessage(\Magento\Framework\Mail\MessageInterface $message)
     {
         $dataHelper = $this->dataHelper;
         $dataHelper->setStoreId($this->storeModel->getStoreId());
 
-        if($message instanceof \Zend_mail) {
-            if($message->getDate() === null) $message->setDate();
+        if ($message instanceof \Zend_mail) {
+            if ($message->getDate() === null) {
+                $message->setDate();
+            }
         }
-        
+
         //Set reply-to path
         $setReturnPath = $dataHelper->getConfigSetReturnPath();
         switch ($setReturnPath) {

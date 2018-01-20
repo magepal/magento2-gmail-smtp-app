@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="magepal_smtp_zend_email_test" label="Test Email using Zend Framework" file="zend_email_test.html" type="html" module="MagePal_GmailSmtpApp" area="adminhtml"/>
+</config>

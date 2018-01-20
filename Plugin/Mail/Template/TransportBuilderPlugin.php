@@ -29,10 +29,9 @@ class TransportBuilderPlugin
         \Magento\Framework\Mail\Template\TransportBuilder $subject,
         $templateOptions
     ) {
-
-        if(array_key_exists('store', $templateOptions)){
+        if (array_key_exists('store', $templateOptions)) {
             $this->storeModel->setStoreId($templateOptions['store']);
-        }else{
+        } else {
             $this->storeModel->setStoreId(null);
         }
 
