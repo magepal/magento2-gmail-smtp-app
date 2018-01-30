@@ -1,10 +1,10 @@
-## Smtp App for Magento2
+# Magento 2 SMTP Extension - Gmail, Amazon SES, Office360, Mailgun, SendGrid, Mandrill and more.
 
 [![Total Downloads](https://poser.pugx.org/magepal/magento2-gmailsmtpapp/downloads)](https://packagist.org/packages/magepal/magento2-gmailsmtpapp)
 [![Latest Stable Version](https://poser.pugx.org/magepal/magento2-gmailsmtpapp/v/stable)](https://packagist.org/packages/magepal/magento2-gmailsmtpapp)
 <!--- [![donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SY9VQJUXWWHEY)-->
 
-Configure Magento 2 to send all transactional email using Google App, Gmail, Amazon Simple Email Service (SES), Microsoft Office365 and other SMTP server. 
+Configure Magento 2 to send all transactional email using Google App, Gmail, Amazon Simple Email Service (SES), Microsoft Office365 or other SMTP server. 
 
 ![image](https://user-images.githubusercontent.com/1415141/28881062-ecfa0cf0-7774-11e7-9af7-52824e5f9568.png)
 
@@ -12,6 +12,17 @@ All you need is either a (i) free Gmail account, (ii) paid Google Apps account o
 
 ### Benefits
 Since Google's SMTP server does not use Port 25, you'll reduce the probability that an ISP might block your email or flag it as SPAM. Also all your emails sent from Magento will be searchable and backed-up in your email account on Google's servers. 
+
+### Features
+* Send email through virtually any external SMTP server from your Magento store
+* Easily configure Magento 2 SMTP settings from within Magento2 store admin
+* Complete control of custom SMTP server settings: Hostname, Port, Username, Password, ...
+* Self test option, which lets you verify your email credentials are correct before saving 
+* Support Multi-store, configurable different email providers/accounts per store
+* Support secure SMTP servers: TLS / SSL, Plain-text, username/password, CRAM-MD5 authentication
+* Customize email headers: From / Reply-To / Return-Path
+* Disable/enable module from admin
+* Developer Friendly
 
 ### SMTP Service Providers
  * Gmail
@@ -65,7 +76,7 @@ Install Gmail Smtp App for Magento2
 ```
 
 #### Step 3 - Config Gmail Smtp App
-Log into your Magento Admin, then goto Stores -> Configuration -> Advanced -> System -> Gmail/Google Apps SMTP Pro and enter your email credentials
+Log into your Magento Admin, then goto Stores -> Configuration -> Advanced -> System -> SMTP Configuration and enter your email credentials
 
 Contribution
 ---
