@@ -1,9 +1,9 @@
 <?php
 /**
- * Mail Transport
  * Copyright © MagePal LLC. All rights reserved.
  * See COPYING.txt for license details.
  */
+
 namespace MagePal\GmailSmtpApp\Plugin\Mail\Template;
 
 class TransportBuilderPlugin
