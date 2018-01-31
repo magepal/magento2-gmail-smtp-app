@@ -1,9 +1,9 @@
 <?php
 /**
- * Mail Transport
  * Copyright © MagePal LLC. All rights reserved.
  * See COPYING.txt for license details.
  */
+
 namespace MagePal\GmailSmtpApp\Model;
 
 class Transport extends \Zend_Mail_Transport_Sendmail implements \Magento\Framework\Mail\TransportInterface
