@@ -1,6 +1,5 @@
 <?php
 /**
- * Mail Transport
  * Copyright © MagePal LLC. All rights reserved.
  * See COPYING.txt for license details.
  */
@@ -10,6 +9,8 @@ namespace MagePal\GmailSmtpApp\Model;
 class Email
 {
     const XML_PATH_EMAIL_TEMPLATE_ZEND_TEST  = 'system/gmailsmtpapp/zend_email_template';
+
+    const XML_PATH_EMAIL_TEMPLATE_MAGENTO_TEST  = 'system/gmailsmtpapp/magento_email_template';
 
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
@@ -50,6 +51,11 @@ class Email
     protected $inlineTranslation;
 
     /**
+     * @var \Magento\Framework\Mail\Template\TransportBuilder
+     */
+    protected $_transportBuilder;
+
+    /**
      * @param \MagePal\GmailSmtpApp\Helper\Data $dataHelper
      * @param \Magento\Framework\Mail\Template\Factory $templateFactory
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
@@ -61,21 +67,66 @@ class Email
         \Magento\Framework\Mail\Template\Factory $templateFactory,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Magento\Framework\Translate\Inline\StateInterface $inlineTranslation
+        \Magento\Framework\Translate\Inline\StateInterface $inlineTranslation,
+        \Magento\Framework\Mail\Template\TransportBuilder $transportBuilder
     ) {
         $this->dataHelper = $dataHelper;
         $this->templateFactory = $templateFactory;
         $this->scopeConfig = $scopeConfig;
         $this->storeManager = $storeManager;
         $this->inlineTranslation = $inlineTranslation;
+        $this->_transportBuilder = $transportBuilder;
     }
 
+    /**
+     * [generateTemplate description]  with template file and tempaltes variables values
+     * @param  Mixed $senderInfo
+     * @param  Mixed $receiverInfo
+     * @return $this
+     */
+    public function generateTemplate($senderInfo, $receiverInfo)
+    {
+        $templateId = $this->getTemplateId(self::XML_PATH_EMAIL_TEMPLATE_MAGENTO_TEST);
+        $this->getTransportBuilder()
+            ->setTemplateIdentifier($templateId)
+            ->setTemplateOptions(
+                [
+                    'area' => \Magento\Framework\App\Area::AREA_ADMINHTML,
+                    'store' => $this->getStore()->getId(),
+                ]
+            )
+            ->setTemplateVars($this->templateVars)
+            ->setFrom($senderInfo)
+            ->addTo($receiverInfo['email'], $receiverInfo['name']);
+
+        return $this;
+    }
+
+    /**
+     * @param $senderInfo
+     * @param $receiverInfo
+     * @throws \Magento\Framework\Exception\MailException
+     */
+    public function send($senderInfo, $receiverInfo)
+    {
+        $this->inlineTranslation->suspend();
+        $this->generateTemplate($senderInfo, $receiverInfo);
+        $transport = $this->_transportBuilder->getTransport();
+        $result = $transport->sendMessage();
+        $this->inlineTranslation->resume();
+
+        return $result;
+    }
+
+    /**
+     * @return $this
+     */
     protected function getTemplate()
     {
         $this->setTemplateOptions(
             [
                 'area' => \Magento\Framework\App\Area::AREA_ADMINHTML,
-                'store' => $this->storeManager->getStore()->getId(),
+                'store' => $this->getStore()->getId(),
             ]
         );
 
@@ -86,6 +137,9 @@ class Email
                         ->setOptions($this->templateOptions);
     }
 
+    /**
+     * @return mixed
+     */
     public function getEmailBody()
     {
         return $this->getTemplate()->processTemplate();
@@ -158,5 +212,13 @@ class Email
     {
         $this->templateModel = $templateModel;
         return $this;
+    }
+
+    /**
+     * @return \Magento\Framework\Mail\Template\TransportBuilder
+     */
+    public function getTransportBuilder()
+    {
+        return $this->_transportBuilder;
     }
 }

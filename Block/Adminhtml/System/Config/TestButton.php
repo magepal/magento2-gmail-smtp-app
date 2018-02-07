@@ -42,6 +42,7 @@ class TestButton extends \Magento\Config\Block\System\Config\Form\Field
      * Generate button html
      *
      * @return string
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getButtonHtml()
     {
@@ -60,7 +61,7 @@ class TestButton extends \Magento\Config\Block\System\Config\Form\Field
 
     public function getAdminUrl()
     {
-        return $this->_urlBuilder->getUrl('magepalGmailsmtpapp/test', ['store' => $this->_request->getParam('store')]);
+        return $this->_urlBuilder->getUrl('magepalsmtp/test', ['store' => $this->_request->getParam('store')]);
     }
 
     /**

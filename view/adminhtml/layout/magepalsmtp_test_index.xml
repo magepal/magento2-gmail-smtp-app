@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
+    <container name="root">
+        <block class="MagePal\GmailSmtpApp\Block\Adminhtml\EmailTest" name="magepal.smtp_test" template="MagePal_GmailSmtpApp::test/email.phtml" />
+    </container>
+</layout>

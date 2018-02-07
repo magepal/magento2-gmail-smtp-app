@@ -4,13 +4,9 @@
  * See COPYING.txt for license details.
  */
 
-// @codingStandardsIgnoreFile
-
 /**
  * @var $block MagePal\GmailSmtpApp\Block\Adminhtml\System\Config\TestButton
- * @var $jsonHelper \Magento\Framework\Json\Helper\Data
  */
-$jsonHelper = $this->helper('Magento\Framework\Json\Helper\Data');
 ?>
 
 <script>
@@ -19,30 +15,41 @@ $jsonHelper = $this->helper('Magento\Framework\Json\Helper\Data');
         'Magento_Ui/js/modal/alert'
     ], function ($, alert) {
         window.gmailSmtpAppDebugTest = function(){
-            
+            var postData = {form_key: FORM_KEY};
+
+            //global var configForm
+            configForm.find('[id^=system_gmailsmtpapp]').find(':input').serializeArray().map(function(field){
+                var name = field.name.match(/groups\[gmailsmtpapp\]?(\[groups\]\[debug\])?\[fields\]\[(.*)\]\[value]/);
+
+                //groups[gmailsmtpapp][groups][debug][fields][email][value]
+                //groups[gmailsmtpapp][fields][password][value]
+
+                if(name && name.length == 3){
+                    postData[name[2]] = field.value;
+                }
+            });
+
             $.ajax({
                 url: '<?php echo $block->getAdminUrl() ?>',
                 type: 'post',
                 dataType: 'html',
-                data: {
-                    form_key: FORM_KEY,
-                    name: $('#system_gmailsmtpapp_name').val(),
-                    auth: $('#system_gmailsmtpapp_auth').val(),
-                    ssl:$('#system_gmailsmtpapp_ssl').val(),
-                    smtphost:$('#system_gmailsmtpapp_smtphost').val(),
-                    smtpport:$('#system_gmailsmtpapp_smtpport').val(),
-                    username:$('#system_gmailsmtpapp_username').val(),
-                    password:$('#system_gmailsmtpapp_password').val(),
-                    email:$('#system_gmailsmtpapp_debug_email').val(),
-                    from_email:$('#system_gmailsmtpapp_debug_from_email').val()
-
-                },
+                data: postData,
                 showLoader: true
-            }).done(function(data) {
-                alert({
-                    title:'Result',
-                    content:data
-                });
+            }).done(function(response) {
+                if (typeof response === 'object') {
+                    if (response.error) {
+                        alert({ title: 'Error', content: response.message });
+                    } else if (response.ajaxExpired) {
+                        window.location.href = response.ajaxRedirect;
+                    }
+                } else {
+                    alert({
+                        title:'',
+                        content:response,
+                        buttons: []
+                    });
+                }
+
             });
         }
     });

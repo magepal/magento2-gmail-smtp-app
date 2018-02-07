@@ -1,20 +1,20 @@
 <?php
 /**
- * Mail Transport
  * Copyright © MagePal LLC. All rights reserved.
  * See COPYING.txt for license details.
- *
- * @category    MagePal
- * @package     MagePal_GmailSmtpApp
- * @author      MagePal Team <info@magepal.com>
- * @copyright   MagePal (http://www.magepal.com)
  */
 
 namespace MagePal\GmailSmtpApp\Helper;
 
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
+    /**
+     * @var null $_storeId
+     */
     protected $_storeId = null;
+
+    /** @var bool $_testMode */
+    protected $_testMode = false;
 
     /**
      * @param null $store_id
@@ -26,7 +26,11 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             $store_id = $this->getStoreId();
         }
 
-        return $this->scopeConfig->isSetFlag('system/gmailsmtpapp/active', \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $store_id);
+        return $this->scopeConfig->isSetFlag(
+            'system/gmailsmtpapp/active',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+            $store_id
+        );
     }
 
     /**
@@ -159,11 +163,37 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getConfigValue($path, $store_id = null)
     {
+        //send test mail
+        if ($this->isTestMode()) {
+            $request = $this->_getRequest();
+            return $request->getPost($path);
+        }
+
+        //return value from core config
+        return $this->getScopeConfigValue(
+            "system/gmailsmtpapp/{$path}",
+            $store_id
+        );
+    }
+
+    /**
+     * @param String path
+     * @param \Magento\Store\Model\ScopeInterface::SCOPE_STORE $store
+     * @return mixed
+     */
+    public function getScopeConfigValue($path, $store_id = null)
+    {
+        //use global store id
         if ($store_id === null && $this->getStoreId() > 0) {
             $store_id = $this->getStoreId();
         }
 
-        return $this->scopeConfig->getValue("system/gmailsmtpapp/{$path}", \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $store_id);
+        //return value from core config
+        return $this->scopeConfig->getValue(
+            $path,
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+            $store_id
+        );
     }
 
     /**
@@ -180,5 +210,21 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     public function setStoreId($storeId = null)
     {
         $this->_storeId = $storeId;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isTestMode()
+    {
+        return (bool) $this->_testMode;
+    }
+
+    /**
+     * @param bool $testMode
+     */
+    public function setTestMode(bool $testMode)
+    {
+        $this->_testMode = $testMode;
     }
 }
