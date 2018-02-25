@@ -6,7 +6,7 @@
 
 Configure Magento 2 to send all transactional email using Google App, Gmail, Amazon Simple Email Service (SES), Microsoft Office365 or other SMTP server. 
 
-![Magento 2SMTP Extension](https://user-images.githubusercontent.com/1415141/35891949-d3f433a4-0b74-11e8-90bb-57f80db675c2.gif)
+![Magento SMTP Email Extension](https://image.ibb.co/ecWinc/Mage_Pal_Magento_2_SMTP_Extension.gif)
 
 All you need is either a (i) free Gmail account, (ii) paid Google Apps account or any other SMTP service (i.e Amazon Simple Email Service / Amazon SES, Microsoft Office365 )
 
