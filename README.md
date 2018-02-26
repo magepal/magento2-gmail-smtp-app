@@ -1,3 +1,5 @@
+<a href="http://bit.ly/MagePal" ><img src="https://image.ibb.co/dHBkYH/Magepal_logo.png" width="100" align="right" /></a>
+
 # Magento 2 SMTP Extension - Gmail, Amazon SES, Office360, Mailgun, SendGrid, Mandrill and more.
 
 [![Total Downloads](https://poser.pugx.org/magepal/magento2-gmailsmtpapp/downloads)](https://packagist.org/packages/magepal/magento2-gmailsmtpapp)
