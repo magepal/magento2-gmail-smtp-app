@@ -24,9 +24,9 @@
     ],
     "authors": [
         {
-            "name": "MagePal",
+            "name": "MagePal Extensions for Magento",
             "email": "hello@magepal.com",
-            "homepage": "https://packagist.org/packages/magepal/",
+            "homepage": "http://www.magepal.com/",
             "role": "Leader"
         }
     ],
