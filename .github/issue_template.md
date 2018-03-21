@@ -1,3 +1,8 @@
+
+
+<!--- Before adding a new issue, please check all closed and existing issues to make sure this is not a duplicate -->
+
+
 #### Magento version #:
 
 #### Edition (EE, CE, OS, etc):
