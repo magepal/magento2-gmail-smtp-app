@@ -113,8 +113,8 @@ class EmailTest extends \Magento\Backend\Block\Template
         }
 
         if (!$hasError) {
-            $result['msg'] = __('Please check your email') . ' ' . $this->toAddress .
-                __(' and flush your Magento cache');
+            $result['msg'] = __('Please check your email') . ' ' . $this->toAddress . ' ' .
+                __('and flush your Magento cache');
         }
 
         return [$result];

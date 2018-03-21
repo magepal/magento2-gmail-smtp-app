@@ -15,7 +15,15 @@
             <tab>magepal</tab>
             <resource>MagePal_GmailSmtpApp::magepal_gmailsmtpapp</resource>
             <group id="about" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="0" translate="label">
-                <label>About MagePal SMTP App</label>
+                <attribute type="expanded">1</attribute>
+                <label>About MagePal SMTP</label>
+                <comment>
+                    <![CDATA[
+                    <strong>Copyright © 2018 <a href="http://bit.ly/MPEXSMTP" target="_blank">www.magepal.com</a> / <a href="mailto:support@magepal.com">support@magepal.com</a></strong><br />
+                    Thanks for choosing MagePal Extensions. Trusted by 1000's of developers worldwide.<br/><br/>
+                    <hr style="border-top: 1px solid #e3e3e3" />
+                  ]]>
+                </comment>
                 <field id="module_version" translate="label" type="label" sortOrder="0" showInDefault="1" showInWebsite="0" showInStore="0">
                     <label>Module Version</label>
                     <frontend_model>MagePal\GmailSmtpApp\Block\Adminhtml\System\Config\Form\Module\Version</frontend_model>

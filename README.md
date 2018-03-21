@@ -63,7 +63,7 @@ Since Google's SMTP server does not use Port 25, you'll reduce the probability t
 composer require magepal/magento2-gmailsmtpapp
 ```
 
-##### Manual Installation
+##### Manual Installation  (not recommended)
 Install Gmail Smtp App for Magento2
  * Download the extension
  * Unzip the file
@@ -93,4 +93,4 @@ If you encounter any problems or bugs, please open an issue on [GitHub](https://
 
 Need help setting up or want to customize this extension to meet your business needs? Please email support@magepal.com and if we like your idea we will add this feature for free or at a discounted rate.
 
-© MagePal LLC.
+© MagePal LLC. | [www.magepal.com](http:/www.magepal.com)
