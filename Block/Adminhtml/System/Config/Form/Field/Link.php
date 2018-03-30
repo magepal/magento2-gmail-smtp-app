@@ -26,6 +26,7 @@ class Link extends \Magento\Config\Block\System\Config\Form\Field
      *
      * @param  \Magento\Framework\Data\Form\Element\AbstractElement $element
      * @return string
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function render(\Magento\Framework\Data\Form\Element\AbstractElement $element)
     {

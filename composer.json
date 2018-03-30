@@ -18,15 +18,19 @@
         "magento/framework": "100.0.*|100.1.*|101.0.*"
     },
     "type": "magento2-module",
-    "version": "2.5.1",
+    "version": "2.5.2",
     "license": [
         "proprietary"
     ],
     "homepage": "http://www.magepal.com/",
+    "support": {
+        "email": "support@magepal.org",
+        "issues": "https://github.com/magepal/magento2-gmail-smtp-app/issues/"
+    },
     "authors": [
         {
-            "name": "MagePal Extensions for Magento",
-            "email": "hello@magepal.com",
+            "name": "Renon Stewart",
+            "email": "renon@magepal.com",
             "homepage": "http://www.magepal.com/",
             "role": "Leader"
         }
