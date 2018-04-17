@@ -80,7 +80,7 @@ class Email
     }
 
     /**
-     * [generateTemplate description]  with template file and tempaltes variables values
+     * [generateTemplate description]  with template file and templates variables values
      * @param  Mixed $senderInfo
      * @param  Mixed $receiverInfo
      * @return $this
