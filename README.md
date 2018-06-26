@@ -11,6 +11,12 @@ Configure Magento 2 to send all transactional email using Google App, Gmail, Ama
 
 ![Magento SMTP Email Extension](https://image.ibb.co/ecWinc/Mage_Pal_Magento_2_SMTP_Extension.gif)
 
+Sending transactional emails to customers is a vital part of running an e-commerce store. Our free custom Magento extension integrates with all major email service provider and third-party SMTP server to reliably deliver messages in customers' inbox. 
+
+By default, most hosting companies mail servers are configured to send email from unauthorized senders which prevent emails from reliable delivered to recipients. Therefore, most Magento store owners struggles to limit the number of transactional emails that end up in clients' junk mail. 
+
+Emails are delivered instantaneously to their intended recipients without delays or get trap in the spam folder.
+
 All you need is either a (i) free Gmail account, (ii) paid Google Apps account or any other SMTP service (i.e Amazon Simple Email Service / Amazon SES, Microsoft Office365 )
 
 ### Benefits
@@ -26,6 +32,7 @@ Since Google's SMTP server does not use Port 25, you'll reduce the probability t
 * Customize email headers: From / Reply-To / Return-Path
 * Disable/enable module from admin
 * Developer Friendly
+* Integrate with any third-party SMTP server
 
 ### SMTP Service Providers
  * Gmail
