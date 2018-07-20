@@ -3,6 +3,9 @@
 <!--- Before adding a new issue, please check all closed and existing issues to make sure this is not a duplicate -->
 
 
+<!--- https://www.magepal.com/magento2/extensions/custom-smtp.html for fast Premium Support -->
+
+
 #### Magento version #:
 
 #### Edition (EE, CE, OS, etc):
