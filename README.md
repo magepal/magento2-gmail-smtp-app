@@ -97,9 +97,6 @@ Support
 ---
 If you encounter any problems or bugs, please open an issue on [GitHub](https://github.com/magepal/magento2-gmailsmtpapp/issues). For fast Premium Support visit our [Custom SMTP Extension](https://www.magepal.com/magento2/extensions/custom-smtp.html?utm_source=Custom%20SMTP&utm_medium=Premium%20Support) product page for detail.
 
-
-https://www.magepal.com/magento2/extensions/custom-smtp.html?utm_source=Custom%20SMTP&utm_medium=Premium%20Support
-
 Need help setting up or want to customize this extension to meet your business needs? Please email support@magepal.com and if we like your idea we will add this feature for free or at a discounted rate.
 
 © MagePal LLC. | [www.magepal.com](https://www.magepal.com)
