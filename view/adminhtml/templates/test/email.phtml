@@ -77,6 +77,9 @@
             stroke-dashoffset: 900;
         }
     }
+    p.external-link{
+        font-style: italic;
+    }
 </style>
 
 <!--[if lte IE 9]>
@@ -93,6 +96,7 @@
         </svg>
         <p class="success">Oh Yeah!</p>
         <p><?php echo $result['msg'] ?></p>
+        <p class="external-link">Thanks for choosing MagePal Extensions.</p>
     <?php else : ?>
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
             <circle class="path circle" fill="none" stroke="#D06079" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
@@ -101,5 +105,6 @@
         </svg>
         <p class="error">Bummer!</p>
         <p><?php echo $block->formatErrorMsg($result['msg']) ?> </p>
+        <p>Visit <a href="http://bit.ly/MpSmtpEr" target="_blank">www.magepal.com</a> to learn more about our <a href="http://bit.ly/MpSmtpEr" target="_blank">Premium Support</a>.</p>
     <?php endif; ?>
 <?php endforeach; ?>

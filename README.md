@@ -85,8 +85,8 @@ Install Gmail Smtp App for Magento2
  php -f bin/magento cache:flush
 ```
 
-#### Step 3 - Config Gmail Smtp App
-Log into your Magento Admin, then goto Stores -> Configuration -> Advanced -> System -> SMTP Configuration and enter your email credentials
+#### Step 3 - Config Custom SMTP Email Account
+Log into your Magento Admin, then goto Stores -> Configuration -> MagePal -> SMTP Configuration and enter your email credentials
 
 Contribution
 ---

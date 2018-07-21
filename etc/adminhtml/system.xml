@@ -41,7 +41,15 @@
         </section>
         <section id="system">
             <group id="gmailsmtpapp" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>MagePal SMTP Configuration (Gmail/Google/AWS/Office360 etc)</label>
+                <label>SMTP Configuration and Settings (Gmail/Google/AWS/Office360 etc)</label>
+                <comment>
+                    <![CDATA[
+                    <strong>Copyright © 2018 <a href="http://bit.ly/MPEXSMTP" target="_blank">www.magepal.com</a> / <a href="mailto:support@magepal.com">support@magepal.com</a></strong><br />
+                    Thanks for choosing MagePal Extensions. Trusted by 1000s of developers worldwide.<br/><br/>
+                    <hr style="border-top: 1px solid #e3e3e3" />
+                  ]]>
+                </comment>
+
                 <field id="version" translate="label" type="label" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
                     <label>Version</label>
                     <frontend_model>MagePal\GmailSmtpApp\Block\Adminhtml\System\Config\Form\Composer\Version</frontend_model>

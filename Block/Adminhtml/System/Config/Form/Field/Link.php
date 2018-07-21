@@ -26,7 +26,6 @@ class Link extends \Magento\Config\Block\System\Config\Form\Field
      *
      * @param  \Magento\Framework\Data\Form\Element\AbstractElement $element
      * @return string
-     * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function render(\Magento\Framework\Data\Form\Element\AbstractElement $element)
     {
@@ -46,8 +45,13 @@ class Link extends \Magento\Config\Block\System\Config\Form\Field
     {
         return sprintf(
             '<a href ="%s">%s</a>',
-                    $this->_urlBuilder->getUrl('adminhtml/system_config/edit/section/system'),
-                    __('Stores > Configuration > Advanced > System')
+                    rtrim(
+                        $this->_urlBuilder->getUrl(
+                        'adminhtml/system_config/edit/section/system#system_gmailsmtpapp-link'
+                        ),
+                        '/'
+                    ),
+                    __('Stores > Configuration > Advanced > System > SMTP Configuration and Settings')
         );
     }
 }
