@@ -17,7 +17,7 @@ By default, most hosting companies mail servers are configured to send email fro
 
 Emails are delivered instantaneously to their intended recipients without delays or get trap in the spam folder.
 
-All you need is either a (i) free Gmail account, (ii) paid Google Apps account or any other SMTP service (i.e Amazon Simple Email Service / Amazon SES, Microsoft Office365). Learn more about our [custom SMTP](https://www.magepal.com/magento2/extensions/custom-smtp.html?utm_source=Custom%20SMTP&utm_medium=GitHub%20Learn%20More).
+All you need is either a (i) free Gmail account, (ii) paid Google Apps account or any other SMTP service (i.e Amazon Simple Email Service / Amazon SES, Microsoft Office365). Learn more about our [custom SMTP](https://www.magepal.com/magento2/extensions/custom-smtp.html?utm_source=Custom%20SMTP&utm_medium=GitHub%20Learn%20More) extension.
 
 ### Benefits
 Since Google's SMTP server does not use Port 25, you'll reduce the probability that an ISP might block your email or flag it as SPAM. Also all your emails sent from Magento will be searchable and backed-up in your email account on Google's servers. 
@@ -85,7 +85,7 @@ Install Gmail Smtp App for Magento2
  php -f bin/magento cache:flush
 ```
 
-#### Step 3 - Config Custom SMTP Email Account
+#### Step 3 - How to Configure Magento Custom SMTP Setting
 Log into your Magento Admin, then goto Stores -> Configuration -> MagePal -> SMTP Configuration and enter your email credentials
 
 Contribution
