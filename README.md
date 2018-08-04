@@ -1,4 +1,4 @@
-<a href="http://www.magepal.com" ><img src="https://image.ibb.co/dHBkYH/Magepal_logo.png" width="100" align="right" /></a>
+<a href="http://www.magepal.com" title="Magento Extensions" ><img src="https://image.ibb.co/dHBkYH/Magepal_logo.png" width="100" align="right" title="Magento Custom Modules" /></a>
 
 # Magento 2 SMTP Extension - Gmail, Amazon SES, Office360, Mailgun, SendGrid, Mandrill and more.
 
@@ -17,7 +17,7 @@ By default, most hosting companies mail servers are configured to send email fro
 
 Emails are delivered instantaneously to their intended recipients without delays or get trap in the spam folder.
 
-All you need is either a (i) free Gmail account, (ii) paid Google Apps account or any other SMTP service (i.e Amazon Simple Email Service / Amazon SES, Microsoft Office365). Learn more about our [custom SMTP](https://www.magepal.com/magento2/extensions/custom-smtp.html?utm_source=Custom%20SMTP&utm_medium=GitHub%20Learn%20More).
+All you need is either a (i) free Gmail account, (ii) paid Google Apps account or any other SMTP service (i.e Amazon Simple Email Service / Amazon SES, Microsoft Office365). Learn more about our [custom SMTP](https://www.magepal.com/magento2/extensions/custom-smtp.html?utm_source=Custom%20SMTP&utm_medium=GitHub%20Learn%20More) extension.
 
 ### Benefits
 Since Google's SMTP server does not use Port 25, you'll reduce the probability that an ISP might block your email or flag it as SPAM. Also all your emails sent from Magento will be searchable and backed-up in your email account on Google's servers. 
@@ -85,7 +85,7 @@ Install Gmail Smtp App for Magento2
  php -f bin/magento cache:flush
 ```
 
-#### Step 3 - Config Custom SMTP Email Account
+#### Step 3 - How to Configure Magento Custom SMTP Setting
 Log into your Magento Admin, then goto Stores -> Configuration -> MagePal -> SMTP Configuration and enter your email credentials
 
 Contribution
@@ -98,5 +98,9 @@ Support
 If you encounter any problems or bugs, please open an issue on [GitHub](https://github.com/magepal/magento2-gmailsmtpapp/issues). For fast Premium Support visit our [Custom SMTP Extension](https://www.magepal.com/magento2/extensions/custom-smtp.html?utm_source=Custom%20SMTP&utm_medium=GitHub%20Premium%20Support) product page for detail.
 
 Need help setting up or want to customize this extension to meet your business needs? Please email support@magepal.com and if we like your idea we will add this feature for free or at a discounted rate.
+
+Other Extensions
+---
+[Custom SMTP](https://www.magepal.com/magento2/extensions/custom-smtp.html) | [Google Tag Manager](https://www.magepal.com/magento2/extensions/google-tag-manager.html) | [Enhanced E-commerce](https://www.magepal.com/magento2/extensions/enhanced-ecommerce-for-google-tag-manager.html) | [Reindex](https://www.magepal.com/magento2/extensions/reindex.html) | [Custom Shipping Method](https://www.magepal.com/magento2/extensions/custom-shipping-rates-for-magento-2.html) | [Preview Order Confirmation](https://www.magepal.com/magento2/extensions/preview-order-confirmation-page-for-magento-2.html) | [Guest to Customer](https://www.magepal.com/magento2/extensions/guest-to-customer.html) | [Admin Form Fields Manager](https://www.magepal.com/magento2/extensions/admin-form-fields-manager-for-magento-2.html) | [Customer Dashboard Links Manager](https://www.magepal.com/magento2/extensions/customer-dashboard-links-manager-for-magento-2.html) | [Lazy Loader](https://www.magepal.com/magento2/extensions/lazy-load.html) | [Order Confirmation Page Miscellaneous Scripts](https://www.magepal.com/magento2/extensions/order-confirmation-miscellaneous-scripts-for-magento-2.html)
 
 © MagePal LLC. | [www.magepal.com](https://www.magepal.com)
