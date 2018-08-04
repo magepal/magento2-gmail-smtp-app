@@ -44,14 +44,9 @@ class Link extends \Magento\Config\Block\System\Config\Form\Field
     protected function _getElementHtml(\Magento\Framework\Data\Form\Element\AbstractElement $element)
     {
         return sprintf(
-            '<a href ="%s">%s</a>',
-                    rtrim(
-                        $this->_urlBuilder->getUrl(
-                        'adminhtml/system_config/edit/section/system#system_gmailsmtpapp-link'
-                        ),
-                        '/'
-                    ),
-                    __('Stores > Configuration > Advanced > System > SMTP Configuration and Settings')
+            '<a href ="%s#system_gmailsmtpapp-link">%s</a>',
+            rtrim($this->_urlBuilder->getUrl('adminhtml/system_config/edit/section/system'), '/'),
+            __('Stores > Configuration > Advanced > System > SMTP Configuration and Settings')
         );
     }
 }
