@@ -275,11 +275,11 @@ class EmailTest extends \Magento\Backend\Block\Template
      * @param string $msg
      * @return array
      */
-    public function error(bool $hasError = false, string $msg = '')
+    public function error($hasError = false, $msg = '')
     {
         return [
-            'has_error' => $hasError,
-            'msg' => $msg
+            'has_error' => (bool) $hasError,
+            'msg' => (string) $msg
         ];
     }
 }
