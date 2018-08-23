@@ -9,13 +9,17 @@
 
 Configure Magento 2 to send all transactional email using Google App, Gmail, Amazon Simple Email Service (SES), Microsoft Office365 or other SMTP server. 
 
+Sending transactional emails to customers is a vital part of running an e-commerce store. Our free custom Magento extension integrates with all major email service provider and third-party SMTP server to reliably deliver messages in customers' inbox.
+
+#### What is SMTP - Simple Mail Transfer Protocol
+SMTP or Simple Mail Transfer Protocol allows you to send emails from your Magento 2 store through a specific third-party mail SMTP server. For example, if you want to use your Gmail, Amazon, Microsoft or any other mail server account to send email from your Magento web store, all you need is to configure that mail server settings in our extension in Magento without having to do any complex server configuration.
+
 ![Magento SMTP Email Extension](https://image.ibb.co/ecWinc/Mage_Pal_Magento_2_SMTP_Extension.gif)
 
-Sending transactional emails to customers is a vital part of running an e-commerce store. Our free custom Magento extension integrates with all major email service provider and third-party SMTP server to reliably deliver messages in customers' inbox. 
+#### Why use a Custom SMTP Server with Magento
+By default, most hosting companies mail servers are configured to send email from unauthorized senders which prevent emails from reliable delivered to recipients. Therefore, most Magento store owners struggle to limit the number of transactional emails that end up in clients' junk mail. Take full control of your email sending settings in Magento 2 and reduce sending email to your valuable customers' junk mail folder. Emails are delivered instantaneously to their intended recipients without delays or get trap in the spam folder.
 
-By default, most hosting companies mail servers are configured to send email from unauthorized senders which prevent emails from reliable delivered to recipients. Therefore, most Magento store owners struggles to limit the number of transactional emails that end up in clients' junk mail. 
 
-Emails are delivered instantaneously to their intended recipients without delays or get trap in the spam folder.
 
 All you need is either a (i) free Gmail account, (ii) paid Google Apps account or any other SMTP service (i.e Amazon Simple Email Service / Amazon SES, Microsoft Office365). Learn more about our [custom SMTP](https://www.magepal.com/magento2/extensions/custom-smtp.html?utm_source=Custom%20SMTP&utm_medium=GitHub%20Learn%20More) extension.
 
