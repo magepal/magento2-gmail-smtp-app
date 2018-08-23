@@ -1,6 +1,6 @@
 <a href="http://www.magepal.com" title="Magento Extensions" ><img src="https://image.ibb.co/dHBkYH/Magepal_logo.png" width="100" align="right" title="Magento Custom Modules" /></a>
 
-# Magento 2 SMTP Extension - Gmail, Amazon SES, Office360, Mailgun, SendGrid, Mandrill and more.
+# Magento 2 SMTP Extension - Gmail, Amazon SES, Office360, Mailgun, SendGrid, Mandrill and other SMTP servers.
 
 [![Total Downloads](https://poser.pugx.org/magepal/magento2-gmailsmtpapp/downloads)](https://packagist.org/packages/magepal/magento2-gmailsmtpapp)
 [![Latest Stable Version](https://poser.pugx.org/magepal/magento2-gmailsmtpapp/v/stable)](https://packagist.org/packages/magepal/magento2-gmailsmtpapp)
@@ -17,13 +17,14 @@ SMTP or Simple Mail Transfer Protocol allows you to send emails from your Magent
 ![Magento SMTP Email Extension](https://image.ibb.co/ecWinc/Mage_Pal_Magento_2_SMTP_Extension.gif)
 
 #### Why use a Custom SMTP Server with Magento
+
 By default, most hosting companies mail servers are configured to send email from unauthorized senders which prevent emails from reliable delivered to recipients. Therefore, most Magento store owners struggle to limit the number of transactional emails that end up in clients' junk mail. Take full control of your email sending settings in Magento 2 and reduce sending email to your valuable customers' junk mail folder. Emails are delivered instantaneously to their intended recipients without delays or get trap in the spam folder.
 
-
+Out of the box, Magento 2 doesn't provide the ability to specify your custom SMTP settings for outgoing emails using an external SMTP server. Using this extension bridges the gap and allows your Magento store to connect to your preferred email provider securely and easily.
 
 All you need is either a (i) free Gmail account, (ii) paid Google Apps account or any other SMTP service (i.e Amazon Simple Email Service / Amazon SES, Microsoft Office365). Learn more about our [custom SMTP](https://www.magepal.com/magento2/extensions/custom-smtp.html?utm_source=Custom%20SMTP&utm_medium=GitHub%20Learn%20More) extension.
 
-### Benefits
+### Benefits of using SMTP
 Since Google's SMTP server does not use Port 25, you'll reduce the probability that an ISP might block your email or flag it as SPAM. Also all your emails sent from Magento will be searchable and backed-up in your email account on Google's servers. 
 
 ### Features
@@ -63,7 +64,7 @@ Since Google's SMTP server does not use Port 25, you'll reduce the probability t
  * and many other SMTP servers
 
 
-## Installation
+## How to Install Magento SMTP Extension
 
 #### Step 1
 
@@ -73,7 +74,7 @@ Since Google's SMTP server does not use Port 25, you'll reduce the probability t
 composer require magepal/magento2-gmailsmtpapp
 ```
 
-##### Manual Installation  (not recommended)
+##### SMTP Manual Installation  (not recommended)
 Install Gmail Smtp App for Magento2
  * Download the extension
  * Unzip the file
@@ -81,7 +82,7 @@ Install Gmail Smtp App for Magento2
  * Copy the content from the unzip folder
  * Flush cache
 
-#### Step 2 -  Enable Gmail Smtp App
+#### Step 2 -  Enable Magento 2 SMTP Extension
 ```
  php -f bin/magento module:enable --clear-static-content MagePal_GmailSmtpApp
  php -f bin/magento setup:upgrade
