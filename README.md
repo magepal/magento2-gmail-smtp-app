@@ -1,6 +1,6 @@
 <a href="http://www.magepal.com" title="Magento Extensions" ><img src="https://image.ibb.co/dHBkYH/Magepal_logo.png" width="100" align="right" title="Magento Custom Modules" /></a>
 
-# Magento 2 SMTP Extension - Gmail, Amazon SES, Office360, Mailgun, SendGrid, Mandrill and other SMTP servers.
+# Magento 2 SMTP Extension - Gmail, G Suite, Amazon SES, Office360, Mailgun, SendGrid, Mandrill and other SMTP servers.
 
 [![Total Downloads](https://poser.pugx.org/magepal/magento2-gmailsmtpapp/downloads)](https://packagist.org/packages/magepal/magento2-gmailsmtpapp)
 [![Latest Stable Version](https://poser.pugx.org/magepal/magento2-gmailsmtpapp/v/stable)](https://packagist.org/packages/magepal/magento2-gmailsmtpapp)
@@ -25,7 +25,7 @@ Out of the box, Magento 2 doesn't provide the ability to specify your custom SMT
 All you need is either a (i) free Gmail account, (ii) paid Google Apps account or any other SMTP service (i.e Amazon Simple Email Service / Amazon SES, Microsoft Office365). Learn more about our [custom SMTP](https://www.magepal.com/magento2/extensions/custom-smtp.html?utm_source=Custom%20SMTP&utm_medium=GitHub%20Learn%20More) extension.
 
 ### Benefits of using Gmail SMTP
-Since Google's SMTP server does not use Port 25, you'll reduce the probability that an ISP might block your email or flag it as SPAM. Also all your emails sent from Magento will be searchable and backed-up in your email account on Google's servers. 
+Since Google's, Gmail and G Suite SMTP server does not use Port 25, you'll reduce the probability that an ISP might block your email or flag it as SPAM. Also all your emails sent from Magento will be searchable and backed-up in your email account on Google's servers. 
 
 ### Features
 * Send email through virtually any external SMTP server from your Magento store
@@ -42,6 +42,7 @@ Since Google's SMTP server does not use Port 25, you'll reduce the probability t
 ### SMTP Service Providers
  * Gmail
  * Google App
+ * G Suite
  * Amazon Simple Email Service (SES)
  * Microsoft Office365
  * Outlook
