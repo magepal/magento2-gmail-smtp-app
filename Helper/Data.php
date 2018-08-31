@@ -10,12 +10,41 @@ namespace MagePal\GmailSmtpApp\Helper;
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
     /**
-     * @var null $_storeId
+     * @var null $storeId
      */
-    protected $_storeId = null;
+    protected $storeId = null;
 
-    /** @var bool $_testMode */
-    protected $_testMode = false;
+    /** @var bool $testMode */
+    protected $testMode = false;
+
+    /** @var array $testConfig */
+    protected $testConfig = [];
+
+
+    /**
+     * @param null $key
+     * @return array|mixed|string
+     */
+    public function getTestConfig($key = null)
+    {
+        if ($key === null) {
+            return $this->testConfig;
+        } elseif (!array_key_exists($key, $this->testConfig)) {
+            return '';
+        } else {
+            return $this->testConfig[$key];
+        }
+    }
+
+    /**
+     * @param null $fields
+     * @return $this
+     */
+    public function setTestConfig($fields)
+    {
+        $this->testConfig = (array) $fields;
+        return $this;
+    }
 
     /**
      * @param null $store_id
@@ -166,8 +195,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     {
         //send test mail
         if ($this->isTestMode()) {
-            $request = $this->_getRequest();
-            return $request->getPost($path);
+            return $this->getTestConfig($path);
         }
 
         //return value from core config
@@ -202,7 +230,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getStoreId()
     {
-        return $this->_storeId;
+        return $this->storeId;
     }
 
     /**
@@ -210,7 +238,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function setStoreId($storeId = null)
     {
-        $this->_storeId = $storeId;
+        $this->storeId = $storeId;
     }
 
     /**
@@ -218,14 +246,16 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function isTestMode()
     {
-        return (bool) $this->_testMode;
+        return (bool) $this->testMode;
     }
 
     /**
      * @param bool $testMode
+     * @return Data
      */
     public function setTestMode(bool $testMode)
     {
-        $this->_testMode = $testMode;
+        $this->testMode = $testMode;
+        return $this;
     }
 }

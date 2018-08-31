@@ -40,6 +40,26 @@ class EmailTest extends \Magento\Backend\Block\Template
     protected $hash;
 
     /**
+     * Remove values from global post and store values locally
+     * @var array()
+     */
+    protected $configFields = [
+        'active' => '',
+        'name' => '',
+        'auth' => '',
+        'ssl' => '',
+        'smtphost' => '',
+        'smtpport' => '',
+        'username' => '',
+        'password' => '',
+        'set_reply_to' => '',
+        'set_from' => '',
+        'set_return_path' => '',
+        'email' => '',
+        'from_email' => ''
+    ];
+
+    /**
      * EmailTest constructor.
      * @param \Magento\Backend\Block\Template\Context $context
      * @param \MagePal\GmailSmtpApp\Helper\Data $dataHelper
@@ -61,23 +81,91 @@ class EmailTest extends \Magento\Backend\Block\Template
     }
 
     /**
+     * @param $id
+     * @return $this
+     */
+    public function setStoreId($id)
+    {
+        $this->storeId = $id;
+        return $this;
+    }
+
+    /**
+     * @return int \ null
+     */
+    public function getStoreId()
+    {
+        return $this->storeId;
+    }
+
+    /**
+     * @param null $key
+     * @return array|mixed|string
+     */
+    public function getConfig($key = null)
+    {
+        if ($key === null) {
+            return $this->configFields;
+        } elseif (!array_key_exists($key, $this->configFields)) {
+            return '';
+        } else {
+            return $this->configFields[$key];
+        }
+    }
+
+    /**
+     * @param null $key
+     * @param string $value
+     * @return array|mixed|string
+     */
+    public function setConfig($key, $value = null)
+    {
+        if (array_key_exists($key, $this->configFields)) {
+            $this->configFields[$key] = $value;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Load default config if config is lock using "bin/magento config:set"
+     */
+    public function loadDefaultConfig()
+    {
+        $request = $this->getRequest();
+        $formPostArray = (array) $request->getPost();
+
+        $fields = array_keys($this->configFields);
+        foreach ($fields as $field) {
+            if (!array_key_exists($field, $formPostArray)) {
+                $this->setConfig($field, $this->_dataHelper->getConfigValue($field), $this->getStoreId());
+            } else {
+                $this->setConfig($field, $request->getPost($field));
+            }
+        }
+
+        //if password mask (6 stars)
+        if ($this->getConfig('password') === '******') {
+            $password = $this->_dataHelper->getConfigPassword($this->getStoreId());
+            $this->setConfig('password', $password);
+        }
+
+        return $this;
+    }
+
+    /**
      * @throws \Zend_Validate_Exception
      */
     protected function init()
     {
         $request = $this->getRequest();
+        $this->setStoreId($request->getParam('store', null));
 
-        $this->storeId = $request->getParam('store', null);
+        $this->loadDefaultConfig();
 
-        //if password mask (6 stars)
-        if ($request->getPost('password') === '******') {
-            $password = $this->_dataHelper->getConfigPassword($this->storeId);
-            $request->setPostValue('password', $password);
-        }
+        $this->toAddress = $this->getConfig('email') ? $this->getConfig('email') : $this->getConfig('username');
 
-        $this->toAddress = $request->getPost('email') ? $request->getPost('email') : $request->getPost('username');
-
-        $this->fromAddress = trim($request->getPost('from_email'));
+        $this->fromAddress = trim($this->getConfig('from_email'));
 
         if (!\Zend_Validate::is($this->fromAddress, 'EmailAddress')) {
             $this->fromAddress = $this->toAddress;
@@ -86,6 +174,9 @@ class EmailTest extends \Magento\Backend\Block\Template
         $this->hash = time() . '.' . rand(300000, 900000);
     }
 
+    /**
+     * @return array
+     */
     public function verify()
     {
         $settings = [
@@ -98,7 +189,7 @@ class EmailTest extends \Magento\Backend\Block\Template
         $result = $this->error();
         $hasError = false;
 
-        foreach ($settings as $key => $functionName) {
+        foreach ($settings as $functionName) {
             $result = call_user_func([$this, $functionName]);
 
             if (array_key_exists('has_error', $result)) {
@@ -130,10 +221,10 @@ class EmailTest extends \Magento\Backend\Block\Template
     {
         $request = $this->getRequest();
 
-        $username = $request->getPost('username');
-        $password = $request->getPost('password');
+        $username = $this->getConfig('username');
+        $password = $this->getConfig('password');
 
-        $auth = strtolower($request->getPost('auth'));
+        $auth = strtolower($this->getConfig('auth'));
 
         //if default view
         //see https://github.com/magento/magento2/issues/3019
@@ -147,11 +238,11 @@ class EmailTest extends \Magento\Backend\Block\Template
         }
 
         //SMTP server configuration
-        $smtpHost = $request->getPost('smtphost');
+        $smtpHost = $this->getConfig('smtphost');
 
         $smtpConf = [
-            'name' => $request->getPost('name'),
-            'port' => $request->getPost('smtpport')
+            'name' => $this->getConfig('name'),
+            'port' => $this->getConfig('smtpport')
         ];
 
         if ($auth != 'none') {
@@ -160,14 +251,14 @@ class EmailTest extends \Magento\Backend\Block\Template
             $smtpConf['password'] = $password;
         }
 
-        $ssl = $request->getPost('ssl');
+        $ssl = $this->getConfig('ssl');
         if ($ssl != 'none') {
             $smtpConf['ssl'] = $ssl;
         }
 
         $transport = new \Zend_Mail_Transport_Smtp($smtpHost, $smtpConf);
 
-        $from = trim($request->getPost('from_email'));
+        $from = trim($this->getConfig('from_email'));
         $from = \Zend_Validate::is($from, 'EmailAddress') ? $from : $username;
         $this->fromAddress = $from;
 
@@ -203,7 +294,8 @@ class EmailTest extends \Magento\Backend\Block\Template
         $result = $this->error();
 
         $this->_dataHelper->setTestMode(true);
-        $this->_dataHelper->setStoreId($this->storeId);
+        $this->_dataHelper->setStoreId($this->getStoreId());
+        $this->_dataHelper->setTestConfig($this->getConfig());
 
         try {
             $this->_email
