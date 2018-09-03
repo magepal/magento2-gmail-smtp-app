@@ -338,7 +338,7 @@ class EmailTest extends \Magento\Backend\Block\Template
     {
         $result = $this->error();
 
-        if (!$this->getRequest()->getPost('active')) {
+        if (!$this->getConfig('active')) {
             $result = $this->error(
                 true,
                 __('SMTP module is not enabled')
