@@ -216,6 +216,7 @@ class EmailTest extends \Magento\Backend\Block\Template
      * @return array
      * @throws \Zend_Mail_Exception
      * @throws \Zend_Validate_Exception
+     * Todo: update to new Zend Framework SMTP
      */
     protected function validateServerEmailSetting()
     {

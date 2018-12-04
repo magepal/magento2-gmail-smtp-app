@@ -16,8 +16,9 @@ class TransportBuilderPlugin
     /**
      * @param \MagePal\GmailSmtpApp\Model\Store $storeModel
      */
-    public function __construct(\MagePal\GmailSmtpApp\Model\Store $storeModel)
-    {
+    public function __construct(
+        \MagePal\GmailSmtpApp\Model\Store $storeModel
+    ) {
         $this->storeModel = $storeModel;
     }
 
