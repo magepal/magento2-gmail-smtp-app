@@ -7,6 +7,8 @@
 [![GitHub stars](https://img.shields.io/github/stars/magepal/magento2-gmail-smtp-app.svg)](https://github.com/magepal/magento2-gmail-smtp-app/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/magepal/magento2-gmail-smtp-app.svg)](https://github.com/magepal/magento2-gmail-smtp-app/network)
 
+##### For Magento 2.0.x, 2.1.x, 2.2.x and 2.3.x
+
 Configure Magento 2 to send all transactional email using Google App, Gmail, Amazon Simple Email Service (SES), Microsoft Office365 or other SMTP server. 
 
 Sending transactional emails to customers is a vital part of running an e-commerce store. Our free custom Magento extension integrates with all major email service provider and third-party SMTP server to reliably deliver messages in customers' inbox.

@@ -20,7 +20,6 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     /** @var array $testConfig */
     protected $testConfig = [];
 
-
     /**
      * @param null $key
      * @return array|mixed|string

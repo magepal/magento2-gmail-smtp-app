@@ -22,4 +22,9 @@
 		<plugin sortOrder="1" name="magePalGmailSmtpAppTransportBuilder"
 				type="MagePal\GmailSmtpApp\Plugin\Mail\Template\TransportBuilderPlugin"/>
 	</type>
+
+    <type name="Magento\Framework\Mail\Template\TransportBuilderByStore">
+        <plugin sortOrder="1" name="magePalGmailSmtpAppTransportBuilderByStore"
+                type="MagePal\GmailSmtpApp\Plugin\Mail\Template\TransportBuilderByStorePlugin"/>
+    </type>
 </config>

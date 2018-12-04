@@ -12,8 +12,10 @@ class Store
     /** @var int/null  */
     protected $store_id = null;
 
+    protected $from = null;
+
     /**
-     * @return null
+     * @return int|null
      */
     public function getStoreId()
     {
@@ -27,6 +29,24 @@ class Store
     public function setStoreId($store_id)
     {
         $this->store_id = $store_id;
+        return $this;
+    }
+
+    /**
+     * @return string|array
+     */
+    public function getFrom()
+    {
+        return $this->from;
+    }
+
+    /**
+     * @param string|array $from
+     * @return $this
+     */
+    public function setFrom($from)
+    {
+        $this->from = $from;
         return $this;
     }
 }
