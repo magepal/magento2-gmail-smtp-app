@@ -102,7 +102,6 @@ class Smtp
 
         if ($returnPathEmail !== null && $dataHelper->getConfigSetFrom()) {
             foreach ($returnPathEmail as $address) {
-                $message->clearFrom();
                 $message->setFrom($address);
             }
         }
