@@ -20,15 +20,31 @@ class TransportPlugin extends \Zend_Mail_Transport_Smtp
     protected $storeModel;
 
     /**
-     * @param \MagePal\GmailSmtpApp\Helper\Data $dataHelper
-     * @param \MagePal\GmailSmtpApp\Model\Store $storeModel
+     * @var \MagePal\GmailSmtpApp\Model\TwoDotTwo\SmtpFactory
+     */
+    private $smtp22;
+
+    /**
+     * @var \MagePal\GmailSmtpApp\Model\TwoDotThree\SmtpFactory
+     */
+    private $smtp23;
+
+    /**
+     * @param \MagePal\GmailSmtpApp\Helper\Data                   $dataHelper
+     * @param \MagePal\GmailSmtpApp\Model\Store                   $storeModel
+     * @param \MagePal\GmailSmtpApp\Model\TwoDotTwo\SmtpFactory   $smtp22
+     * @param \MagePal\GmailSmtpApp\Model\TwoDotThree\SmtpFactory $smtp23
      */
     public function __construct(
         \MagePal\GmailSmtpApp\Helper\Data $dataHelper,
-        \MagePal\GmailSmtpApp\Model\Store $storeModel
+        \MagePal\GmailSmtpApp\Model\Store $storeModel,
+        \MagePal\GmailSmtpApp\Model\TwoDotTwo\SmtpFactory $smtp22,
+        \MagePal\GmailSmtpApp\Model\TwoDotThree\SmtpFactory $smtp23
     ) {
         $this->dataHelper = $dataHelper;
         $this->storeModel = $storeModel;
+        $this->smtp22 = $smtp22;
+        $this->smtp23 = $smtp23;
     }
 
     /**
@@ -48,12 +64,12 @@ class TransportPlugin extends \Zend_Mail_Transport_Smtp
 
             $message = $subject->getMessage();
 
-            //For Magento 2.0, 2.1, 2.2 else 2.3
+            // For Magento 2.0, 2.1, 2.2 else 2.3
             if ($message instanceof \Zend_mail) {
-                $smtp = new \MagePal\GmailSmtpApp\Model\TwoDotTwo\Smtp($this->dataHelper, $this->storeModel);
+                $smtp = $this->smtp22->create(['dataHelper' => $this->dataHelper, 'storeModel' => $this->storeModel]);
                 $smtp->sendSmtpMessage($message);
             } elseif ($message instanceof \Magento\Framework\Mail\Message) {
-                $smtp = new \MagePal\GmailSmtpApp\Model\TwoDotThree\Smtp($this->dataHelper, $this->storeModel);
+                $smtp = $this->smtp23->create(['dataHelper' => $this->dataHelper, 'storeModel' => $this->storeModel]);
                 $smtp->sendSmtpMessage($message);
             } else {
                 $proceed();
