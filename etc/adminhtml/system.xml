@@ -3,7 +3,7 @@
 /**
  * Copyright © MagePal LLC. All rights reserved.
  * See COPYING.txt for license details.
- * http://www.magepal.com | support@magepal.com
+ * https://www.magepal.com | support@magepal.com
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
@@ -20,8 +20,8 @@
                 <label>About MagePal SMTP</label>
                 <comment>
                     <![CDATA[
-                    <strong>Copyright © 2018 <a href="http://bit.ly/MPEXSMTP" target="_blank">www.magepal.com</a> / <a href="mailto:support@magepal.com">support@magepal.com</a></strong><br />
-                    Discovery other must have extensions at <a href="http://bit.ly/MPEXSMTP" target="_blank">www.magepal.com</a>. Thanks for choosing MagePal Extensions.<br/><br/>
+                    <strong>Copyright © 2019 <a href="http://bit.ly/MPEXSMTP" target="_blank">www.magepal.com</a> / <a href="mailto:support@magepal.com">support@magepal.com</a></strong><br />
+                    Discover other must have extensions at <a href="http://bit.ly/MPEXSMTP" target="_blank">www.magepal.com</a>. Thanks for choosing MagePal Extensions.<br/><br/>
                     <hr style="border-top: 1px solid #e3e3e3" />
                   ]]>
                 </comment>
@@ -44,8 +44,8 @@
                 <label>SMTP Configuration and Settings (Gmail/Google/AWS/Office360 etc)</label>
                 <comment>
                     <![CDATA[
-                    <strong>Copyright © 2018 <a href="http://bit.ly/MPEXSMTP" target="_blank">www.magepal.com</a> / <a href="mailto:support@magepal.com">support@magepal.com</a></strong><br />
-                    Discovery other must have extensions at <a href="http://bit.ly/MPEXSMTP" target="_blank">www.magepal.com</a>. Thanks for choosing MagePal Extensions.<br/><br/>
+                    <strong>Copyright © 2019 <a href="http://bit.ly/MPEXSMTP" target="_blank">www.magepal.com</a> / <a href="mailto:support@magepal.com">support@magepal.com</a></strong><br />
+                    Discover other must have extensions at <a href="http://bit.ly/MPEXSMTP" target="_blank">www.magepal.com</a>. Thanks for choosing MagePal Extensions.<br/><br/>
                     <hr style="border-top: 1px solid #e3e3e3" />
                   ]]>
                 </comment>
