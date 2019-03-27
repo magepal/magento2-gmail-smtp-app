@@ -48,7 +48,7 @@ class TestButton extends \Magento\Config\Block\System\Config\Form\Field
     public function getButtonHtml()
     {
         $button = $this->getLayout()->createBlock(
-            'Magento\Backend\Block\Widget\Button'
+            \Magento\Backend\Block\Widget\Button::class
         )->setData(
             [
                 'id' => 'gmailsmtpapp_debug_result_button',
@@ -62,7 +62,10 @@ class TestButton extends \Magento\Config\Block\System\Config\Form\Field
 
     public function getAdminUrl()
     {
-        return $this->_urlBuilder->getUrl('magepalsmtp/test', ['store' => $this->_request->getParam('store')]);
+        return $this->_urlBuilder->getUrl(
+            'magepalsmtp/testemail',
+            ['store' => $this->_request->getParam('store')]
+        );
     }
 
     /**
@@ -70,7 +73,6 @@ class TestButton extends \Magento\Config\Block\System\Config\Form\Field
      *
      * @param  \Magento\Framework\Data\Form\Element\AbstractElement $element
      * @return string
-     * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function render(\Magento\Framework\Data\Form\Element\AbstractElement $element)
     {

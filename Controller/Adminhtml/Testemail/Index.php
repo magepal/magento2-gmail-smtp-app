@@ -5,7 +5,7 @@
  * http://www.magepal.com | support@magepal.com
  */
 
-namespace MagePal\GmailSmtpApp\Controller\Adminhtml\Test;
+namespace MagePal\GmailSmtpApp\Controller\Adminhtml\Testemail;
 
 use Magento\Backend\App\Action;
 use Magento\Framework\Controller\ResultFactory;
