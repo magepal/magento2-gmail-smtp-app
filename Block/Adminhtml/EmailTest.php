@@ -7,15 +7,31 @@
 
 namespace MagePal\GmailSmtpApp\Block\Adminhtml;
 
-class EmailTest extends \Magento\Backend\Block\Template
+use Exception;
+use Magento\Backend\Block\Template;
+use Magento\Backend\Block\Template\Context;
+use Magento\Framework\Validator\EmailAddress;
+use MagePal\GmailSmtpApp\Helper\Data;
+use MagePal\GmailSmtpApp\Model\Email;
+use Zend_Mail;
+use Zend_Mail_Exception;
+use Zend_Mail_Transport_Smtp;
+use Zend_Validate;
+use Zend_Validate_Exception;
+
+/**
+ * Class EmailTest
+ * @package MagePal\GmailSmtpApp\Block\Adminhtml
+ */
+class EmailTest extends Template
 {
     /**
-     * @var \MagePal\GmailSmtpApp\Helper\Data
+     * @var Data
      */
     protected $_dataHelper;
 
     /**
-     * @var \MagePal\GmailSmtpApp\Model\Email
+     * @var Email
      */
     protected $_email;
 
@@ -60,22 +76,30 @@ class EmailTest extends \Magento\Backend\Block\Template
     ];
 
     /**
+     * @var EmailAddress
+     */
+    protected $emailAddressValidator;
+
+    /**
      * EmailTest constructor.
-     * @param \Magento\Backend\Block\Template\Context $context
-     * @param \MagePal\GmailSmtpApp\Helper\Data $dataHelper
-     * @param \MagePal\GmailSmtpApp\Model\Email $email
+     * @param Context $context
+     * @param Data $dataHelper
+     * @param Email $email
+     * @param EmailAddress $emailAddressValidator
      * @param array $data
-     * @throws \Zend_Validate_Exception
+     * @throws Zend_Validate_Exception
      */
     public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
-        \MagePal\GmailSmtpApp\Helper\Data $dataHelper,
-        \MagePal\GmailSmtpApp\Model\Email $email,
+        Context $context,
+        Data $dataHelper,
+        Email $email,
+        EmailAddress $emailAddressValidator,
         array $data = []
     ) {
         parent::__construct($context, $data);
         $this->_dataHelper = $dataHelper;
         $this->_email = $email;
+        $this->emailAddressValidator = $emailAddressValidator;
 
         $this->init();
     }
@@ -154,7 +178,7 @@ class EmailTest extends \Magento\Backend\Block\Template
     }
 
     /**
-     * @throws \Zend_Validate_Exception
+     * @return void
      */
     protected function init()
     {
@@ -167,7 +191,7 @@ class EmailTest extends \Magento\Backend\Block\Template
 
         $this->fromAddress = trim($this->getConfig('from_email'));
 
-        if (!\Zend_Validate::is($this->fromAddress, 'EmailAddress')) {
+        if (!$this->emailAddressValidator->isValid($this->fromAddress)) {
             $this->fromAddress = $this->toAddress;
         }
 
@@ -214,8 +238,8 @@ class EmailTest extends \Magento\Backend\Block\Template
 
     /**
      * @return array
-     * @throws \Zend_Mail_Exception
-     * @throws \Zend_Validate_Exception
+     * @throws Zend_Mail_Exception
+     * @throws Zend_Validate_Exception
      * Todo: update to new Zend Framework SMTP
      */
     protected function validateServerEmailSetting()
@@ -257,15 +281,15 @@ class EmailTest extends \Magento\Backend\Block\Template
             $smtpConf['ssl'] = $ssl;
         }
 
-        $transport = new \Zend_Mail_Transport_Smtp($smtpHost, $smtpConf);
+        $transport = new Zend_Mail_Transport_Smtp($smtpHost, $smtpConf);
 
         $from = trim($this->getConfig('from_email'));
-        $from = \Zend_Validate::is($from, 'EmailAddress') ? $from : $username;
+        $from = Zend_Validate::is($from, 'EmailAddress') ? $from : $username;
         $this->fromAddress = $from;
 
         //Create email
         $name = 'Test from MagePal SMTP';
-        $mail = new \Zend_Mail();
+        $mail = new Zend_Mail();
         $mail->setFrom($this->fromAddress, $name);
         $mail->addTo($this->toAddress, $this->toAddress);
         $mail->setSubject('Hello from MagePal SMTP (1 of 2)');
@@ -278,9 +302,9 @@ class EmailTest extends \Magento\Backend\Block\Template
 
         try {
             //only way to prevent zend from giving a error
-            if (!$mail->send($transport) instanceof \Zend_Mail) {
+            if (!$mail->send($transport) instanceof Zend_Mail) {
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $result =  $this->error(true, __($e->getMessage()));
         }
 
@@ -305,7 +329,7 @@ class EmailTest extends \Magento\Backend\Block\Template
                     ['email' => $this->fromAddress, 'name' => $this->fromAddress],
                     ['email' => $this->toAddress, 'name' => $this->toAddress]
                 );
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $result = $this->error(true, __($e->getMessage()));
         }
 

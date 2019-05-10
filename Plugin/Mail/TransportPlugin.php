@@ -7,39 +7,57 @@
 
 namespace MagePal\GmailSmtpApp\Plugin\Mail;
 
-class TransportPlugin extends \Zend_Mail_Transport_Smtp
+use Closure;
+use Magento\Framework\App\ProductMetadataInterface;
+use Magento\Framework\Exception\MailException;
+use Magento\Framework\Mail\Message;
+use Magento\Framework\Mail\TransportInterface;
+use MagePal\GmailSmtpApp\Helper\Data;
+use MagePal\GmailSmtpApp\Model\Store;
+use MagePal\GmailSmtpApp\Model\ZendMailOne\Smtp as ZendMailOneSmtp;
+use MagePal\GmailSmtpApp\Model\ZendMailTWO\Smtp as ZendMailTwoSmtp;
+use Zend_mail;
+use Zend_Mail_Exception;
+use Zend_Mail_Transport_Smtp;
+
+class TransportPlugin extends Zend_Mail_Transport_Smtp
 {
     /**
-     * @var \MagePal\GmailSmtpApp\Helper\Data
+     * @var Data
      */
     protected $dataHelper;
 
     /**
-     * @var \MagePal\GmailSmtpApp\Model\Store
+     * @var Store
      */
     protected $storeModel;
 
+    protected $productMetadata;
+
     /**
-     * @param \MagePal\GmailSmtpApp\Helper\Data $dataHelper
-     * @param \MagePal\GmailSmtpApp\Model\Store $storeModel
+     * @param Data $dataHelper
+     * @param Store $storeModel
+     * @param ProductMetadataInterface $productMetadata
      */
     public function __construct(
-        \MagePal\GmailSmtpApp\Helper\Data $dataHelper,
-        \MagePal\GmailSmtpApp\Model\Store $storeModel
+        Data $dataHelper,
+        Store $storeModel,
+        ProductMetadataInterface $productMetadata
     ) {
         $this->dataHelper = $dataHelper;
         $this->storeModel = $storeModel;
+        $this->productMetadata = $productMetadata;
     }
 
     /**
-     * @param \Magento\Framework\Mail\TransportInterface $subject
-     * @param \Closure $proceed
-     * @throws \Magento\Framework\Exception\MailException
-     * @throws \Zend_Mail_Exception
+     * @param TransportInterface $subject
+     * @param Closure $proceed
+     * @throws MailException
+     * @throws Zend_Mail_Exception
      */
     public function aroundSendMessage(
-        \Magento\Framework\Mail\TransportInterface $subject,
-        \Closure $proceed
+        TransportInterface $subject,
+        Closure $proceed
     ) {
         if ($this->dataHelper->isActive()) {
             if (method_exists($subject, 'getStoreId')) {
@@ -48,12 +66,13 @@ class TransportPlugin extends \Zend_Mail_Transport_Smtp
 
             $message = $subject->getMessage();
 
-            //For Magento 2.0, 2.1, 2.2 else 2.3
-            if ($message instanceof \Zend_mail) {
-                $smtp = new \MagePal\GmailSmtpApp\Model\TwoDotTwo\Smtp($this->dataHelper, $this->storeModel);
+            //ZendMail1 - Magento <= 2.2.7
+            //ZendMail2 - Magento >= 2.2.8
+            if ($message instanceof Zend_mail) {
+                $smtp = new ZendMailOneSmtp($this->dataHelper, $this->storeModel);
                 $smtp->sendSmtpMessage($message);
-            } elseif ($message instanceof \Magento\Framework\Mail\Message) {
-                $smtp = new \MagePal\GmailSmtpApp\Model\TwoDotThree\Smtp($this->dataHelper, $this->storeModel);
+            } elseif ($message instanceof Message) {
+                $smtp = new ZendMailTwoSmtp($this->dataHelper, $this->storeModel);
                 $smtp->sendSmtpMessage($message);
             } else {
                 $proceed();

@@ -1,11 +1,21 @@
 <?php
 /**
-     * Copyright © MagePal LLC. All rights reserved.
-     * See COPYING.txt for license details.
-     * http://www.magepal.com | support@magepal.com
-     */
+ * Copyright © MagePal LLC. All rights reserved.
+ * See COPYING.txt for license details.
+ * http://www.magepal.com | support@magepal.com
+ */
 
-namespace MagePal\GmailSmtpApp\Model\TwoDotTwo;
+namespace MagePal\GmailSmtpApp\Model\ZendMailOne;
+
+use Exception;
+use Magento\Framework\Exception\MailException;
+use Magento\Framework\Mail\MessageInterface;
+use Magento\Framework\Phrase;
+use MagePal\GmailSmtpApp\Helper\Data;
+use MagePal\GmailSmtpApp\Model\Store;
+use Zend_mail;
+use Zend_Mail_Exception;
+use Zend_Mail_Transport_Smtp;
 
 /**
  * Class Smtp
@@ -13,62 +23,62 @@ namespace MagePal\GmailSmtpApp\Model\TwoDotTwo;
  * @package MagePal\GmailSmtpApp\Model\TwoDotTwo
  */
 
-class Smtp extends \Zend_Mail_Transport_Smtp
+class Smtp extends Zend_Mail_Transport_Smtp
 {
     /**
-     * @var \MagePal\GmailSmtpApp\Helper\Data
+     * @var Data
      */
     protected $dataHelper;
 
     /**
-     * @var \MagePal\GmailSmtpApp\Model\Store
+     * @var Store
      */
     protected $storeModel;
 
     /**
-     * @param \MagePal\GmailSmtpApp\Helper\Data $dataHelper
-     * @param \MagePal\GmailSmtpApp\Model\Store $storeModel
+     * @param Data $dataHelper
+     * @param Store $storeModel
      */
     public function __construct(
-        \MagePal\GmailSmtpApp\Helper\Data $dataHelper,
-        \MagePal\GmailSmtpApp\Model\Store $storeModel
+        Data $dataHelper,
+        Store $storeModel
     ) {
         $this->dataHelper = $dataHelper;
         $this->storeModel = $storeModel;
     }
 
     /**
-     * @param \MagePal\GmailSmtpApp\Helper\Data $dataHelper
+     * @param Data $dataHelper
      * @return Smtp
      */
-    public function setDataHelper(\MagePal\GmailSmtpApp\Helper\Data $dataHelper)
+    public function setDataHelper(Data $dataHelper)
     {
         $this->dataHelper = $dataHelper;
         return $this;
     }
 
     /**
-     * @param \MagePal\GmailSmtpApp\Model\Store $storeModel
+     * @param Store $storeModel
      * @return Smtp
      */
-    public function setStoreModel(\MagePal\GmailSmtpApp\Model\Store $storeModel)
+    public function setStoreModel(Store $storeModel)
     {
         $this->storeModel = $storeModel;
         return $this;
     }
 
     /**
-     * @param \Magento\Framework\Mail\MessageInterface $message
-     * @throws \Magento\Framework\Exception\MailException
-     * @throws \Zend_Mail_Exception
+     * @param MessageInterface $message
+     * @throws MailException
+     * @throws Zend_Mail_Exception
      */
     public function sendSmtpMessage(
-        \Magento\Framework\Mail\MessageInterface $message
+        MessageInterface $message
     ) {
         $dataHelper = $this->dataHelper;
         $dataHelper->setStoreId($this->storeModel->getStoreId());
 
-        if ($message instanceof \Zend_mail) {
+        if ($message instanceof Zend_mail) {
             if ($message->getDate() === null) {
                 $message->setDate();
             }
@@ -129,9 +139,9 @@ class Smtp extends \Zend_Mail_Transport_Smtp
 
         try {
             parent::send($message);
-        } catch (\Exception $e) {
-            throw new \Magento\Framework\Exception\MailException(
-                new \Magento\Framework\Phrase($e->getMessage()),
+        } catch (Exception $e) {
+            throw new MailException(
+                new Phrase($e->getMessage()),
                 $e
             );
         }
