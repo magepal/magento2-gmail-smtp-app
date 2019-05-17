@@ -15,7 +15,7 @@ use Magento\Framework\Mail\TransportInterface;
 use MagePal\GmailSmtpApp\Helper\Data;
 use MagePal\GmailSmtpApp\Model\Store;
 use MagePal\GmailSmtpApp\Model\ZendMailOne\Smtp as ZendMailOneSmtp;
-use MagePal\GmailSmtpApp\Model\ZendMailTWO\Smtp as ZendMailTwoSmtp;
+use MagePal\GmailSmtpApp\Model\ZendMailTwo\Smtp as ZendMailTwoSmtp;
 use Zend_mail;
 use Zend_Mail_Exception;
 use Zend_Mail_Transport_Smtp;
