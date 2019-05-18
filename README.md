@@ -82,11 +82,11 @@ composer require magepal/magento2-gmailsmtpapp
 
 ## Documentation
 
-[How to Installing Magento 2 SMTP Extension](https://www.magepal.com/help/docs/smtp-magento/#installation)
+[How to Installing Magento 2 SMTP Extension](https://www.magepal.com/help/docs/smtp-magento/?utm_source=smtp&utm_medium=github#installation)
 
-[How to setup Magento 2 SMTP Extension](https://www.magepal.com/help/docs/smtp-magento/#configuration)
+[How to setup Magento 2 SMTP Extension](https://www.magepal.com/help/docs/smtp-magento/?utm_source=smtp&utm_medium=github#configuration)
 
-[How to debugging Magento 2 SMTP Extension](https://www.magepal.com/help/docs/smtp-magento/#debug)
+[How to debugging Magento 2 SMTP Extension](https://www.magepal.com/help/docs/smtp-magento/?utm_source=smtp&utm_medium=github#debug)
 
 Contribution
 ---
