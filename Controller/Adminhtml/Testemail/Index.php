@@ -9,13 +9,14 @@ namespace MagePal\GmailSmtpApp\Controller\Adminhtml\Testemail;
 
 use Magento\Backend\App\Action;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Controller\ResultInterface;
 
 class Index extends Action
 {
     /**
      * Index action
      *
-     * @return \Magento\Framework\Controller\ResultInterface
+     * @return ResultInterface
      */
     public function execute()
     {

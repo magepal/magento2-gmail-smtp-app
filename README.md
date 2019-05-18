@@ -13,6 +13,9 @@ Configure Magento 2 to send all transactional email using Google App, Gmail, Ama
 
 Sending transactional emails to customers is a vital part of running an e-commerce store. Our free custom Magento extension integrates with all major email service provider and third-party SMTP server to reliably deliver messages in customers' inbox.
 
+Get more from your order confirmation emails by promoting other complementary products and services.
+Learn more about our new <a href="https://www.magepal.com/enhanced-transactional-emails.html?utm_source=ete&utm_medium=GitHub%20Learn%20More" target="_blank">Enhanced Transactional Email</a> extension.
+
 #### What is SMTP - Simple Mail Transfer Protocol
 SMTP or Simple Mail Transfer Protocol allows you to send emails from your Magento 2 store through a specific third-party mail SMTP server. For example, if you want to use your Gmail, Amazon, Microsoft or any other mail server account to send email from your Magento web store, all you need is to configure that mail server settings in our extension in Magento without having to do any complex server configuration.
 
@@ -71,32 +74,19 @@ Since Google's, Gmail and G Suite SMTP server does not use Port 25, you'll reduc
 
 ## How to Install Magento SMTP Extension
 
-#### Step 1
-
 ##### Using Composer (recommended)
 
 ```
 composer require magepal/magento2-gmailsmtpapp
 ```
 
-##### SMTP Manual Installation  (not recommended)
-Install Gmail Smtp App for Magento2
- * Download the extension
- * Unzip the file
- * Create a folder {Magento root}/app/code/MagePal/GmailSmtpApp
- * Copy the content from the unzip folder
- * Flush cache
+## Documentation
 
-#### Step 2 -  Enable Magento 2 SMTP Extension
-```
- php -f bin/magento module:enable --clear-static-content MagePal_GmailSmtpApp
- php -f bin/magento setup:upgrade
- php -f bin/magento setup:static-content:deploy
- php -f bin/magento cache:flush
-```
+[How to Installing Magento 2 SMTP Extension](https://www.magepal.com/help/docs/smtp-magento/#installation)
 
-#### Step 3 - How to Configure Magento Custom SMTP Setting
-Log into your Magento Admin, then goto Stores -> Configuration -> MagePal -> SMTP Configuration and enter your email credentials
+[How to setup Magento 2 SMTP Extension](https://www.magepal.com/help/docs/smtp-magento/#configuration)
+
+[How to debugging Magento 2 SMTP Extension](https://www.magepal.com/help/docs/smtp-magento/#debug)
 
 Contribution
 ---

@@ -20,8 +20,8 @@ use Zend\Mail\Transport\SmtpOptions;
 
 /**
  * Class Smtp
- * For Magento 2.3.x
- * @package MagePal\GmailSmtpApp\Model\TwoDotTwo
+ * For Magento > 2.2.7
+ * @package MagePal\GmailSmtpApp\Model\ZendMailTwo
  */
 
 class Smtp

@@ -7,11 +7,18 @@
 
 namespace MagePal\GmailSmtpApp\Model;
 
+/**
+ * Class Store
+ * @package MagePal\GmailSmtpApp\Model
+ */
 class Store
 {
     /** @var int/null  */
     protected $store_id = null;
 
+    /**
+     * @var null
+     */
     protected $from = null;
 
     /**

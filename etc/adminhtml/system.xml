@@ -20,15 +20,43 @@
                 <label>About MagePal SMTP</label>
                 <comment>
                     <![CDATA[
-                    <strong>Copyright © 2019 <a href="http://bit.ly/MPEXSMTP" target="_blank">www.magepal.com</a> / <a href="mailto:support@magepal.com">support@magepal.com</a></strong><br />
-                    Get more from your transactional emails, learn more about our new <a href="http://bit.ly/smtp-esp" target="_blank">Enhanced Transactional Email</a> extension. Thanks for choosing MagePal Extensions.<br/><br/>
+                    <div id="magepal-info">
+                        Copyright © 2019 <a href="https://www.magepal.com/magento2/extensions.html?utm_source=smtp&utm_medium=admin" target="_blank">MagePal, LLC</a>
+                        <a href="https://www.magepal.com/help/docs/smtp-magento/?utm_source=smtp&utm_medium=admin#documentation" target="_blank">Documentation</a>
+                        <a href="https://www.magepal.com/help/docs/smtp-magento/?utm_source=smtp&utm_medium=admin#support">Support</a>
+                        <a href="https://www.magepal.com/help/docs/smtp-magento?utm_source=smtp&utm_medium=admin#current_version" target="_blank">Latest Version</a>
+                        <a href="https://www.magepal.com/custom-smtp.html?utm_source=smtp&utm_medium=admin" target="_blank">Extension Detail</a>
+                        <a href="https://www.magepal.com/magento2/extensions.html?utm_source=smtp&utm_medium=admin" target="_blank">More Extensions</a>
+                    </div>
+                    <div id="magepal-promo">
+                        Get more from your order confirmation emails by promoting other complementary products!
+                        Learn more about our new <a href="http://bit.ly/smtp-esp" target="_blank">Enhanced Transactional Email</a> extension.
+                    </div>
                     <hr style="border-top: 1px solid #e3e3e3" />
+                    <style>
+                        #magepal-info a {
+                            font-weight: bold;
+                            border-left: 2px solid #e3e3e3;
+                            padding-left:10px;
+                            padding-right:10px;
+                            color: #ef7e1e;
+                        }
+
+                        #magepal-info a:first-child {
+                            padding-left: 5px;
+                            border-left: none;
+                        }
+
+                        #magepal-info {
+                            padding-bottom: 5px;
+                        }
+
+                        .section-config.active #magepal_gmailsmtpapp_about-head {
+                            padding-bottom: 0px;
+                        }
+                     </style>
                   ]]>
                 </comment>
-                <field id="module_version" translate="label" type="label" sortOrder="0" showInDefault="1" showInWebsite="0" showInStore="0">
-                    <label>Module Version</label>
-                    <frontend_model>MagePal\GmailSmtpApp\Block\Adminhtml\System\Config\Form\Module\Version</frontend_model>
-                </field>
                 <field id="composer_version" translate="label" type="label" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
                     <label>Composer Version</label>
                     <frontend_model>MagePal\GmailSmtpApp\Block\Adminhtml\System\Config\Form\Composer\Version</frontend_model>
@@ -43,10 +71,42 @@
             <group id="gmailsmtpapp" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>SMTP Configuration and Settings (Gmail/Google/AWS/Office360 etc)</label>
                 <comment>
-                    <![CDATA[
-                    <strong>Copyright © 2019 <a href="http://bit.ly/MPEXSMTP" target="_blank">www.magepal.com</a> / <a href="mailto:support@magepal.com">support@magepal.com</a></strong><br />
-                    Get more from your transactional emails, learn more about our new <a href="http://bit.ly/smtp-esp" target="_blank">Enhanced Transactional Email</a> extension. Thanks for choosing MagePal Extensions.<br/><br/>
+                  <![CDATA[
+                    <div id="magepal-info">
+                        Copyright © 2019 <a href="https://www.magepal.com/magento2/extensions.html?utm_source=smtp&utm_medium=admin" target="_blank">MagePal, LLC</a>
+                        <a href="https://www.magepal.com/help/docs/smtp-magento/?utm_source=smtp&utm_medium=admin#documentation" target="_blank">Documentation</a>
+                        <a href="https://www.magepal.com/help/docs/smtp-magento/?utm_source=smtp&utm_medium=admin#support">Support</a>
+                        <a href="https://www.magepal.com/help/docs/smtp-magento?utm_source=smtp&utm_medium=admin#current_version" target="_blank">Latest Version</a>
+                        <a href="https://www.magepal.com/custom-smtp.html?utm_source=smtp&utm_medium=admin" target="_blank">Extension Detail</a>
+                        <a href="https://www.magepal.com/magento2/extensions.html?utm_source=smtp&utm_medium=admin" target="_blank">More Extensions</a>
+                    </div>
+                    <div id="magepal-promo">
+                        Get more from your order confirmation emails by promoting other complementary products!
+                        Learn more about our new <a href="http://bit.ly/smtp-esp" target="_blank">Enhanced Transactional Email</a> extension.
+                    </div>
                     <hr style="border-top: 1px solid #e3e3e3" />
+                    <style>
+                        #magepal-info a {
+                            font-weight: bold;
+                            border-left: 2px solid #e3e3e3;
+                            padding-left:10px;
+                            padding-right:10px;
+                            color: #ef7e1e;
+                        }
+
+                        #magepal-info a:first-child {
+                            padding-left: 5px;
+                            border-left: none;
+                        }
+
+                        #magepal-info {
+                            padding-bottom: 5px;
+                        }
+
+                        .section-config.active #system_gmailsmtpapp-head {
+                            padding-bottom: 0px;
+                        }
+                     </style>
                   ]]>
                 </comment>
 
@@ -68,7 +128,7 @@
                 <field id="auth" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Authentication method</label>
                     <source_model>Magento\Config\Model\Config\Source\Email\Smtpauth</source_model>
-                    <comment>Use "login" for Gmail or Google Apps.</comment>
+                    <comment>Default: login</comment>
                     <depends>
                         <field id="*/*/active">1</field>
                     </depends>
@@ -76,14 +136,14 @@
                 <field id="ssl" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>SSL type</label>
                     <source_model>MagePal\GmailSmtpApp\Model\Config\Source\Authtype</source_model>
-                    <comment>Use "ssl" for Gmail or Google Apps.</comment>
+                    <comment>Default: ssl</comment>
                     <depends>
                         <field id="*/*/active">1</field>
                     </depends>
                 </field>
                 <field id="smtphost" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>SMTP Host</label>
-                    <comment>Use "smtp.gmail.com" for Gmail or Google Apps.</comment>
+                    <comment>The server name (eg smtp.gmail.com).</comment>
                     <depends>
                         <field id="*/*/active">1</field>
                     </depends>

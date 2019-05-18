@@ -6,7 +6,13 @@
  */
 namespace MagePal\GmailSmtpApp\Model\Config\Source;
 
-class Authtype implements \Magento\Framework\Option\ArrayInterface
+use Magento\Framework\Option\ArrayInterface;
+
+/**
+ * Class Authtype
+ * @package MagePal\GmailSmtpApp\Model\Config\Source
+ */
+class Authtype implements ArrayInterface
 {
     /**
      * @return array
@@ -15,8 +21,8 @@ class Authtype implements \Magento\Framework\Option\ArrayInterface
     {
         return [
             ['value' => 'none', 'label' => __('None')],
-            ['value' => 'ssl', 'label' => 'SSL (Gmail / Google Apps)'],
-            ['value' => 'tls', 'label' => 'TLS (Gmail / Google Apps)']
+            ['value' => 'ssl', 'label' => 'SSL'],
+            ['value' => 'tls', 'label' => 'TLS']
         ];
     }
 }

@@ -7,21 +7,27 @@
 
 namespace MagePal\GmailSmtpApp\Block\Adminhtml\System\Config;
 
+use Magento\Backend\Block\Template\Context;
+use Magento\Backend\Block\Widget\Button;
+use Magento\Config\Block\System\Config\Form\Field;
+use Magento\Framework\Data\Form\Element\AbstractElement;
+use Magento\Framework\Exception\LocalizedException;
+
 /**
  * "Reset to Defaults" button renderer
  *
  */
-class TestButton extends \Magento\Config\Block\System\Config\Form\Field
+class TestButton extends Field
 {
     /** @var UrlInterface */
     protected $_urlBuilder;
 
     /**
-     * @param \Magento\Backend\Block\Template\Context $context
+     * @param Context $context
      * @param array $data
      */
     public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
+        Context $context,
         array $data = []
     ) {
         $this->_urlBuilder = $context->getUrlBuilder();
@@ -43,12 +49,12 @@ class TestButton extends \Magento\Config\Block\System\Config\Form\Field
      * Generate button html
      *
      * @return string
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
     public function getButtonHtml()
     {
         $button = $this->getLayout()->createBlock(
-            \Magento\Backend\Block\Widget\Button::class
+            Button::class
         )->setData(
             [
                 'id' => 'gmailsmtpapp_debug_result_button',
@@ -71,10 +77,10 @@ class TestButton extends \Magento\Config\Block\System\Config\Form\Field
     /**
      * Render button
      *
-     * @param  \Magento\Framework\Data\Form\Element\AbstractElement $element
+     * @param  AbstractElement $element
      * @return string
      */
-    public function render(\Magento\Framework\Data\Form\Element\AbstractElement $element)
+    public function render(AbstractElement $element)
     {
         // Remove scope label
         $element->unsScope()->unsCanUseWebsiteValue()->unsCanUseDefaultValue();
@@ -84,11 +90,11 @@ class TestButton extends \Magento\Config\Block\System\Config\Form\Field
     /**
      * Return element html
      *
-     * @param  \Magento\Framework\Data\Form\Element\AbstractElement $element
+     * @param  AbstractElement $element
      * @return string
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    protected function _getElementHtml(\Magento\Framework\Data\Form\Element\AbstractElement $element)
+    protected function _getElementHtml(AbstractElement $element)
     {
         return $this->_toHtml();
     }

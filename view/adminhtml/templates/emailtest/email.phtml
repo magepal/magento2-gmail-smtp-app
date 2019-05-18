@@ -76,6 +76,20 @@
     p.external-link{
         font-style: italic;
     }
+    div.error-wrapper {
+        max-height: 300px;
+        overflow: scroll;
+        margin-bottom: 40px;
+    }
+    div.error-wrapper p{
+        text-align: left;
+    }
+    .modal-popup.confirm .modal-inner-wrap {
+        width: 80rem;
+    }
+    .modal-popup.confirm .modal-inner-wrap .modal-content{
+        padding-right: 0;
+    }
 </style>
 
 <!--[if lte IE 9]>
@@ -93,8 +107,11 @@
             <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
         </svg>
         <p class="success">Oh Yeah!</p>
-        <p><?php echo $result['msg'] ?></p>`
-        <p class="external-link">Get more from your transactional emails, learn more about our new <a href="http://bit.ly/smtp-esp" target="_blank">Enhanced Transactional Email</a> extension.</p>
+        <p><?php echo $result['msg'] ?></p>
+        <p class="external-link">
+            Get more from your order conformation emails by promoting other complementary products!
+            Learn more about our new <a href="http://bit.ly/smtp-esp" target="_blank">Enhanced Transactional Email</a> extension.
+        </p>
     <?php else : ?>
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
             <circle class="path circle" fill="none" stroke="#D06079" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
@@ -102,7 +119,12 @@
             <line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2"/>
         </svg>
         <p class="error">Bummer!</p>
-        <p><?php echo $block->formatErrorMsg($result['msg']) ?> </p>
-        <p>Visit <a href="http://bit.ly/MpSmtpEr" target="_blank">www.magepal.com</a> to learn more about our <a href="http://bit.ly/MpSmtpEr" target="_blank">Premium Support</a>.</p>
+        <div class="error-wrapper">
+            <p><?php echo $block->formatErrorMsg($result['msg']) ?> </p>
+        </div>
+        <p>
+            Visit <a href="http://bit.ly/MpSmtpEr" target="_blank">www.magepal.com</a> to learn more about our
+            <a href="https://www.magepal.com/help/docs/smtp-magento/?utm_source=Custom%20SMTP&utm_medium=Premium%20Support%20Admin%20Error" target="_blank">Premium Support</a>.
+        </p>
     <?php endif; ?>
 <?php endforeach; ?>

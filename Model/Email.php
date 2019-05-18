@@ -7,6 +7,22 @@
 
 namespace MagePal\GmailSmtpApp\Model;
 
+use Magento\Framework\App\Area;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Exception\MailException;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Mail\Template\Factory;
+use Magento\Framework\Mail\Template\TransportBuilder;
+use Magento\Framework\Translate\Inline\StateInterface;
+use Magento\Store\Api\Data\StoreInterface;
+use Magento\Store\Model\ScopeInterface;
+use Magento\Store\Model\StoreManagerInterface;
+use MagePal\GmailSmtpApp\Helper\Data;
+
+/**
+ * Class Email
+ * @package MagePal\GmailSmtpApp\Model
+ */
 class Email
 {
     const XML_PATH_EMAIL_TEMPLATE_ZEND_TEST  = 'system/gmailsmtpapp/zend_email_template';
@@ -14,29 +30,35 @@ class Email
     const XML_PATH_EMAIL_TEMPLATE_MAGENTO_TEST  = 'system/gmailsmtpapp/magento_email_template';
 
     /**
-     * @var \Magento\Framework\App\Config\ScopeConfigInterface
+     * @var ScopeConfigInterface
      */
     protected $scopeConfig;
 
     /**
-     * @var \MagePal\GmailSmtpApp\Helper\Data
+     * @var Data
      */
     protected $dataHelper;
 
     /**
-     * @var \Magento\Framework\Mail\Template\Factory
+     * @var Factory
      */
     protected $templateFactory;
 
     /**
      * Store manager
      *
-     * @var \Magento\Store\Model\StoreManagerInterface
+     * @var StoreManagerInterface
      */
     protected $storeManager;
 
+    /**
+     * @var array
+     */
     private $templateVars = [];
 
+    /**
+     * @var array
+     */
     private $templateOptions = [];
 
     /**
@@ -47,29 +69,30 @@ class Email
     private $templateModel;
 
     /**
-     * @var \Magento\Framework\Translate\Inline\StateInterface
+     * @var StateInterface
      */
     protected $inlineTranslation;
 
     /**
-     * @var \Magento\Framework\Mail\Template\TransportBuilder
+     * @var TransportBuilder
      */
     protected $_transportBuilder;
 
     /**
-     * @param \MagePal\GmailSmtpApp\Helper\Data $dataHelper
-     * @param \Magento\Framework\Mail\Template\Factory $templateFactory
-     * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
-     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
-     * @param \Magento\Framework\Translate\Inline\StateInterface $inlineTranslation
+     * @param Data $dataHelper
+     * @param Factory $templateFactory
+     * @param ScopeConfigInterface $scopeConfig
+     * @param StoreManagerInterface $storeManager
+     * @param StateInterface $inlineTranslation
+     * @param TransportBuilder $transportBuilder
      */
     public function __construct(
-        \MagePal\GmailSmtpApp\Helper\Data $dataHelper,
-        \Magento\Framework\Mail\Template\Factory $templateFactory,
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Magento\Framework\Translate\Inline\StateInterface $inlineTranslation,
-        \Magento\Framework\Mail\Template\TransportBuilder $transportBuilder
+        Data $dataHelper,
+        Factory $templateFactory,
+        ScopeConfigInterface $scopeConfig,
+        StoreManagerInterface $storeManager,
+        StateInterface $inlineTranslation,
+        TransportBuilder $transportBuilder
     ) {
         $this->dataHelper = $dataHelper;
         $this->templateFactory = $templateFactory;
@@ -81,9 +104,10 @@ class Email
 
     /**
      * [generateTemplate description]  with template file and templates variables values
-     * @param  Mixed $senderInfo
-     * @param  Mixed $receiverInfo
+     * @param Mixed $senderInfo
+     * @param Mixed $receiverInfo
      * @return $this
+     * @throws NoSuchEntityException
      */
     public function generateTemplate($senderInfo, $receiverInfo)
     {
@@ -92,7 +116,7 @@ class Email
             ->setTemplateIdentifier($templateId)
             ->setTemplateOptions(
                 [
-                    'area' => \Magento\Framework\App\Area::AREA_ADMINHTML,
+                    'area' => Area::AREA_ADMINHTML,
                     'store' => $this->getStore()->getId(),
                 ]
             )
@@ -106,7 +130,7 @@ class Email
     /**
      * @param $senderInfo
      * @param $receiverInfo
-     * @throws \Magento\Framework\Exception\MailException
+     * @throws MailException
      */
     public function send($senderInfo, $receiverInfo)
     {
@@ -126,7 +150,7 @@ class Email
     {
         $this->setTemplateOptions(
             [
-                'area' => \Magento\Framework\App\Area::AREA_ADMINHTML,
+                'area' => Area::AREA_ADMINHTML,
                 'store' => $this->getStore()->getId(),
             ]
         );
@@ -168,7 +192,7 @@ class Email
     {
         return $this->scopeConfig->getValue(
             $path,
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+            ScopeInterface::SCOPE_STORE,
             $storeId
         );
     }
@@ -176,7 +200,8 @@ class Email
     /**
      * Return store
      *
-     * @return \Magento\Store\Api\Data\StoreInterface
+     * @return StoreInterface
+     * @throws NoSuchEntityException
      */
     public function getStore()
     {
@@ -216,7 +241,7 @@ class Email
     }
 
     /**
-     * @return \Magento\Framework\Mail\Template\TransportBuilder
+     * @return TransportBuilder
      */
     public function getTransportBuilder()
     {

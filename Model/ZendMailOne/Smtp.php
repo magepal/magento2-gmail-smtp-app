@@ -19,8 +19,8 @@ use Zend_Mail_Transport_Smtp;
 
 /**
  * Class Smtp
- * For Magento 2.0.x, 2.1.x, 2.2.x
- * @package MagePal\GmailSmtpApp\Model\TwoDotTwo
+ * For Magento < 2.2.8
+ * @package MagePal\GmailSmtpApp\Model\ZendMailOne
  */
 
 class Smtp extends Zend_Mail_Transport_Smtp

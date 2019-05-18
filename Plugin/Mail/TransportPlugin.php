@@ -8,7 +8,6 @@
 namespace MagePal\GmailSmtpApp\Plugin\Mail;
 
 use Closure;
-use Magento\Framework\App\ProductMetadataInterface;
 use Magento\Framework\Exception\MailException;
 use Magento\Framework\Mail\Message;
 use Magento\Framework\Mail\TransportInterface;
@@ -20,6 +19,10 @@ use Zend_mail;
 use Zend_Mail_Exception;
 use Zend_Mail_Transport_Smtp;
 
+/**
+ * Class TransportPlugin
+ * @package MagePal\GmailSmtpApp\Plugin\Mail
+ */
 class TransportPlugin extends Zend_Mail_Transport_Smtp
 {
     /**
@@ -32,21 +35,16 @@ class TransportPlugin extends Zend_Mail_Transport_Smtp
      */
     protected $storeModel;
 
-    protected $productMetadata;
-
     /**
      * @param Data $dataHelper
      * @param Store $storeModel
-     * @param ProductMetadataInterface $productMetadata
      */
     public function __construct(
         Data $dataHelper,
-        Store $storeModel,
-        ProductMetadataInterface $productMetadata
+        Store $storeModel
     ) {
         $this->dataHelper = $dataHelper;
         $this->storeModel = $storeModel;
-        $this->productMetadata = $productMetadata;
     }
 
     /**
