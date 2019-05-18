@@ -72,7 +72,7 @@ Since Google's, Gmail and G Suite SMTP server does not use Port 25, you'll reduc
  * and many other SMTP servers
 
 
-## How to Install Magento SMTP Extension
+### How to Install Magento SMTP Extension
 
 ##### Using Composer (recommended)
 
@@ -80,7 +80,7 @@ Since Google's, Gmail and G Suite SMTP server does not use Port 25, you'll reduc
 composer require magepal/magento2-gmailsmtpapp
 ```
 
-## Documentation
+### Documentation
 
  - [How to Installing Magento 2 SMTP Extension](https://www.magepal.com/help/docs/smtp-magento/?utm_source=smtp&utm_medium=github#installation)
 
