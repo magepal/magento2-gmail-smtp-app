@@ -48,7 +48,7 @@ Since Google's, Gmail and G Suite SMTP server does not use Port 25, you'll reduc
 
 ### Documentation
 
- - [How to Installing Magento 2 SMTP Extension](https://www.magepal.com/help/docs/smtp-magento/?utm_source=smtp&utm_medium=github#installation)
+ - [How to Install SMTP Magento 2 Extension](https://www.magepal.com/help/docs/smtp-magento/?utm_source=smtp&utm_medium=github#installation)
 
 - [How to setup Magento 2 SMTP Extension](https://www.magepal.com/help/docs/smtp-magento/?utm_source=smtp&utm_medium=github#configuration)
 
