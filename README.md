@@ -2,8 +2,8 @@
 
 # Magento 2 SMTP Extension - Gmail, G Suite, Amazon SES, Office360, Mailgun, SendGrid, Mandrill and other SMTP servers.
 
-[![Total Downloads](https://poser.pugx.org/magepal/magento2-gmailsmtpapp/downloads)](https://www.magepal.com/magento2/extensions/custom-smtp.html)
-[![Latest Stable Version](https://poser.pugx.org/magepal/magento2-gmailsmtpapp/v/stable)](https://www.magepal.com/magento2/extensions/custom-smtp.html)
+[![Total Downloads](https://poser.okvpn.org/magepal/magento2-gmailsmtpapp/downloads)](https://www.magepal.com/magento2/extensions/custom-smtp.html)
+[![Latest Stable Version](https://poser.okvpn.org/magepal/magento2-gmailsmtpapp/v/stable)](https://www.magepal.com/magento2/extensions/custom-smtp.html)
 [![GitHub stars](https://img.shields.io/github/stars/magepal/magento2-gmail-smtp-app.svg)](https://www.magepal.com/magento2/extensions/custom-smtp.html)
 [![GitHub forks](https://img.shields.io/github/forks/magepal/magento2-gmail-smtp-app.svg)](https://www.magepal.com/magento2/extensions/custom-smtp.html)
 
