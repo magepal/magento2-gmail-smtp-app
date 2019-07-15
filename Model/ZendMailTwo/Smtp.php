@@ -106,14 +106,22 @@ class Smtp
         }
 
         if ($message->getReplyTo() === null && $dataHelper->getConfigSetReplyTo()) {
-            foreach ($returnPathEmail as $address) {
-                $message->setReplyTo($address);
+            if (is_string($returnPathEmail)) {
+                $message->setReplyTo(trim($returnPathEmail));
+            } elseif ($returnPathEmail instanceof AddressList) {
+                foreach ($returnPathEmail as $address) {
+                    $message->setReplyTo($address);
+                }
             }
         }
 
         if ($returnPathEmail !== null && $dataHelper->getConfigSetFrom()) {
-            foreach ($returnPathEmail as $address) {
-                $message->setFrom($address);
+            if (is_string($returnPathEmail)) {
+                $message->setFrom(trim($returnPathEmail));
+            } elseif ($returnPathEmail instanceof AddressList) {
+                foreach ($returnPathEmail as $address) {
+                    $message->setFrom($address);
+                }
             }
         }
 

@@ -131,6 +131,7 @@ class Email
      * @param $senderInfo
      * @param $receiverInfo
      * @throws MailException
+     * @throws NoSuchEntityException
      */
     public function send($senderInfo, $receiverInfo)
     {
@@ -145,6 +146,7 @@ class Email
 
     /**
      * @return $this
+     * @throws NoSuchEntityException
      */
     protected function getTemplate()
     {
@@ -175,6 +177,7 @@ class Email
      *
      * @param $xmlPath
      * @return mixed
+     * @throws NoSuchEntityException
      */
     public function getTemplateId($xmlPath)
     {

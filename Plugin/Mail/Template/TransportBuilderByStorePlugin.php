@@ -6,34 +6,50 @@
  */
 namespace MagePal\GmailSmtpApp\Plugin\Mail\Template;
 
+use Magento\Framework\Exception\MailException;
+use Magento\Framework\Mail\Template\SenderResolverInterface;
+use Magento\Framework\Mail\Template\TransportBuilderByStore;
+use MagePal\GmailSmtpApp\Model\Store;
+
+/**
+ * Class TransportBuilderByStorePlugin
+ * @package MagePal\GmailSmtpApp\Plugin\Mail\Template
+ */
 class TransportBuilderByStorePlugin
 {
     /**
-     * @var \MagePal\GmailSmtpApp\Model\Store
+     * @var Store
      */
     protected $storeModel;
 
     /**
      * Sender resolver.
      *
-     * @var \Magento\Framework\Mail\Template\SenderResolverInterface
+     * @var SenderResolverInterface
      */
     private $senderResolver;
 
     /**
-     * @param \MagePal\GmailSmtpApp\Model\Store $storeModel
-     * @param \Magento\Framework\Mail\Template\SenderResolverInterface $senderResolver
+     * @param Store $storeModel
+     * @param SenderResolverInterface $senderResolver
      */
     public function __construct(
-        \MagePal\GmailSmtpApp\Model\Store $storeModel,
-        \Magento\Framework\Mail\Template\SenderResolverInterface $senderResolver
+        Store $storeModel,
+        SenderResolverInterface $senderResolver
     ) {
         $this->storeModel = $storeModel;
         $this->senderResolver = $senderResolver;
     }
 
+    /**
+     * @param TransportBuilderByStore $subject
+     * @param $from
+     * @param $store
+     * @return array
+     * @throws MailException
+     */
     public function beforeSetFromByStore(
-        \Magento\Framework\Mail\Template\TransportBuilderByStore $subject,
+        TransportBuilderByStore $subject,
         $from,
         $store
     ) {

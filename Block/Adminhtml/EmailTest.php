@@ -71,6 +71,7 @@ class EmailTest extends Template
         'set_reply_to' => '',
         'set_from' => '',
         'set_return_path' => '',
+        'return_path_email' => '',
         'email' => '',
         'from_email' => ''
     ];

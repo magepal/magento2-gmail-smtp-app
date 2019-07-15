@@ -183,7 +183,7 @@ class Data extends AbstractHelper
      */
     public function getConfigSetFrom($store_id = null)
     {
-        return  $this->getConfigValue('set_from', $store_id);
+        return  (int) $this->getConfigValue('set_from', $store_id);
     }
 
     /**
