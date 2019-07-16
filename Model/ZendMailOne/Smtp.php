@@ -85,10 +85,9 @@ class Smtp extends Zend_Mail_Transport_Smtp
         }
 
         //Set reply-to path
-        $setReturnPath = $dataHelper->getConfigSetReturnPath();
-        switch ($setReturnPath) {
+        switch ($dataHelper->getConfigSetReturnPath()) {
             case 1:
-                $returnPathEmail = $message->getFrom();
+                $returnPathEmail = $message->getFrom() ?: $this->getFromEmailAddress();
                 break;
             case 2:
                 $returnPathEmail = $dataHelper->getConfigReturnPathEmail();
@@ -106,9 +105,21 @@ class Smtp extends Zend_Mail_Transport_Smtp
             $message->setReplyTo($returnPathEmail);
         }
 
-        if ($returnPathEmail !== null && $dataHelper->getConfigSetFrom()) {
+        //Set from address
+        switch ($dataHelper->getConfigSetFrom()) {
+            case 1:
+                $setFromEmail = $message->getFrom() ?: $this->getFromEmailAddress();
+                break;
+            case 2:
+                $setFromEmail = $dataHelper->getConfigCustomFromEmail();
+                break;
+            default:
+                $setFromEmail = null;
+                break;
+        }
+        if ($setFromEmail !== null && $dataHelper->getConfigSetFrom()) {
             $message->clearFrom();
-            $message->setFrom($returnPathEmail);
+            $message->setFrom($setFromEmail);
         }
 
         if (!$message->getFrom()) {
@@ -145,6 +156,15 @@ class Smtp extends Zend_Mail_Transport_Smtp
                 $e
             );
         }
+    }
+
+    /**
+     * @return string
+     */
+    public function getFromEmailAddress()
+    {
+        $result = $this->storeModel->getFrom();
+        return $result['email'];
     }
 
     /**

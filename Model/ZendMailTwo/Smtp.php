@@ -82,10 +82,9 @@ class Smtp
         $message->getHeaders()->setEncoding('utf-8');
 
         //Set reply-to path
-        $setReturnPath = $dataHelper->getConfigSetReturnPath();
-        switch ($setReturnPath) {
+        switch ($dataHelper->getConfigSetReturnPath()) {
             case 1:
-                $returnPathEmail = $message->getFrom();
+                $returnPathEmail = $message->getFrom()->count() ? $message->getFrom() : $this->getFromEmailAddress();
                 break;
             case 2:
                 $returnPathEmail = $dataHelper->getConfigReturnPathEmail();
@@ -95,25 +94,40 @@ class Smtp
                 break;
         }
 
-        if ($returnPathEmail !== null && $dataHelper->getConfigSetReturnPath()) {
+        if (!$message->getReplyTo()->count() && $dataHelper->getConfigSetReplyTo()) {
             if (is_string($returnPathEmail)) {
-                $message->setSender(trim($returnPathEmail));
+                $name = $this->getFromName();
+                $message->setReplyTo(trim($returnPathEmail), $name);
             } elseif ($returnPathEmail instanceof AddressList) {
                 foreach ($returnPathEmail as $address) {
-                    $message->setSender($address);
+                    $message->setReplyTo($address);
                 }
             }
         }
 
-        if ($message->getReplyTo() === null && $dataHelper->getConfigSetReplyTo()) {
-            foreach ($returnPathEmail as $address) {
-                $message->setReplyTo($address);
-            }
+        //Set from address
+        switch ($dataHelper->getConfigSetFrom()) {
+            case 1:
+                $setFromEmail = $message->getFrom()->count() ? $message->getFrom() : $this->getFromEmailAddress();
+                break;
+            case 2:
+                $setFromEmail = $dataHelper->getConfigCustomFromEmail();
+                break;
+            default:
+                $setFromEmail = null;
+                break;
         }
 
-        if ($returnPathEmail !== null && $dataHelper->getConfigSetFrom()) {
-            foreach ($returnPathEmail as $address) {
-                $message->setFrom($address);
+        if ($setFromEmail !== null && $dataHelper->getConfigSetFrom()) {
+            if (is_string($setFromEmail)) {
+                $name = $this->getFromName();
+                $message->setFrom(trim($setFromEmail), $name);
+                $message->setSender(trim($setFromEmail), $name);
+            } elseif ($setFromEmail instanceof AddressList) {
+                foreach ($setFromEmail as $address) {
+                    $message->setFrom($address);
+                    $message->setSender($address);
+                }
             }
         }
 
@@ -160,5 +174,23 @@ class Smtp
                 $e
             );
         }
+    }
+
+    /**
+     * @return string
+     */
+    public function getFromEmailAddress()
+    {
+        $result = $this->storeModel->getFrom();
+        return $result['email'];
+    }
+
+    /**
+     * @return string
+     */
+    public function getFromName()
+    {
+        $result = $this->storeModel->getFrom();
+        return $result['name'];
     }
 }

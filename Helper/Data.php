@@ -150,7 +150,7 @@ class Data extends AbstractHelper
      */
     public function getConfigSetReplyTo($store_id = null)
     {
-        return $this->getConfigValue('set_reply_to', $store_id);
+        return (bool) $this->getConfigValue('set_reply_to', $store_id);
     }
 
     /**
@@ -161,7 +161,7 @@ class Data extends AbstractHelper
      */
     public function getConfigSetReturnPath($store_id = null)
     {
-        return $this->getConfigValue('set_return_path', $store_id);
+        return (int) $this->getConfigValue('set_return_path', $store_id);
     }
 
     /**
@@ -183,7 +183,18 @@ class Data extends AbstractHelper
      */
     public function getConfigSetFrom($store_id = null)
     {
-        return  $this->getConfigValue('set_from', $store_id);
+        return  (int) $this->getConfigValue('set_from', $store_id);
+    }
+
+    /**
+     * Get system config from
+     *
+     * @param ScopeInterface::SCOPE_STORE $store
+     * @return string
+     */
+    public function getConfigCustomFromEmail($store_id = null)
+    {
+        return  $this->getConfigValue('custom_from_email', $store_id);
     }
 
     /**

@@ -7,28 +7,35 @@
 
 namespace MagePal\GmailSmtpApp\Plugin\Mail\Template;
 
+use Magento\Framework\Mail\Template\TransportBuilder;
+use MagePal\GmailSmtpApp\Model\Store;
+
+/**
+ * Class TransportBuilderPlugin
+ * @package MagePal\GmailSmtpApp\Plugin\Mail\Template
+ */
 class TransportBuilderPlugin
 {
 
-    /** @var \MagePal\GmailSmtpApp\Model\Store */
+    /** @var Store */
     protected $storeModel;
 
     /**
-     * @param \MagePal\GmailSmtpApp\Model\Store $storeModel
+     * @param Store $storeModel
      */
     public function __construct(
-        \MagePal\GmailSmtpApp\Model\Store $storeModel
+        Store $storeModel
     ) {
         $this->storeModel = $storeModel;
     }
 
     /**
-     * @param \Magento\Framework\Mail\Template\TransportBuilder $subject
+     * @param TransportBuilder $subject
      * @param $templateOptions
      * @return array
      */
     public function beforeSetTemplateOptions(
-        \Magento\Framework\Mail\Template\TransportBuilder $subject,
+        TransportBuilder $subject,
         $templateOptions
     ) {
         if (array_key_exists('store', $templateOptions)) {

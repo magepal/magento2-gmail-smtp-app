@@ -18,6 +18,7 @@
                 <smtpport>465</smtpport>
                 <set_return_path>1</set_return_path>
                 <set_reply_to>1</set_reply_to>
+                <set_from>0</set_from>
                 <password backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
                 <zend_email_template>magepal_smtp_zend_email_test</zend_email_template>
                 <magento_email_template>magepal_smtp_magento_email_test</magento_email_template>

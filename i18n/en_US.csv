@@ -37,3 +37,5 @@
 """Disable Email Communications"" is set is ""Yes"", please set to ""NO"" in ""Mail Sending Setting""","""Disable Email Communications"" is set is ""Yes"", please set to ""NO"" in ""Mail Sending Setting"""
 "SMTP module is not enabled","SMTP module is not enabled"
 "Stores > Configuration > Advanced > System > SMTP Configuration and Settings","Stores > Configuration > Advanced > System > SMTP Configuration and Settings"
+"From Email Address","From Email Address"
+"Use specify From Address instead of Magento supplied value.","Use specify From Address instead of Magento supplied value."

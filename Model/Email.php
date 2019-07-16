@@ -13,6 +13,7 @@ use Magento\Framework\Exception\MailException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Mail\Template\Factory;
 use Magento\Framework\Mail\Template\TransportBuilder;
+use Magento\Framework\Mail\TemplateInterface;
 use Magento\Framework\Translate\Inline\StateInterface;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\ScopeInterface;
@@ -131,6 +132,7 @@ class Email
      * @param $senderInfo
      * @param $receiverInfo
      * @throws MailException
+     * @throws NoSuchEntityException
      */
     public function send($senderInfo, $receiverInfo)
     {
@@ -144,7 +146,8 @@ class Email
     }
 
     /**
-     * @return $this
+     * @return TemplateInterface
+     * @throws NoSuchEntityException
      */
     protected function getTemplate()
     {
@@ -164,6 +167,7 @@ class Email
 
     /**
      * @return mixed
+     * @throws NoSuchEntityException
      */
     public function getEmailBody()
     {
@@ -175,6 +179,7 @@ class Email
      *
      * @param $xmlPath
      * @return mixed
+     * @throws NoSuchEntityException
      */
     public function getTemplateId($xmlPath)
     {

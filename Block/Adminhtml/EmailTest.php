@@ -71,6 +71,8 @@ class EmailTest extends Template
         'set_reply_to' => '',
         'set_from' => '',
         'set_return_path' => '',
+        'return_path_email' => '',
+        'custom_from_email' => '',
         'email' => '',
         'from_email' => ''
     ];
@@ -87,7 +89,6 @@ class EmailTest extends Template
      * @param Email $email
      * @param EmailAddress $emailAddressValidator
      * @param array $data
-     * @throws Zend_Validate_Exception
      */
     public function __construct(
         Context $context,
