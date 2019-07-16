@@ -238,10 +238,11 @@ class EmailTest extends Template
     }
 
     /**
+     * Todo: update to new Zend Framework SMTP
      * @return array
      * @throws Zend_Mail_Exception
      * @throws Zend_Validate_Exception
-     * Todo: update to new Zend Framework SMTP
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     protected function validateServerEmailSetting()
     {

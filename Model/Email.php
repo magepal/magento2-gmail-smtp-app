@@ -9,6 +9,7 @@ namespace MagePal\GmailSmtpApp\Model;
 
 use Magento\Framework\App\Area;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\MailException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Mail\Template\Factory;
@@ -108,6 +109,7 @@ class Email
      * @param Mixed $senderInfo
      * @param Mixed $receiverInfo
      * @return $this
+     * @throws MailException
      * @throws NoSuchEntityException
      */
     public function generateTemplate($senderInfo, $receiverInfo)
@@ -133,6 +135,7 @@ class Email
      * @param $receiverInfo
      * @throws MailException
      * @throws NoSuchEntityException
+     * @throws LocalizedException
      */
     public function send($senderInfo, $receiverInfo)
     {
