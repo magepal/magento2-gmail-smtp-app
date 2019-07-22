@@ -328,7 +328,7 @@ class EmailTest extends Template
             $this->_email
                 ->setTemplateVars(['hash' => $this->hash])
                 ->send(
-                    ['email' => $this->fromAddress, 'name' => $this->fromAddress],
+                    ['email' => $this->fromAddress, 'name' => 'Test from MagePal SMTP'],
                     ['email' => $this->toAddress, 'name' => $this->toAddress]
                 );
         } catch (Exception $e) {
