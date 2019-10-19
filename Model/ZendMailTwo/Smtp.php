@@ -81,6 +81,12 @@ class Smtp
         $message = Message::fromString($message->getRawMessage());
         $message->getHeaders()->setEncoding('utf-8');
 
+        /*
+         * Fix new encoding issue introduce in 2.2.10 with Amazon SES
+         * Temporary fix since 2.2.x will be deprecated shortly and 2.3.3 uses new logic.
+         */
+        $message = Message::fromString($message->toString());
+
         //Set reply-to path
         switch ($dataHelper->getConfigSetReturnPath()) {
             case 1:
