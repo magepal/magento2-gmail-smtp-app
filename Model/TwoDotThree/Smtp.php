@@ -80,6 +80,7 @@ class Smtp
 
         $encoding = $message->getEncoding();
         $message = Message::fromString($message->getRawMessage());
+        $message->getHeaders()->setEncoding('utf-8');
         $message->setEncoding($encoding);
 
         //Set reply-to path
