@@ -78,7 +78,11 @@ class Smtp
         $dataHelper = $this->dataHelper;
         $dataHelper->setStoreId($this->storeModel->getStoreId());
 
+        $encoding = $message->getEncoding();
         $message = Message::fromString($message->getRawMessage());
+        $message->getHeaders()->get('to')->setEncoding('utf-8');
+        $message->getHeaders()->setEncoding('utf-8');
+        $message->setEncoding($encoding);
 
         //Set reply-to path
         switch ($dataHelper->getConfigSetReturnPath()) {
