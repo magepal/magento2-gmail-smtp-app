@@ -14,6 +14,11 @@ use Magento\Framework\Controller\ResultInterface;
 class Index extends Action
 {
     /**
+     * Authorization level of a basic admin session
+     */
+    const ADMIN_RESOURCE = 'MagePal_GmailSmtpApp::magepal_gmailsmtpapp';
+    
+    /**
      * Index action
      *
      * @return ResultInterface
@@ -21,15 +26,5 @@ class Index extends Action
     public function execute()
     {
         return $this->resultFactory->create(ResultFactory::TYPE_LAYOUT);
-    }
-
-    /**
-     * Is the user allowed to view the blog post grid.
-     *
-     * @return bool
-     */
-    protected function _isAllowed()
-    {
-        return $this->_authorization->isAllowed('MagePal_GmailSmtpApp');
     }
 }
