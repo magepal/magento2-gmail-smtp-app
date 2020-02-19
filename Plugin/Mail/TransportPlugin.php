@@ -16,7 +16,7 @@ use MagePal\GmailSmtpApp\Model\Store;
 use MagePal\GmailSmtpApp\Model\ZendMailOne\Smtp as ZendMailOneSmtp;
 use MagePal\GmailSmtpApp\Model\ZendMailTwo\Smtp as ZendMailTwoSmtp;
 use MagePal\GmailSmtpApp\Model\TwoDotThree\Smtp as TwoDotThreeSmtp;
-use Zend_mail;
+use Zend_Mail;
 use Zend_Mail_Exception;
 use Zend_Mail_Transport_Smtp;
 use \Magento\Framework\Mail\EmailMessageInterface;
@@ -68,7 +68,7 @@ class TransportPlugin extends Zend_Mail_Transport_Smtp
 
             //ZendMail1 - Magento <= 2.2.7
             //ZendMail2 - Magento >= 2.2.8
-            if ($message instanceof Zend_mail) {
+            if ($message instanceof Zend_Mail) {
                 $smtp = new ZendMailOneSmtp($this->dataHelper, $this->storeModel);
                 $smtp->sendSmtpMessage($message);
             } elseif ($message instanceof Message) {
