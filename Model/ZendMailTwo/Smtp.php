@@ -174,6 +174,8 @@ class Smtp
             $transport = new SmtpTransport();
             $transport->setOptions($options);
             $message->getHeaders()->get('to')->setEncoding('utf-8');
+            $message->getHeaders()->get('reply-to')->setEncoding('utf-8');
+            $message->getHeaders()->get('from')->setEncoding('utf-8');
             $transport->send($message);
         } catch (Exception $e) {
             throw new MailException(
