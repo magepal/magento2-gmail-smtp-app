@@ -1,5 +1,5 @@
 {
-    "name": "magepal/magento2-gmailsmtpapp",
+    "name": "landofcoder/module-smtp-app",
     "description":"Magento 2 SMTP Extension - Configure Magento 2 to send all transactional email using Gmail, G Suite, Amazon SES, Office360, Mailgun, SendGrid, Mandrill or any other SMTP servers",
     "keywords": [
         "magento 2",
@@ -25,17 +25,17 @@
     "license": [
         "proprietary"
     ],
-    "homepage": "https://www.magepal.com/",
+    "homepage": "https://landofcoder.com/",
     "support": {
-        "email": "support@magepal.com",
-        "issues": "https://github.com/magepal/magento2-gmail-smtp-app/issues/"
+        "email": "info@landofcoder.com",
+        "issues": "https://github.com/landofcoder/magento2-smtp-app/issues/"
     },
     "authors": [
         {
-            "name": "Renon Stewart",
-            "email": "renon@magepal.com",
-            "homepage": "http://www.magepal.com/",
-            "role": "Leader"
+            "name": "Landofcoder",
+            "email": "info@landofcoder.com",
+            "homepage": "https://landofcoder.com/",
+            "role": "Extension Provider"
         }
     ],
     "autoload": {
@@ -43,7 +43,7 @@
             "registration.php"
         ],
         "psr-4": {
-            "MagePal\\GmailSmtpApp\\": ""
+            "Landofcoder\\SmtpApp\\": ""
         }
     }
 }
