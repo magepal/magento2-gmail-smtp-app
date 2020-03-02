@@ -86,7 +86,7 @@ Support
 ---
 If you encounter any problems or bugs, please open an issue on [GitHub](https://github.com/magento2-smtp-app/issues). For fast Premium Support visit our [Custom SMTP Extension](https://landofcoder.ticksy.com?utm_source=Custom%20SMTP&utm_medium=GitHub%20Premium%20Support) product page for detail.
 
-Need help setting up or want to customize this extension to meet your business needs? Please email support@magepal.com and if we like your idea we will add this feature for free or at a discounted rate.
+Need help setting up or want to customize this extension to meet your business needs? Please email info@landofcoder.com and if we like your idea we will add this feature for free or at a discounted rate.
 
 Magento 2 Extensions
 ---
