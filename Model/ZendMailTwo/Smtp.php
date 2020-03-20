@@ -86,6 +86,7 @@ class Smtp
          * Temporary fix since 2.2.x will be deprecated shortly and 2.3.3 uses new logic.
          */
         $message = Message::fromString($message->toString());
+        $message->setEncoding('utf-8');
 
         //Set reply-to path
         switch ($dataHelper->getConfigSetReturnPath()) {
@@ -176,6 +177,7 @@ class Smtp
             $message->getHeaders()->get('to')->setEncoding('utf-8');
             $message->getHeaders()->get('reply-to')->setEncoding('utf-8');
             $message->getHeaders()->get('from')->setEncoding('utf-8');
+            $message->getHeaders()->setEncoding('utf-8');
             $transport->send($message);
         } catch (Exception $e) {
             throw new MailException(

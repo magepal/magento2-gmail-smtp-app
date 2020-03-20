@@ -230,7 +230,7 @@
                         <frontend_class>validate-email</frontend_class>
                     </field>
                     <field id="button" translate="label comment" type="button" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
-                        <frontend_model>MagePal\GmailSmtpApp\Block\Adminhtml\System\Config\TestButton</frontend_model>
+                        <frontend_model>MagePal\GmailSmtpApp\Block\Adminhtml\System\Config\ValidateConfigButton</frontend_model>
                     </field>
                 </group>
             </group>

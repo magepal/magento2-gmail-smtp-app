@@ -17,7 +17,7 @@ use Magento\Framework\Exception\LocalizedException;
  * "Reset to Defaults" button renderer
  *
  */
-class TestButton extends Field
+class ValidateConfigButton extends Field
 {
     /** @var UrlInterface */
     protected $_urlBuilder;
@@ -42,7 +42,7 @@ class TestButton extends Field
     protected function _construct()
     {
         parent::_construct();
-        $this->setTemplate('MagePal_GmailSmtpApp::system/config/testbutton.phtml');
+        $this->setTemplate('MagePal_GmailSmtpApp::system/config/validateConfigButton.phtml');
     }
 
     /**
@@ -58,8 +58,7 @@ class TestButton extends Field
         )->setData(
             [
                 'id' => 'gmailsmtpapp_debug_result_button',
-                'label' => __('Send Test Email'),
-                'onclick' => 'javascript:gmailSmtpAppDebugTest(); return false;',
+                'label' => __('Send Test Email')
             ]
         );
 
@@ -69,7 +68,7 @@ class TestButton extends Field
     public function getAdminUrl()
     {
         return $this->_urlBuilder->getUrl(
-            'magepalsmtp/testemail',
+            'magepalsmtp/validateconfig',
             ['store' => $this->_request->getParam('store')]
         );
     }

@@ -72,15 +72,16 @@ class Smtp
      * @param EmailMessageInterface $message
      * @throws MailException
      */
-    public function sendSmtpMessage(
-        EmailMessageInterface $message
-    ) {
+    public function sendSmtpMessage(EmailMessageInterface $message)
+    {
         $dataHelper = $this->dataHelper;
         $dataHelper->setStoreId($this->storeModel->getStoreId());
 
         $encoding = $message->getEncoding();
         $message = Message::fromString($message->getRawMessage());
         $message->getHeaders()->get('to')->setEncoding('utf-8');
+        $message->getHeaders()->get('reply-to')->setEncoding('utf-8');
+        $message->getHeaders()->get('from')->setEncoding('utf-8');
         $message->getHeaders()->setEncoding('utf-8');
         $message->setEncoding($encoding);
 

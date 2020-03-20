@@ -23,7 +23,7 @@ use Zend_Validate_Exception;
  * Class EmailTest
  * @package MagePal\GmailSmtpApp\Block\Adminhtml
  */
-class EmailTest extends Template
+class ValidateConfig extends Template
 {
     /**
      * @var Data

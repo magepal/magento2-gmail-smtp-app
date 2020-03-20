@@ -1,0 +1,20 @@
+<?php
+/**
+ * Copyright © MagePal LLC. All rights reserved.
+ * See COPYING.txt for license details.
+ * http://www.magepal.com | support@magepal.com
+ */
+?>
+
+<?php /** @var $block MagePal\GmailSmtpApp\Block\Adminhtml\System\Config\ValidateConfigButton **/ ?>
+<?= $block->getButtonHtml() ?>
+
+<script type="text/x-magento-init">
+    {
+        "#gmailsmtpapp_debug_result_button": {
+            "magePalGmailSmtpAppValidateConfig": {
+                "postUrl":"<?= $block->getAdminUrl() ?>"
+            }
+        }
+    }
+</script>

@@ -5,7 +5,7 @@
  * http://www.magepal.com | support@magepal.com
  */
 
-namespace MagePal\GmailSmtpApp\Controller\Adminhtml\Testemail;
+namespace MagePal\GmailSmtpApp\Controller\Adminhtml\Validateconfig;
 
 use Magento\Backend\App\Action;
 use Magento\Framework\Controller\ResultFactory;
