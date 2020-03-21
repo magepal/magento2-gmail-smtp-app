@@ -51,8 +51,8 @@ define([
         });
     };
 
-    return function (config) {
-        $('#gmailsmtpapp_debug_result_button').on('click', function () {
+    return function (config, element) {
+        $(element).on('click', function () {
             formSubmit(config);
         });
     }
