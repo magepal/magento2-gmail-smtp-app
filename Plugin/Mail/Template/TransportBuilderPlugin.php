@@ -10,9 +10,6 @@ namespace MagePal\GmailSmtpApp\Plugin\Mail\Template;
 use Magento\Framework\Mail\Template\TransportBuilder;
 use MagePal\GmailSmtpApp\Model\Store;
 
-/**
- * Class TransportBuilderPlugin
- */
 class TransportBuilderPlugin
 {
 

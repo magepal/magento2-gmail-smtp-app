@@ -13,9 +13,6 @@ use Magento\Framework\Data\Form\Element\AbstractElement;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Module\ModuleListInterface;
 
-/**
- * Class Version
- */
 class Version extends Field
 {
 

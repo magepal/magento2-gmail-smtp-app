@@ -20,9 +20,6 @@ use Zend_Mail_Exception;
 use Zend_Mail_Transport_Smtp;
 use \Magento\Framework\Mail\EmailMessageInterface;
 
-/**
- * Class TransportPlugin
- */
 class TransportPlugin extends Zend_Mail_Transport_Smtp
 {
     /**

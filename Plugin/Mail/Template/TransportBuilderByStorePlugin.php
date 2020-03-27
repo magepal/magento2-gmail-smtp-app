@@ -11,9 +11,6 @@ use Magento\Framework\Mail\Template\SenderResolverInterface;
 use Magento\Framework\Mail\Template\TransportBuilderByStore;
 use MagePal\GmailSmtpApp\Model\Store;
 
-/**
- * Class TransportBuilderByStorePlugin
- */
 class TransportBuilderByStorePlugin
 {
     /**

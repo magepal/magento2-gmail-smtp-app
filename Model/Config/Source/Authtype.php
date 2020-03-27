@@ -8,9 +8,6 @@ namespace MagePal\GmailSmtpApp\Model\Config\Source;
 
 use Magento\Framework\Option\ArrayInterface;
 
-/**
- * Class Authtype
- */
 class Authtype implements ArrayInterface
 {
     /**

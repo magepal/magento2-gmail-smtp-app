@@ -7,9 +7,6 @@
 
 namespace MagePal\GmailSmtpApp\Model;
 
-/**
- * Class Store
- */
 class Store
 {
     /** @var int/null  */

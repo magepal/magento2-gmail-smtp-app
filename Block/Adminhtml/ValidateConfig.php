@@ -19,9 +19,6 @@ use Zend_Mail_Transport_Smtp;
 use Zend_Validate;
 use Zend_Validate_Exception;
 
-/**
- * Class ValidateConfig
- */
 class ValidateConfig extends Template
 {
     /**

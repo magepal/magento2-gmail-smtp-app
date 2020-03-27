@@ -16,9 +16,6 @@ use Magento\Framework\Phrase;
 use Zend_Mail;
 use Zend_Mail_Transport_Sendmail;
 
-/**
- * Class Transport
- */
 class Transport extends Zend_Mail_Transport_Sendmail implements TransportInterface
 {
     /**

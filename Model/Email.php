@@ -21,9 +21,6 @@ use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use MagePal\GmailSmtpApp\Helper\Data;
 
-/**
- * Class Email
- */
 class Email
 {
     const XML_PATH_EMAIL_TEMPLATE_ZEND_TEST  = 'system/gmailsmtpapp/zend_email_template';
@@ -104,11 +101,9 @@ class Email
     }
 
     /**
-     * [generateTemplate description]  with template file and templates variables values
-     * @param Mixed $senderInfo
-     * @param Mixed $receiverInfo
+     * @param  Mixed  $senderInfo
+     * @param  Mixed  $receiverInfo
      * @return $this
-     * @throws MailException
      * @throws NoSuchEntityException
      */
     public function generateTemplate($senderInfo, $receiverInfo)
