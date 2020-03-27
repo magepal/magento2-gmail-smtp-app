@@ -159,7 +159,7 @@
 </style>
 <![endif]-->
 
-<?php /** @var $block MagePal\GmailSmtpApp\Block\Adminhtml\EmailTest  */ ?>
+<?php /** @var $block MagePal\GmailSmtpApp\Block\Adminhtml\ValidateConfig  */ ?>
 
 <?php foreach ($block->verify() as $result): ?>
     <?php if ($result['has_error'] === false): ?>
@@ -170,7 +170,7 @@
                       stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
         </svg>
         <p class="success">Congratulations, You Did It!</p>
-        <p><?= $result['msg'] ?></p>
+        <p><?= $block->escapeHtml($result['msg']) ?></p>
 
         <hr class="style" />
 
@@ -202,7 +202,7 @@
         </svg>
         <p class="error">Bummer!</p>
         <div class="error-wrapper">
-            <p><?= $block->formatErrorMsg($result['msg']) ?> </p>
+            <p><?= $block->escapeHtml($block->formatErrorMsg($result['msg']), ['a']) ?> </p>
         </div>
 
         <hr class="style"/>
@@ -214,7 +214,7 @@
         </p>
         <p>
             Visit <a href="http://bit.ly/MpSmtpEr" target="_blank">www.magepal.com</a> to learn more about our
-            <a href="https://www.magepal.com/magento2/extensions/custom-smtp.html?utm_source=Custom%20SMTP&utm_medium=Premium%20Support%20Admin%20Error"
+            <a href="http://bit.ly/MpSmtpEr"
                target="_blank">Premium 30 Minutes Paid Support</a>.
         </p>
     <?php endif; ?>
