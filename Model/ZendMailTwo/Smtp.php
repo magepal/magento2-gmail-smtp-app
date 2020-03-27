@@ -17,6 +17,7 @@ use Zend\Mail\AddressList;
 use Zend\Mail\Message;
 use Zend\Mail\Transport\Smtp as SmtpTransport;
 use Zend\Mail\Transport\SmtpOptions;
+use Magento\Framework\Mail\EmailMessageInterface;
 
 /**
  * Class Smtp
@@ -68,8 +69,45 @@ class Smtp
         return $this;
     }
 
+    protected function convertMessage($message)
+    {
+        /**
+         * Issues in Zend Framework 2
+         * https://github.com/zendframework/zendframework/issues/2492
+         * https://github.com/zendframework/zendframework/issues/2492
+         */
+
+        $encoding = 'utf-8';
+
+        try {
+            $reflect = new \ReflectionClass($message);
+            $zendMessageObject = $reflect->getProperty('zendMessage');
+            $zendMessageObject->setAccessible(true);
+
+            /** @var Message $zendMessage */
+            $zendMessage =  $zendMessageObject->getValue($message);
+
+            if($message instanceof EmailMessageInterface) {
+                $encoding = $message->getEncoding();
+            } else {
+                $encoding = $zendMessage->getEncoding();
+            }
+
+            if(!$zendMessage instanceof Message) {
+                throw new Exception('Not instance of Message');
+            }
+
+        } catch (Exception $e) {
+            $zendMessage = Message::fromString($message->getRawMessage());
+        }
+
+        $zendMessage->setEncoding($encoding);
+
+        return $zendMessage;
+    }
+
     /**
-     * @param MessageInterface $message
+     * @param MessageInterface | EmailMessageInterface $message
      * @throws MailException
      */
     public function sendSmtpMessage(
@@ -78,15 +116,7 @@ class Smtp
         $dataHelper = $this->dataHelper;
         $dataHelper->setStoreId($this->storeModel->getStoreId());
 
-        $message = Message::fromString($message->getRawMessage());
-        $message->getHeaders()->setEncoding('utf-8');
-
-        /*
-         * Fix new encoding issue introduce in 2.2.10 with Amazon SES
-         * Temporary fix since 2.2.x will be deprecated shortly and 2.3.3 uses new logic.
-         */
-        $message = Message::fromString($message->toString());
-        $message->setEncoding('utf-8');
+        $message = $this->convertMessage($message);
 
         //Set reply-to path
         switch ($dataHelper->getConfigSetReturnPath()) {
@@ -171,13 +201,17 @@ class Smtp
             $options->setConnectionConfig($connectionConfig);
         }
 
+        foreach($message->getHeaders()->toArray() as $headerKey => $headerValue) {
+            if(\Zend\Mime\Mime::isPrintable($headerValue)) {
+                $message->getHeaders()->get($headerKey)->setEncoding('ASCII');
+            } else {
+                $message->getHeaders()->get($headerKey)->setEncoding('utf-8');
+            }
+        }
+
         try {
             $transport = new SmtpTransport();
             $transport->setOptions($options);
-            $message->getHeaders()->get('to')->setEncoding('utf-8');
-            $message->getHeaders()->get('reply-to')->setEncoding('utf-8');
-            $message->getHeaders()->get('from')->setEncoding('utf-8');
-            $message->getHeaders()->setEncoding('utf-8');
             $transport->send($message);
         } catch (Exception $e) {
             throw new MailException(

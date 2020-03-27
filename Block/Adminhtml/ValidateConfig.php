@@ -384,7 +384,7 @@ class ValidateConfig extends Template
     {
         return preg_replace(
             '@(https?://([-\w\.]+[-\w])+(:\d+)?(/([\w/_\.#-]*(\?\S+)?[^\.\s])?)?)@',
-            '<a href="$1" target="_blank">$1</a>',
+            '<a href="https://www.magepal.com/help/docs/smtp-magento/" target="_blank">$1</a>',
             nl2br($s)
         );
     }

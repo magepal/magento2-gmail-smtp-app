@@ -32,14 +32,18 @@
     }
     .modal-popup p {
         text-align: center;
-        margin: 20px 0 60px;
+        margin: 20px 0 30px;
         font-size: 1.25em;
     }
     .modal-popup p.success {
         color: #73AF55;
+        font-size: 1.75em;
     }
     .modal-popup p.error {
         color: #D06079;
+    }
+    h2.center {
+        text-align: center;
     }
     @-webkit-keyframes dash {
         0% {
@@ -91,6 +95,17 @@
     .modal-popup.confirm .modal-inner-wrap .modal-content{
         padding-right: 0;
     }
+    hr.style {
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+        margin-bottom: 30px ;
+    }
+
+    .tg  {border-collapse:collapse;border-spacing:0;width:100%; border:none;margin-bottom: 50px;}
+    .tg td{font-family:Arial, sans-serif;font-size:14px;padding:15px 5px;border:none;overflow:hidden;word-break:normal;}
+    .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:15px 5px;border-width:1px;overflow:hidden;word-break:normal;}
+    .tg .tg-baqh{text-align:center;vertical-align:top}
 </style>
 
 <!--[if lte IE 9]>
@@ -107,12 +122,28 @@
             <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
             <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
         </svg>
-        <p class="success">Oh Yeah!</p>
+        <p class="success">Congratulations, You Did It!</p>
         <p><?php echo $result['msg'] ?></p>
-        <p class="external-link">
-            Get more from your order Confirmation emails by promoting other complementary products!
-            Learn more about our new <a href="http://bit.ly/smtp-esp" target="_blank">Enhanced Transactional Email</a> extension.
-        </p>
+
+        <hr class="style" />
+
+        <h2 class="center">What next? Take a look at our other top extensions.</h2>
+        <table class="tg">
+            <tbody><tr>
+                <td class="tg-baqh" colspan="2">
+                    <a href="https://bit.ly/smtp-ex-ee" target="_blank">Enhanced E-commerce for Google Tag Manager</a>
+                </td>
+            </tr><tr>
+                <th class="tg-baqh">
+                    <a href="https://bit.ly/smtp-ex-esp" target="_blank">Enhanced Success Page</a>
+                </th>
+                <th class="tg-baqh">
+                    <a href="https://bit.ly/smtp-ex-ete" target="_blank">Enhanced Sales Email</a>
+                </th>
+            </tr>
+            </tr>
+            </tbody>
+        </table>
     <?php else : ?>
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
             <circle class="path circle" fill="none" stroke="#D06079" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
@@ -123,9 +154,16 @@
         <div class="error-wrapper">
             <p><?php echo $block->formatErrorMsg($result['msg']) ?> </p>
         </div>
+
+        <hr class="style" />
+
+        <h2 class="center">Need help with configuring your SMTP?</h2>
+        <p>
+            Our affordable technical support include help with installation, usage, configuration, and troubleshooting our Free Open Source extensions.
+        </p>
         <p>
             Visit <a href="http://bit.ly/MpSmtpEr" target="_blank">www.magepal.com</a> to learn more about our
-            <a href="https://www.magepal.com/help/docs/smtp-magento/?utm_source=Custom%20SMTP&utm_medium=Premium%20Support%20Admin%20Error" target="_blank">Premium Support</a>.
+            <a href="https://www.magepal.com/magento2/extensions/custom-smtp.html?utm_source=Custom%20SMTP&utm_medium=Premium%20Support%20Admin%20Error" target="_blank">Premium 30 Minutes Paid Support</a>.
         </p>
     <?php endif; ?>
 <?php endforeach; ?>
