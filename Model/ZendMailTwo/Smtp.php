@@ -87,14 +87,14 @@ class Smtp
             /** @var Message $zendMessage */
             $zendMessage =  $zendMessageObject->getValue($message);
 
-            if($message instanceof EmailMessageInterface) {
+            if ($message instanceof EmailMessageInterface) {
                 $encoding = $message->getEncoding();
             } else {
                 $encoding = $zendMessage->getEncoding();
             }
 
-            if(!$zendMessage instanceof Message) {
-                throw new Exception('Not instance of Message');
+            if (!$zendMessage instanceof Message) {
+                throw new MailException('Not instance of Message');
             }
 
         } catch (Exception $e) {
