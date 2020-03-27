@@ -23,7 +23,6 @@ use MagePal\GmailSmtpApp\Helper\Data;
 
 /**
  * Class Email
- * @package MagePal\GmailSmtpApp\Model
  */
 class Email
 {

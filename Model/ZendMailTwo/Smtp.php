@@ -22,7 +22,6 @@ use Magento\Framework\Mail\EmailMessageInterface;
 /**
  * Class Smtp
  * For Magento > 2.2.7
- * @package MagePal\GmailSmtpApp\Model\ZendMailTwo
  */
 
 class Smtp

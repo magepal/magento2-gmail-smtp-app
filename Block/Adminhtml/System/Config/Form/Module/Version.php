@@ -15,7 +15,6 @@ use Magento\Framework\Module\ModuleListInterface;
 
 /**
  * Class Version
- * @package MagePal\GmailSmtpApp\Block\Adminhtml\System\Config\Form\Module
  */
 class Version extends Field
 {

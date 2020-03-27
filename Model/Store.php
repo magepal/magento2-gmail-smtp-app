@@ -9,7 +9,6 @@ namespace MagePal\GmailSmtpApp\Model;
 
 /**
  * Class Store
- * @package MagePal\GmailSmtpApp\Model
  */
 class Store
 {

@@ -13,7 +13,6 @@ use MagePal\GmailSmtpApp\Model\Store;
 
 /**
  * Class TransportBuilderByStorePlugin
- * @package MagePal\GmailSmtpApp\Plugin\Mail\Template
  */
 class TransportBuilderByStorePlugin
 {

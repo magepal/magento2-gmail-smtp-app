@@ -22,7 +22,6 @@ use \Magento\Framework\Mail\EmailMessageInterface;
 
 /**
  * Class TransportPlugin
- * @package MagePal\GmailSmtpApp\Plugin\Mail
  */
 class TransportPlugin extends Zend_Mail_Transport_Smtp
 {

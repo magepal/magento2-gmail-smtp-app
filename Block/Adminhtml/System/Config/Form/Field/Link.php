@@ -13,7 +13,6 @@ use Magento\Framework\Data\Form\Element\AbstractElement;
 
 /**
  * Class Link
- * @package MagePal\GmailSmtpApp\Block\Adminhtml\System\Config\Form\Field
  */
 class Link extends Field
 {

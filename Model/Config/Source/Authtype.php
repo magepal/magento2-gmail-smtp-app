@@ -10,7 +10,6 @@ use Magento\Framework\Option\ArrayInterface;
 
 /**
  * Class Authtype
- * @package MagePal\GmailSmtpApp\Model\Config\Source
  */
 class Authtype implements ArrayInterface
 {

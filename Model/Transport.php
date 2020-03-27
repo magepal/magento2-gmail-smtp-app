@@ -18,7 +18,6 @@ use Zend_Mail_Transport_Sendmail;
 
 /**
  * Class Transport
- * @package MagePal\GmailSmtpApp\Model
  */
 class Transport extends Zend_Mail_Transport_Sendmail implements TransportInterface
 {
