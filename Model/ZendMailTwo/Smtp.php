@@ -201,8 +201,8 @@ class Smtp
             $options->setConnectionConfig($connectionConfig);
         }
 
-        foreach($message->getHeaders()->toArray() as $headerKey => $headerValue) {
-            if(\Zend\Mime\Mime::isPrintable($headerValue)) {
+        foreach ($message->getHeaders()->toArray() as $headerKey => $headerValue) {
+            if (\Zend\Mime\Mime::isPrintable($headerValue)) {
                 $message->getHeaders()->get($headerKey)->setEncoding('ASCII');
             } else {
                 $message->getHeaders()->get($headerKey)->setEncoding('utf-8');
