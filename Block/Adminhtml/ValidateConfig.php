@@ -214,7 +214,7 @@ class ValidateConfig extends Template
         $hasError = false;
 
         foreach ($settings as $functionName) {
-            $result = call_user_func([$this, $functionName]);
+            $result = $this->$functionName();
 
             if (array_key_exists('has_error', $result)) {
                 if ($result['has_error'] === true) {
