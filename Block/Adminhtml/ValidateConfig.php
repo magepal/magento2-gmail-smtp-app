@@ -305,6 +305,7 @@ class ValidateConfig extends Template
         try {
             //only way to prevent zend from giving a error
             if (!$mail->send($transport) instanceof Zend_Mail) {
+                $result =  $this->error(true, __('Invalid class, not instance of Zend Mail'));
             }
         } catch (Exception $e) {
             $result =  $this->error(true, __($e->getMessage()));

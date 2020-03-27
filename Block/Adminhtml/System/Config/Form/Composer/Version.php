@@ -112,7 +112,7 @@ class Version extends Field
                 return !empty($data->version) ? $data->version : __('Unknown');
             }
         } catch (Exception $e) {
-            //
+            return 'Unknown';
         }
 
         return 'Unknown';

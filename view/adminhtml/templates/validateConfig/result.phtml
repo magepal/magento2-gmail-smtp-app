@@ -12,39 +12,48 @@
         display: block;
         margin: 20px auto 0;
     }
+
     .path {
         stroke-dasharray: 1000;
         stroke-dashoffset: 0;
     }
+
     .path.circle {
         -webkit-animation: dash 0.9s ease-in-out;
         animation: dash 0.9s ease-in-out;
     }
+
     .path.line {
         stroke-dashoffset: 1000;
         -webkit-animation: dash 0.9s 0.35s ease-in-out forwards;
         animation: dash 0.9s 0.35s ease-in-out forwards;
     }
+
     .path.check {
         stroke-dashoffset: -100;
         -webkit-animation: dash-check 0.9s 0.35s ease-in-out forwards;
         animation: dash-check 0.9s 0.35s ease-in-out forwards;
     }
+
     .modal-popup p {
         text-align: center;
         margin: 20px 0 30px;
         font-size: 1.25em;
     }
+
     .modal-popup p.success {
         color: #73AF55;
         font-size: 1.75em;
     }
+
     .modal-popup p.error {
         color: #D06079;
     }
+
     h2.center {
         text-align: center;
     }
+
     @-webkit-keyframes dash {
         0% {
             stroke-dashoffset: 1000;
@@ -53,6 +62,7 @@
             stroke-dashoffset: 0;
         }
     }
+
     @keyframes dash {
         0% {
             stroke-dashoffset: 1000;
@@ -61,6 +71,7 @@
             stroke-dashoffset: 0;
         }
     }
+
     @-webkit-keyframes dash-check {
         0% {
             stroke-dashoffset: -100;
@@ -69,6 +80,7 @@
             stroke-dashoffset: 900;
         }
     }
+
     @keyframes dash-check {
         0% {
             stroke-dashoffset: -100;
@@ -77,35 +89,68 @@
             stroke-dashoffset: 900;
         }
     }
-    p.external-link{
+
+    p.external-link {
         font-style: italic;
     }
+
     div.error-wrapper {
         max-height: 300px;
         overflow: scroll;
         margin-bottom: 40px;
     }
-    div.error-wrapper p{
+
+    div.error-wrapper p {
         text-align: left;
     }
+
     .modal-popup.confirm .modal-inner-wrap {
         width: 85rem;
         padding-right: 25px;
     }
-    .modal-popup.confirm .modal-inner-wrap .modal-content{
+
+    .modal-popup.confirm .modal-inner-wrap .modal-content {
         padding-right: 0;
     }
+
     hr.style {
         border: 0;
         height: 1px;
         background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-        margin-bottom: 30px ;
+        margin-bottom: 30px;
     }
 
-    .tg  {border-collapse:collapse;border-spacing:0;width:100%; border:none;margin-bottom: 50px;}
-    .tg td{font-family:Arial, sans-serif;font-size:14px;padding:15px 5px;border:none;overflow:hidden;word-break:normal;}
-    .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:15px 5px;border-width:1px;overflow:hidden;word-break:normal;}
-    .tg .tg-baqh{text-align:center;vertical-align:top}
+    .tg {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: none;
+        margin-bottom: 50px;
+    }
+
+    .tg td {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        padding: 15px 5px;
+        border: none;
+        overflow: hidden;
+        word-break: normal;
+    }
+
+    .tg th {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        padding: 15px 5px;
+        border-width: 1px;
+        overflow: hidden;
+        word-break: normal;
+    }
+
+    .tg .tg-baqh {
+        text-align: center;
+        vertical-align: top
+    }
 </style>
 
 <!--[if lte IE 9]>
@@ -119,11 +164,13 @@
 <?php foreach ($block->verify() as $result) : ?>
     <?php if ($result['has_error'] === false) : ?>
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
-            <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
-            <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
+            <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1"
+                    cy="65.1" r="62.1"/>
+            <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round"
+                      stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
         </svg>
         <p class="success">Congratulations, You Did It!</p>
-        <p><?php echo $result['msg'] ?></p>
+        <p><?= $result['msg'] ?></p>
 
         <hr class="style" />
 
@@ -146,24 +193,29 @@
         </table>
     <?php else : ?>
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
-            <circle class="path circle" fill="none" stroke="#D06079" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
-            <line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3"/>
-            <line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2"/>
+            <circle class="path circle" fill="none" stroke="#D06079" stroke-width="6" stroke-miterlimit="10" cx="65.1"
+                    cy="65.1" r="62.1"/>
+            <line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round"
+                  stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3"/>
+            <line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round"
+                  stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2"/>
         </svg>
         <p class="error">Bummer!</p>
         <div class="error-wrapper">
-            <p><?php echo $block->formatErrorMsg($result['msg']) ?> </p>
+            <p><?= $block->formatErrorMsg($result['msg']) ?> </p>
         </div>
 
-        <hr class="style" />
+        <hr class="style"/>
 
         <h2 class="center">Need help with configuring your SMTP?</h2>
         <p>
-            Our affordable technical support include help with installation, usage, configuration, and troubleshooting our Free Open Source extensions.
+            Our affordable technical support include help with installation, usage, configuration, and troubleshooting
+            our Free Open Source extensions.
         </p>
         <p>
             Visit <a href="http://bit.ly/MpSmtpEr" target="_blank">www.magepal.com</a> to learn more about our
-            <a href="https://www.magepal.com/magento2/extensions/custom-smtp.html?utm_source=Custom%20SMTP&utm_medium=Premium%20Support%20Admin%20Error" target="_blank">Premium 30 Minutes Paid Support</a>.
+            <a href="https://www.magepal.com/magento2/extensions/custom-smtp.html?utm_source=Custom%20SMTP&utm_medium=Premium%20Support%20Admin%20Error"
+               target="_blank">Premium 30 Minutes Paid Support</a>.
         </p>
     <?php endif; ?>
 <?php endforeach; ?>
