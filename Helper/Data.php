@@ -150,7 +150,11 @@ class Data extends AbstractHelper
      */
     public function getConfigSetReplyTo($store_id = null)
     {
-        return (bool) $this->getConfigValue('set_reply_to', $store_id);
+        return $this->scopeConfig->isSetFlag(
+            'system/gmailsmtpapp/set_reply_to',
+            ScopeInterface::SCOPE_STORE,
+            $store_id
+        );
     }
 
     /**
