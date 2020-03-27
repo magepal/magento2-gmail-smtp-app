@@ -161,8 +161,8 @@
 
 <?php /** @var $block MagePal\GmailSmtpApp\Block\Adminhtml\EmailTest  */ ?>
 
-<?php foreach ($block->verify() as $result) : ?>
-    <?php if ($result['has_error'] === false) : ?>
+<?php foreach ($block->verify() as $result): ?>
+    <?php if ($result['has_error'] === false): ?>
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
             <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1"
                     cy="65.1" r="62.1"/>
@@ -191,7 +191,7 @@
             </tr>
             </tbody>
         </table>
-    <?php else : ?>
+    <?php else: ?>
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
             <circle class="path circle" fill="none" stroke="#D06079" stroke-width="6" stroke-miterlimit="10" cx="65.1"
                     cy="65.1" r="62.1"/>
