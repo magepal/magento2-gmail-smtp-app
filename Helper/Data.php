@@ -270,9 +270,9 @@ class Data extends AbstractHelper
      * @param bool $testMode
      * @return Data
      */
-    public function setTestMode(bool $testMode)
+    public function setTestMode($testMode)
     {
-        $this->testMode = $testMode;
+        $this->testMode = (bool) $testMode;
         return $this;
     }
 }
