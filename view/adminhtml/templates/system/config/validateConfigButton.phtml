@@ -13,7 +13,7 @@
     {
         "#gmailsmtpapp_debug_result_button": {
             "magePalGmailSmtpAppValidateConfig": {
-                "postUrl":"<?= $block->getAdminUrl() ?>"
+                "postUrl":"<?= $block->escapeUrl($block->getAdminUrl()) ?>"
             }
         }
     }
