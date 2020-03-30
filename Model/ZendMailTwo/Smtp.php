@@ -110,7 +110,7 @@ class Smtp
      * @throws MailException
      */
     public function sendSmtpMessage(
-        MessageInterface $message
+        $message
     ) {
         $dataHelper = $this->dataHelper;
         $dataHelper->setStoreId($this->storeModel->getStoreId());
