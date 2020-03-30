@@ -201,10 +201,13 @@ class Smtp
         }
 
         foreach ($message->getHeaders()->toArray() as $headerKey => $headerValue) {
-            if (\Zend\Mime\Mime::isPrintable($headerValue)) {
-                $message->getHeaders()->get($headerKey)->setEncoding('ASCII');
-            } else {
-                $message->getHeaders()->get($headerKey)->setEncoding('utf-8');
+            $mailHeader = $message->getHeaders()->get($headerKey);
+            if ($mailHeader instanceof \Zend\Mail\Header\HeaderInterface) {
+                $this->updateMailHeader($mailHeader);
+            } elseif ($mailHeader instanceof \ArrayIterator) {
+                foreach ($mailHeader as $header) {
+                    $this->updateMailHeader($header);
+                }
             }
         }
 
@@ -217,6 +220,20 @@ class Smtp
                 new Phrase($e->getMessage()),
                 $e
             );
+        }
+    }
+
+    /**
+     * @param $header
+     */
+    public function updateMailHeader($header)
+    {
+        if ($header instanceof \Zend\Mail\Header\HeaderInterface) {
+            if (\Zend\Mime\Mime::isPrintable($header->getFieldValue())) {
+                $header->setEncoding('ASCII');
+            } else {
+                $header->setEncoding('utf-8');
+            }
         }
     }
 
