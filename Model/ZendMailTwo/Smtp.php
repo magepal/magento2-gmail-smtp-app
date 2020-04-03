@@ -23,7 +23,6 @@ use Magento\Framework\Mail\EmailMessageInterface;
  * Class Smtp
  * For Magento > 2.2.7
  */
-
 class Smtp
 {
     /**
@@ -68,6 +67,10 @@ class Smtp
         return $this;
     }
 
+    /**
+     * @param $message
+     * @return Message
+     */
     protected function convertMessage($message)
     {
         /**
@@ -95,7 +98,6 @@ class Smtp
             if (!$zendMessage instanceof Message) {
                 throw new MailException('Not instance of Message');
             }
-
         } catch (Exception $e) {
             $zendMessage = Message::fromString($message->getRawMessage());
         }
@@ -115,32 +117,41 @@ class Smtp
         $dataHelper = $this->dataHelper;
         $dataHelper->setStoreId($this->storeModel->getStoreId());
 
+        /** @var Message $message */
         $message = $this->convertMessage($message);
 
-        //Set reply-to path
-        switch ($dataHelper->getConfigSetReturnPath()) {
-            case 1:
-                $returnPathEmail = $message->getFrom()->count() ? $message->getFrom() : $this->getFromEmailAddress();
-                break;
-            case 2:
-                $returnPathEmail = $dataHelper->getConfigReturnPathEmail();
-                break;
-            default:
-                $returnPathEmail = null;
-                break;
-        }
+        $this->setReplyToPath($message);
+        $this->setSender($message);
 
-        if (!$message->getReplyTo()->count() && $dataHelper->getConfigSetReplyTo()) {
-            if (is_string($returnPathEmail)) {
-                $name = $this->getFromName();
-                $message->setReplyTo(trim($returnPathEmail), $name);
-            } elseif ($returnPathEmail instanceof AddressList) {
-                foreach ($returnPathEmail as $address) {
-                    $message->setReplyTo($address);
+        foreach ($message->getHeaders()->toArray() as $headerKey => $headerValue) {
+            $mailHeader = $message->getHeaders()->get($headerKey);
+            if ($mailHeader instanceof \Zend\Mail\Header\HeaderInterface) {
+                $this->updateMailHeader($mailHeader);
+            } elseif ($mailHeader instanceof \ArrayIterator) {
+                foreach ($mailHeader as $header) {
+                    $this->updateMailHeader($header);
                 }
             }
         }
 
+        try {
+            $transport = new SmtpTransport();
+            $transport->setOptions($this->getSmtpOptions());
+            $transport->send($message);
+        } catch (Exception $e) {
+            throw new MailException(
+                new Phrase($e->getMessage()),
+                $e
+            );
+        }
+    }
+
+    /**
+     * @param Message $message
+     */
+    protected function setSender($message)
+    {
+        $dataHelper = $this->dataHelper;
         //Set from address
         switch ($dataHelper->getConfigSetFrom()) {
             case 1:
@@ -171,6 +182,46 @@ class Smtp
             $result = $this->storeModel->getFrom();
             $message->setFrom($result['email'], $result['name']);
         }
+    }
+
+    /**
+     * @param Message $message
+     */
+    protected function setReplyToPath($message)
+    {
+        $dataHelper = $this->dataHelper;
+
+        //Set reply-to path
+        switch ($dataHelper->getConfigSetReturnPath()) {
+            case 1:
+                $returnPathEmail = $message->getFrom()->count() ? $message->getFrom() : $this->getFromEmailAddress();
+                break;
+            case 2:
+                $returnPathEmail = $dataHelper->getConfigReturnPathEmail();
+                break;
+            default:
+                $returnPathEmail = null;
+                break;
+        }
+
+        if (!$message->getReplyTo()->count() && $dataHelper->getConfigSetReplyTo()) {
+            if (is_string($returnPathEmail)) {
+                $name = $this->getFromName();
+                $message->setReplyTo(trim($returnPathEmail), $name);
+            } elseif ($returnPathEmail instanceof AddressList) {
+                foreach ($returnPathEmail as $address) {
+                    $message->setReplyTo($address);
+                }
+            }
+        }
+    }
+
+    /**
+     * @return SmtpOptions
+     */
+    protected function getSmtpOptions()
+    {
+        $dataHelper = $this->dataHelper;
 
         //set config
         $options   = new SmtpOptions([
@@ -200,27 +251,7 @@ class Smtp
             $options->setConnectionConfig($connectionConfig);
         }
 
-        foreach ($message->getHeaders()->toArray() as $headerKey => $headerValue) {
-            $mailHeader = $message->getHeaders()->get($headerKey);
-            if ($mailHeader instanceof \Zend\Mail\Header\HeaderInterface) {
-                $this->updateMailHeader($mailHeader);
-            } elseif ($mailHeader instanceof \ArrayIterator) {
-                foreach ($mailHeader as $header) {
-                    $this->updateMailHeader($header);
-                }
-            }
-        }
-
-        try {
-            $transport = new SmtpTransport();
-            $transport->setOptions($options);
-            $transport->send($message);
-        } catch (Exception $e) {
-            throw new MailException(
-                new Phrase($e->getMessage()),
-                $e
-            );
-        }
+        return $options;
     }
 
     /**
