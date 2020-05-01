@@ -16,7 +16,6 @@ use MagePal\GmailSmtpApp\Model\Email;
 use Zend_Mail;
 use Zend_Mail_Exception;
 use Zend_Mail_Transport_Smtp;
-use Zend_Validate;
 use Zend_Validate_Exception;
 
 class ValidateConfig extends Template
@@ -282,7 +281,7 @@ class ValidateConfig extends Template
         $transport = new Zend_Mail_Transport_Smtp($smtpHost, $smtpConf);
 
         $from = trim($this->getConfig('from_email'));
-        $from = Zend_Validate::is($from, 'EmailAddress') ? $from : $username;
+        $from = filter_var($from, FILTER_VALIDATE_EMAIL) ? $from : $username;
         $this->fromAddress = $from;
 
         //Create email
