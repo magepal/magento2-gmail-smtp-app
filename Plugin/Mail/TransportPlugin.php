@@ -17,10 +17,9 @@ use MagePal\GmailSmtpApp\Model\ZendMailOne\Smtp as ZendMailOneSmtp;
 use MagePal\GmailSmtpApp\Model\ZendMailTwo\Smtp as ZendMailTwoSmtp;
 use Zend_Mail;
 use Zend_Mail_Exception;
-use Zend_Mail_Transport_Smtp;
 use \Magento\Framework\Mail\EmailMessageInterface;
 
-class TransportPlugin extends Zend_Mail_Transport_Smtp
+class TransportPlugin
 {
     /**
      * @var Data

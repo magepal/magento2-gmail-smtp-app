@@ -13,13 +13,13 @@ use Magento\Framework\Mail\MessageInterface;
 use Magento\Framework\Phrase;
 use MagePal\GmailSmtpApp\Helper\Data;
 use MagePal\GmailSmtpApp\Model\Store;
-use Zend_mail;
+use Zend_Mail;
 use Zend_Mail_Exception;
 use Zend_Mail_Transport_Smtp;
 
 /**
  * Class Smtp
- * For Magento < 2.2.8
+ * For Magento <= 2.2.7
  */
 
 class Smtp extends Zend_Mail_Transport_Smtp
