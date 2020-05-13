@@ -21,7 +21,7 @@ use Magento\Framework\Mail\EmailMessageInterface;
 
 /**
  * Class Smtp
- * For Magento > 2.2.7
+ * For Magento >= 2.2.8
  */
 class Smtp
 {
