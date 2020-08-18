@@ -11,6 +11,8 @@
 
 Configure Magento 2 to send all transactional email using Google App, Gmail, Amazon Simple Email Service (SES), Microsoft Office365 or any other SMTP servers. 
 
+<a href="https://bit.ly/mp-gh-smpt"><img src="https://user-images.githubusercontent.com/1415141/90457464-9a4ce380-e0c9-11ea-8aea-61d4f7cb679b.jpg" alt="Magento SMTP Extension" /></a>
+
 Sending transactional emails to customers is a vital part of running an e-commerce store. Our free custom Magento extension integrates with all major email service provider and third-party SMTP server to reliably deliver messages in customers' inbox.
 
 #### What is SMTP - Simple Mail Transfer Protocol
