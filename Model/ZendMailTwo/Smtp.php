@@ -274,7 +274,7 @@ class Smtp
     public function getFromEmailAddress()
     {
         $result = $this->storeModel->getFrom();
-        return $result['email'];
+        return $result['email'] ?? '';
     }
 
     /**
@@ -283,6 +283,6 @@ class Smtp
     public function getFromName()
     {
         $result = $this->storeModel->getFrom();
-        return $result['name'];
+        return $result['name'] ?? '';
     }
 }
