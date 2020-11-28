@@ -18,7 +18,7 @@ Sending transactional emails to customers is a vital part of running an e-commer
 #### What is SMTP - Simple Mail Transfer Protocol
 SMTP or Simple Mail Transfer Protocol allows you to send emails from your Magento 2 store through a specific third-party mail SMTP server. For example, if you want to use your Gmail, Amazon, Microsoft or any other mail server account to send email from your Magento web store, all you need is to configure that mail server setting in our extension in Magento without having to do any complex server configuration.
 
-![Magento SMTP Email Extension](https://image.ibb.co/ecWinc/Mage_Pal_Magento_2_SMTP_Extension.gif)
+<a href="https://bit.ly/mp-gh-smpt"><img src="https://image.ibb.co/ecWinc/Mage_Pal_Magento_2_SMTP_Extension.gif" alt="Magento SMTP Email Extension" /></a>
 
 #### Why use a Custom SMTP Server with Magento
 
