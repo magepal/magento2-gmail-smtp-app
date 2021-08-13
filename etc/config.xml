@@ -10,7 +10,7 @@
     <default>
         <system>
             <gmailsmtpapp>
-                <active>1</active>
+                <active>0</active>
                 <name>localhost</name>
                 <ssl>ssl</ssl>
                 <auth>LOGIN</auth>
