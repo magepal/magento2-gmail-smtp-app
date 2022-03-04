@@ -30,6 +30,17 @@ All you need is either an (i) free Gmail account, (ii) paid Google Apps account 
 
 Learn more about our [custom SMTP](https://www.magepal.com/magento2/extensions/custom-smtp.html?utm_source=Custom%20SMTP&utm_medium=GitHub%20Learn%20More) extension.
 
+
+> ### NOTE - Gmail / Google Account
+>To help keep your account secure, starting May 30, 2022, ​​Google will no longer support the use of third-party apps or devices which ask you to sign in to your Google Account using only your username and password.
+
+>Please note this deadline does not apply to Google Workspace or Google Cloud Identity customers. The enforcement date for these customers will be announced on the Workspace blog at a later date.
+
+>For more information, please continue reading.
+
+>Special Note on Apple Device Sign-Ins. Users who have not recently signed into their Google Account using only username and password will be able to only make new sign in attempts using the Google account type starting from February 28, 2022. Existing users may continue to sign into their Google Account using their username and password until May 30, 2022.
+
+
 ### Benefits of using Gmail SMTP
 Since Google's, Gmail and G Suite SMTP server does not use Port 25, you'll reduce the probability that an ISP might block your email or flag it as SPAM. Also, all your emails sent from Magento will be searchable and backed-up in your email account on Google's servers.
 
