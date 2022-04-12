@@ -5,19 +5,21 @@
  * http://www.magepal.com | support@magepal.com
  */
 
-namespace MagePal\GmailSmtpApp\Model\ZendMailTwo;
+namespace MagePal\GmailSmtpApp\Mail;
 
 use Exception;
+use Laminas\Mail\AddressList;
+use Laminas\Mail\Header\HeaderInterface;
+use Laminas\Mail\Message;
+use Laminas\Mail\Transport\Smtp as SmtpTransport;
+use Laminas\Mail\Transport\SmtpOptions;
+use Laminas\Mime\Mime;
 use Magento\Framework\Exception\MailException;
+use Magento\Framework\Mail\EmailMessageInterface;
 use Magento\Framework\Mail\MessageInterface;
 use Magento\Framework\Phrase;
 use MagePal\GmailSmtpApp\Helper\Data;
 use MagePal\GmailSmtpApp\Model\Store;
-use Zend\Mail\AddressList;
-use Zend\Mail\Message;
-use Zend\Mail\Transport\Smtp as SmtpTransport;
-use Zend\Mail\Transport\SmtpOptions;
-use Magento\Framework\Mail\EmailMessageInterface;
 
 /**
  * Class Smtp
@@ -125,7 +127,7 @@ class Smtp
 
         foreach ($message->getHeaders()->toArray() as $headerKey => $headerValue) {
             $mailHeader = $message->getHeaders()->get($headerKey);
-            if ($mailHeader instanceof \Zend\Mail\Header\HeaderInterface) {
+            if ($mailHeader instanceof HeaderInterface) {
                 $this->updateMailHeader($mailHeader);
             } elseif ($mailHeader instanceof \ArrayIterator) {
                 foreach ($mailHeader as $header) {
@@ -147,6 +149,7 @@ class Smtp
     }
 
     /**
+     *
      * @param Message $message
      */
     protected function setSender($message)
@@ -259,8 +262,8 @@ class Smtp
      */
     public function updateMailHeader($header)
     {
-        if ($header instanceof \Zend\Mail\Header\HeaderInterface) {
-            if (\Zend\Mime\Mime::isPrintable($header->getFieldValue())) {
+        if ($header instanceof HeaderInterface) {
+            if (Mime::isPrintable($header->getFieldValue())) {
                 $header->setEncoding('ASCII');
             } else {
                 $header->setEncoding('utf-8');
