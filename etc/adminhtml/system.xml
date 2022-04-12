@@ -15,13 +15,13 @@
             <label>SMTP Configuration</label>
             <tab>magepal</tab>
             <resource>MagePal_GmailSmtpApp::magepal_gmailsmtpapp</resource>
-            <group id="about" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="0" translate="label">
+            <group id="about_magepal" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="0" translate="label">
                 <attribute type="expanded">1</attribute>
                 <label>About MagePal SMTP</label>
                 <comment>
                     <![CDATA[
-                    <div id="magepal-info">
-                        Copyright © 2020 <a href="https://www.magepal.com/magento2/extensions.html?utm_source=smtp&utm_medium=admin" target="_blank">MagePal, LLC</a>
+                    <div class="magepal-info">
+                        Copyright © 2022 <a href="https://www.magepal.com/magento2/extensions.html?utm_source=smtp&utm_medium=admin" target="_blank">MagePal, LLC</a>
                         <a href="https://www.magepal.com/help/docs/smtp-magento/?utm_source=smtp&utm_medium=admin#documentation" target="_blank">Documentation</a>
                         <a href="https://www.magepal.com/help/docs/smtp-magento/?utm_source=smtp&utm_medium=admin#support">Support</a>
                         <a href="https://www.magepal.com/help/docs/smtp-magento?utm_source=smtp&utm_medium=admin#current_version" target="_blank">Latest Version</a>
@@ -32,29 +32,7 @@
                         Get more from your order confirmation emails by promoting other complementary products!
                         Learn more about our new <a href="http://bit.ly/smtp-esp" target="_blank">Enhanced Transactional Email</a> extension.
                     </div>
-                    <hr style="border-top: 1px solid #e3e3e3" />
-                    <style>
-                        #magepal-info a {
-                            font-weight: bold;
-                            border-left: 2px solid #e3e3e3;
-                            padding-left:10px;
-                            padding-right:10px;
-                            color: #ef7e1e;
-                        }
-
-                        #magepal-info a:first-child {
-                            padding-left: 5px;
-                            border-left: none;
-                        }
-
-                        #magepal-info {
-                            padding-bottom: 5px;
-                        }
-
-                        .section-config.active #magepal_gmailsmtpapp_about-head {
-                            padding-bottom: 0px;
-                        }
-                     </style>
+                    <hr class="magepal-hr" />
                   ]]>
                 </comment>
                 <field id="composer_version" translate="label" type="label" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
@@ -72,8 +50,8 @@
                 <label>SMTP Configuration and Settings (Gmail/Google/AWS/Office365 etc)</label>
                 <comment>
                   <![CDATA[
-                    <div id="magepal-info">
-                        Copyright © 2020 <a href="https://www.magepal.com/magento2/extensions.html?utm_source=smtp&utm_medium=admin" target="_blank">MagePal, LLC</a>
+                    <div class="magepal-info">
+                        Copyright © 2022 <a href="https://www.magepal.com/magento2/extensions.html?utm_source=smtp&utm_medium=admin" target="_blank">MagePal, LLC</a>
                         <a href="https://www.magepal.com/help/docs/smtp-magento/?utm_source=smtp&utm_medium=admin#documentation" target="_blank">Documentation</a>
                         <a href="https://www.magepal.com/help/docs/smtp-magento/?utm_source=smtp&utm_medium=admin#support">Support</a>
                         <a href="https://www.magepal.com/help/docs/smtp-magento?utm_source=smtp&utm_medium=admin#current_version" target="_blank">Latest Version</a>
@@ -84,29 +62,7 @@
                         Get more from your order confirmation emails by promoting other complementary products!
                         Learn more about our new <a href="http://bit.ly/smtp-esp" target="_blank">Enhanced Transactional Email</a> extension.
                     </div>
-                    <hr style="border-top: 1px solid #e3e3e3" />
-                    <style>
-                        #magepal-info a {
-                            font-weight: bold;
-                            border-left: 2px solid #e3e3e3;
-                            padding-left:10px;
-                            padding-right:10px;
-                            color: #ef7e1e;
-                        }
-
-                        #magepal-info a:first-child {
-                            padding-left: 5px;
-                            border-left: none;
-                        }
-
-                        #magepal-info {
-                            padding-bottom: 5px;
-                        }
-
-                        .section-config.active #system_gmailsmtpapp-head {
-                            padding-bottom: 0px;
-                        }
-                     </style>
+                    <hr class="magepal-hr" />
                   ]]>
                 </comment>
 

@@ -10,6 +10,7 @@
     <module name="MagePal_GmailSmtpApp" setup_version="1.5.1">
         <sequence>
             <module name="Magento_Email"/>
+            <module name="MagePal_Core"/>
         </sequence>
     </module>
 </config>

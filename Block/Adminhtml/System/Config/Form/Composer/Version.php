@@ -15,7 +15,6 @@ use Magento\Framework\Component\ComponentRegistrar;
 use Magento\Framework\Component\ComponentRegistrarInterface;
 use Magento\Framework\Data\Form\Element\AbstractElement;
 use Magento\Framework\Filesystem\Directory\ReadFactory;
-use Magento\Framework\Phrase;
 
 class Version extends Field
 {
@@ -94,7 +93,7 @@ class Version extends Field
      * Get module composer version
      *
      * @param $moduleName
-     * @return Phrase|string|void
+     * @return string
      */
     public function getComposerVersion($moduleName)
     {

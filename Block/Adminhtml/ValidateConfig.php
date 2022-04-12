@@ -134,7 +134,7 @@ class ValidateConfig extends Template
     }
 
     /**
-     * @param null $key
+     * @param string $key
      * @param string $value
      * @return array|mixed|string
      */
@@ -236,7 +236,6 @@ class ValidateConfig extends Template
      * Todo: update to new Zend Framework SMTP
      * @return array
      * @throws Zend_Mail_Exception
-     * @throws Zend_Validate_Exception
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     protected function validateServerEmailSetting()
@@ -282,13 +281,13 @@ class ValidateConfig extends Template
 
         $from = trim($this->getConfig('from_email'));
         $from = filter_var($from, FILTER_VALIDATE_EMAIL) ? $from : $username;
-        $this->fromAddress = $from;
+        $this->fromAddress = filter_var($username, FILTER_VALIDATE_EMAIL) ? $username : $from;
 
         //Create email
         $name = 'Test from MagePal SMTP';
         $mail = new Zend_Mail();
         $mail->setFrom($this->fromAddress, $name);
-        $mail->addTo($this->toAddress, $this->toAddress);
+        $mail->addTo($this->toAddress, 'MagePal SMTP');
         $mail->setSubject('Hello from MagePal SMTP (1 of 2)');
 
         $htmlBody = $this->_email->setTemplateVars(['hash' => $this->hash])->getEmailBody();
@@ -325,7 +324,7 @@ class ValidateConfig extends Template
                 ->setTemplateVars(['hash' => $this->hash])
                 ->send(
                     ['email' => $this->fromAddress, 'name' => 'Test from MagePal SMTP'],
-                    ['email' => $this->toAddress, 'name' => $this->toAddress]
+                    ['email' => $this->toAddress, 'name' => "MagePal SMTP"]
                 );
         } catch (Exception $e) {
             $result = $this->error(true, __($e->getMessage()));
