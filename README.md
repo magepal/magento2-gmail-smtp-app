@@ -1,4 +1,4 @@
-<a href="https://www.magepal.com" title="Magento Extensions" ><img src="https://image.ibb.co/dHBkYH/Magepal_logo.png" width="100" align="right" title="Magento Custom Modules" /></a>
+<a href="https://www.magepal.com" title="Magento Extensions" ><img src="https://image.ibb.co/dHBkYH/Magepal_logo.png" width="100" align="right" title="Magento Adobe Commerce" /></a>
 
 # Magento 2 SMTP Extension - Gmail, G Suite, Amazon SES, Office 365, Mailgun, SendGrid, Mandrill and other SMTP servers.
 
@@ -7,9 +7,9 @@
 [![GitHub stars](https://img.shields.io/github/stars/magepal/magento2-gmail-smtp-app.svg)](https://www.magepal.com/magento2/extensions/custom-smtp.html)
 [![GitHub forks](https://img.shields.io/github/forks/magepal/magento2-gmail-smtp-app.svg)](https://www.magepal.com/magento2/extensions/custom-smtp.html)
 
-##### For Magento 2.0.x, 2.1.x, 2.2.x, 2.3.x and 2.4.x
+##### For Magento / Adobe Commerce 2.0.x, 2.1.x, 2.2.x, 2.3.x and 2.4.x
 
-Configure Magento 2 to send all transactional emails using Google App, Gmail, Amazon Simple Email Service (SES), Microsoft Office365 or any other SMTP servers.
+Configure Magento 2 / Adobe Commerce to send all transactional emails using Google App, Gmail, Amazon Simple Email Service (SES), Microsoft Office365 or any other SMTP servers.
 
 <a href="https://bit.ly/mp-gh-smpt"><img src="https://user-images.githubusercontent.com/1415141/90457464-9a4ce380-e0c9-11ea-8aea-61d4f7cb679b.jpg" alt="Magento SMTP Extension" /></a>
 
@@ -61,11 +61,11 @@ Learn more about our new <a href="https://www.magepal.com/enhanced-transactional
 
 ### Documentation
 
- - [How to Install SMTP Magento 2 Extension](https://www.magepal.com/help/docs/smtp-magento/?utm_source=smtp&utm_medium=github#installation)
+ - [How to Install SMTP Magento 2 / Adobe Commerce Extension](https://www.magepal.com/help/docs/smtp-magento/?utm_source=smtp&utm_medium=github#installation)
 
-- [How to setup Magento 2 SMTP Extension](https://www.magepal.com/help/docs/smtp-magento/?utm_source=smtp&utm_medium=github#configuration)
+- [How to setup Magento 2 / Adobe Commerce SMTP Extension](https://www.magepal.com/help/docs/smtp-magento/?utm_source=smtp&utm_medium=github#configuration)
 
-- [How to debugging Magento 2 SMTP Extension](https://www.magepal.com/help/docs/smtp-magento/?utm_source=smtp&utm_medium=github#debug)
+- [How to debugging Magento 2 / Adobe Commerce SMTP Extension](https://www.magepal.com/help/docs/smtp-magento/?utm_source=smtp&utm_medium=github#debug)
 
 
 ### SMTP Service Providers
@@ -115,7 +115,7 @@ Need help setting up or want to customize this extension to meet your business n
 Magento 2 Extensions
 ---
 - [Custom SMTP](https://www.magepal.com/magento2/extensions/custom-smtp.html)
-- [Catalog Hover Image for Magento](https://www.magepal.com/magento2/extensions/catalog-hover-image-for-magento.html)
+- [Catalog Hover Image for Adobe Commerce](https://www.magepal.com/magento2/extensions/catalog-hover-image-for-magento.html)
 - [Enhanced Success Page for Magento 2](https://www.magepal.com/magento2/extensions/enhanced-success-page.html)
 - [Enhanced Transactional Emails for Magento 2](https://www.magepal.com/magento2/extensions/enhanced-transactional-emails.html)
 - [Google Tag Manager](https://www.magepal.com/magento2/extensions/google-tag-manager.html)
