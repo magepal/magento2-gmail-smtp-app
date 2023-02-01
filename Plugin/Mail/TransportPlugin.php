@@ -16,7 +16,6 @@ use MagePal\GmailSmtpApp\Helper\Data;
 use MagePal\GmailSmtpApp\Mail\SmtpFactory;
 use MagePal\GmailSmtpApp\Mail\Smtp;
 use MagePal\GmailSmtpApp\Model\Store;
-use Zend_Mail_Exception;
 
 class TransportPlugin
 {
@@ -55,7 +54,6 @@ class TransportPlugin
      * @param TransportInterface $subject
      * @param Closure $proceed
      * @throws MailException
-     * @throws Zend_Mail_Exception
      */
     public function aroundSendMessage(
         TransportInterface $subject,
