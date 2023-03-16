@@ -51,7 +51,7 @@
                 <comment>
                   <![CDATA[
                     <div class="magepal-info">
-                        Copyright © 2022 <a href="https://www.magepal.com/magento2/extensions.html?utm_source=smtp&utm_medium=admin" target="_blank">MagePal, LLC</a>
+                        Copyright © 2023 <a href="https://www.magepal.com/magento2/extensions.html?utm_source=smtp&utm_medium=admin" target="_blank">MagePal, LLC</a>
                         <a href="https://www.magepal.com/help/docs/smtp-magento/?utm_source=smtp&utm_medium=admin#documentation" target="_blank">Documentation</a>
                         <a href="https://www.magepal.com/help/docs/smtp-magento/?utm_source=smtp&utm_medium=admin#support">Support</a>
                         <a href="https://www.magepal.com/help/docs/smtp-magento?utm_source=smtp&utm_medium=admin#current_version" target="_blank">Latest Version</a>
@@ -61,6 +61,8 @@
                     <div id="magepal-promo">
                         Get more from your order confirmation emails by promoting other complementary products!
                         Learn more about our new <a href="http://bit.ly/smtp-esp" target="_blank">Enhanced Transactional Email</a> extension.
+                        <br/></br>
+                        Are you tired of dealing with the hassle of managing email password? Don't wait any longer to upgrade to OAuth. Contact us at <a href="mailto:oauth.smtp@MagePal.com">oauth.smtp@MagePal.com</a> to learn more about our revolutionary OAuth SMTP Extension.
                     </div>
                     <hr class="magepal-hr" />
                   ]]>
