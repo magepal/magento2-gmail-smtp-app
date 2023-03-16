@@ -9,6 +9,10 @@
 
 ##### For Magento / Adobe Commerce 2.0.x, 2.1.x, 2.2.x, 2.3.x and 2.4.x
 
+
+### OAuth SMTP Extension
+Are you tired of dealing with the hassle of managing email password? Don't wait any longer to upgrade to OAuth. Contact us at <a href="mailto:oauth.smtp@MagePal.com">oauth.smtp@MagePal.com</a> to learn more about our revolutionary OAuth SMTP Extension.
+
 Configure Magento 2 / Adobe Commerce to send all transactional emails using Google App, Gmail, Amazon Simple Email Service (SES), Microsoft Office365 or any other SMTP servers.
 
 <a href="https://bit.ly/mp-gh-smpt"><img src="https://user-images.githubusercontent.com/1415141/90457464-9a4ce380-e0c9-11ea-8aea-61d4f7cb679b.jpg" alt="Magento SMTP Extension" /></a>
