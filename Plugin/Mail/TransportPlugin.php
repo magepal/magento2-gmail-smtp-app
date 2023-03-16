@@ -67,6 +67,7 @@ class TransportPlugin
             $message = $subject->getMessage();
 
             if ($message instanceof Message || $message instanceof EmailMessageInterface) {
+                /** @var Smtp $smtp */
                 $smtp = $this->smtpFactory->create(
                     ['dataHelper' => $this->dataHelper, 'storeModel' => $this->storeModel]
                 );

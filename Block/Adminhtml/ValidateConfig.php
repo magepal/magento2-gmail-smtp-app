@@ -186,7 +186,7 @@ class ValidateConfig extends Template
 
         $this->toAddress = $this->getConfig('email') ? $this->getConfig('email') : $this->getConfig('username');
 
-        $this->fromAddress = trim($this->getConfig('from_email'));
+        $this->fromAddress = trim((string) $this->getConfig('from_email'));
 
         if (!$this->emailAddressValidator->isValid($this->fromAddress)) {
             $this->fromAddress = $this->toAddress;
@@ -258,10 +258,42 @@ class ValidateConfig extends Template
         }
 
         $name = 'Test from MagePal SMTP';
-        $from = trim($this->getConfig('from_email'));
+        $from = trim((string) $this->getConfig('from_email'));
         $from = filter_var($from, FILTER_VALIDATE_EMAIL) ? $from : $username;
         $this->fromAddress = filter_var($username, FILTER_VALIDATE_EMAIL) ? $username : $from;
         $htmlBody = $this->_email->setTemplateVars(['hash' => $this->hash])->getEmailBody();
+
+        $transport = $this->getMailTransportSmtp();
+
+        $bodyMessage    = new MinePart($htmlBody);
+        $bodyMessage->type = 'text/html';
+
+        $body = new MineMessage();
+        $body->addPart($bodyMessage);
+
+        $message = new Message();
+        $message->addTo($this->toAddress, 'MagePal SMTP')
+            ->addFrom($this->fromAddress, $name)
+            ->setSubject('Hello from MagePal SMTP (1 of 2)')
+            ->setBody($body)
+            ->setEncoding('UTF-8');
+
+        $result = $this->error();
+
+        try {
+            $transport->send($message);
+        } catch (Exception $e) {
+            $result =  $this->error(true, __($e->getMessage()));
+        }
+
+        return $result;
+    }
+
+    public function getMailTransportSmtp()
+    {
+        $username = $this->getConfig('username');
+        $password = $this->getConfig('password');
+        $auth = strtolower($this->getConfig('auth'));
 
         $optionsArray = [
             'name' => $this->getConfig('name'),
@@ -289,28 +321,7 @@ class ValidateConfig extends Template
         $transport = new Smtp();
         $transport->setOptions($options);
 
-        $bodyMessage    = new MinePart($htmlBody);
-        $bodyMessage->type = 'text/html';
-
-        $body = new MineMessage();
-        $body->addPart($bodyMessage);
-
-        $message = new Message();
-        $message->addTo($this->toAddress, 'MagePal SMTP')
-            ->addFrom($this->fromAddress, $name)
-            ->setSubject('Hello from MagePal SMTP (1 of 2)')
-            ->setBody($body)
-            ->setEncoding('UTF-8');
-
-        $result = $this->error();
-
-        try {
-            $transport->send($message);
-        } catch (Exception $e) {
-            $result =  $this->error(true, __($e->getMessage()));
-        }
-
-        return $result;
+        return $transport;
     }
 
     /**
