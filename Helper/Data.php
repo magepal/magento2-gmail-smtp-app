@@ -52,163 +52,192 @@ class Data extends AbstractHelper
      * @param null $store_id
      * @return bool
      */
-    public function isActive($store_id = null)
+    public function isActive($scopeType = null, $scopeCode = null)
     {
-        if ($store_id == null && $this->getStoreId() > 0) {
-            $store_id = $this->getStoreId();
+        //use global store
+        if ($scopeType === null) {
+            $scopeType = ScopeInterface::SCOPE_STORE;
+        }
+
+        //use global store id
+        if ($scopeCode === null && $this->getStoreId() > 0) {
+            $scopeCode = $this->getStoreId();
         }
 
         return $this->scopeConfig->isSetFlag(
             'system/gmailsmtpapp/active',
-            ScopeInterface::SCOPE_STORE,
-            $store_id
+            $scopeType,
+            $scopeCode
         );
     }
 
     /**
      * Get local client name
      *
-     * @param ScopeInterface::SCOPE_STORE $store
+     * @param null $scopeType
+     * @param null $scopeCode
      * @return string
      */
-    public function getConfigName($store_id = null)
+    public function getConfigName($scopeType = null, $scopeCode = null)
     {
-        return $this->getConfigValue('name', $store_id);
+        return $this->getConfigValue('name', $scopeType, $scopeCode);
     }
 
     /**
      * Get system config password
      *
-     * @param ScopeInterface::SCOPE_STORE $store
+     * @param null $scopeType
+     * @param null $scopeCode
      * @return string
      */
-    public function getConfigPassword($store_id = null)
+    public function getConfigPassword($scopeType = null, $scopeCode = null)
     {
-        return $this->getConfigValue('password', $store_id);
+        return $this->getConfigValue('password', $scopeType, $scopeCode);
     }
 
     /**
      * Get system config username
      *
-     * @param ScopeInterface::SCOPE_STORE $store
+     * @param null $scopeType
+     * @param null $scopeCode
      * @return string
      */
-    public function getConfigUsername($store_id = null)
+    public function getConfigUsername($scopeType = null, $scopeCode = null)
     {
-        return $this->getConfigValue('username', $store_id);
+        return $this->getConfigValue('username', $scopeType, $scopeCode);
     }
 
     /**
      * Get system config auth
      *
-     * @param ScopeInterface::SCOPE_STORE $store
+     * @param null $scopeType
+     * @param null $scopeCode
      * @return string
      */
-    public function getConfigAuth($store_id = null)
+    public function getConfigAuth($scopeType = null, $scopeCode = null)
     {
-        return $this->getConfigValue('auth', $store_id);
+        return $this->getConfigValue('auth', $scopeType, $scopeCode);
     }
 
     /**
      * Get system config ssl
      *
-     * @param ScopeInterface::SCOPE_STORE $store
+     * @param null $scopeType
+     * @param null $scopeCode
      * @return string
      */
-    public function getConfigSsl($store_id = null)
+    public function getConfigSsl($scopeType = null, $scopeCode = null)
     {
-        return $this->getConfigValue('ssl', $store_id);
+        return $this->getConfigValue('ssl', $scopeType, $scopeCode);
     }
 
     /**
      * Get system config host
      *
-     * @param ScopeInterface::SCOPE_STORE $store
+     * @param null $scopeType
+     * @param null $scopeCode
      * @return string
      */
-    public function getConfigSmtpHost($store_id = null)
+    public function getConfigSmtpHost($scopeType = null, $scopeCode = null)
     {
-        return $this->getConfigValue('smtphost', $store_id);
+        return $this->getConfigValue('smtphost', $scopeType, $scopeCode);
     }
 
     /**
      * Get system config port
      *
-     * @param ScopeInterface::SCOPE_STORE $store
+     * @param null $scopeType
+     * @param null $scopeCode
      * @return string
      */
-    public function getConfigSmtpPort($store_id = null)
+    public function getConfigSmtpPort($scopeType = null, $scopeCode = null)
     {
-        return $this->getConfigValue('smtpport', $store_id);
+        return $this->getConfigValue('smtpport', $scopeType, $scopeCode);
     }
 
     /**
      * Get system config reply to
      *
-     * @param ScopeInterface::SCOPE_STORE $store
+     * @param null $scopeType
+     * @param null $scopeCode
      * @return bool
      */
-    public function getConfigSetReplyTo($store_id = null)
+    public function getConfigSetReplyTo($scopeType = null, $scopeCode = null)
     {
+        //use global store
+        if ($scopeType === null) {
+            $scopeType = ScopeInterface::SCOPE_STORE;
+        }
+
+        //use global store id
+        if ($scopeCode === null && $this->getStoreId() > 0) {
+            $scopeCode = $this->getStoreId();
+        }
+
         return $this->scopeConfig->isSetFlag(
             'system/gmailsmtpapp/set_reply_to',
-            ScopeInterface::SCOPE_STORE,
-            $store_id
+            $scopeType,
+            $scopeCode
         );
     }
 
     /**
      * Get system config set return path
      *
-     * @param ScopeInterface::SCOPE_STORE $store
+     * @param null $scopeType
+     * @param null $scopeCode
      * @return int
      */
-    public function getConfigSetReturnPath($store_id = null)
+    public function getConfigSetReturnPath($scopeType = null, $scopeCode = null)
     {
-        return (int) $this->getConfigValue('set_return_path', $store_id);
+        return (int) $this->getConfigValue('set_return_path', $scopeType, $scopeCode);
     }
 
     /**
      * Get system config return path email
      *
-     * @param ScopeInterface::SCOPE_STORE $store
+     * @param null $scopeType
+     * @param null $scopeCode
      * @return string
      */
-    public function getConfigReturnPathEmail($store_id = null)
+    public function getConfigReturnPathEmail($scopeType = null, $scopeCode = null)
     {
-        return $this->getConfigValue('return_path_email', $store_id);
+        return $this->getConfigValue('return_path_email', $scopeType, $scopeCode);
     }
 
     /**
      * Get system config from
      *
-     * @param ScopeInterface::SCOPE_STORE $store
+     * @param null $scopeType
+     * @param null $scopeCode
      * @return string
      */
-    public function getConfigSetFrom($store_id = null)
+    public function getConfigSetFrom($scopeType = null, $scopeCode = null)
     {
-        return  (int) $this->getConfigValue('set_from', $store_id);
+        return  (int) $this->getConfigValue('set_from', $scopeType, $scopeCode);
     }
 
     /**
      * Get system config from
      *
-     * @param ScopeInterface::SCOPE_STORE $store
+     * @param null $scopeType
+     * @param null $scopeCode
      * @return string
      */
-    public function getConfigCustomFromEmail($store_id = null)
+    public function getConfigCustomFromEmail($scopeType = null, $scopeCode = null)
     {
-        return  $this->getConfigValue('custom_from_email', $store_id);
+        return  $this->getConfigValue('custom_from_email', $scopeType, $scopeCode);
     }
 
     /**
      * Get system config
      *
-     * @param String path
-     * @param ScopeInterface::SCOPE_STORE $store
+     * @param String $path path
+     * @param null $scopeType
+     * @param null $scopeCode
      * @return string
      */
-    public function getConfigValue($path, $store_id = null)
+    public function getConfigValue($path, $scopeType = null, $scopeCode = null)
     {
         //send test mail
         if ($this->isTestMode()) {
@@ -218,27 +247,34 @@ class Data extends AbstractHelper
         //return value from core config
         return $this->getScopeConfigValue(
             "system/gmailsmtpapp/{$path}",
-            $store_id
+            $scopeType,
+            $scopeCode
         );
     }
 
     /**
      * @param String path
-     * @param ScopeInterface::SCOPE_STORE $store
+     * @param null $scopeType
+     * @param null $scopeCode
      * @return mixed
      */
-    public function getScopeConfigValue($path, $store_id = null)
+    public function getScopeConfigValue($path, $scopeType = null, $scopeCode = null)
     {
         //use global store id
-        if ($store_id === null && $this->getStoreId() > 0) {
-            $store_id = $this->getStoreId();
+        if ($scopeType === null) {
+            $scopeType = ScopeInterface::SCOPE_STORE;
+        }
+
+        //use global store id
+        if ($scopeCode === null && $this->getStoreId() > 0) {
+            $scopeCode = $this->getStoreId();
         }
 
         //return value from core config
         return $this->scopeConfig->getValue(
             $path,
-            ScopeInterface::SCOPE_STORE,
-            $store_id
+            $scopeType,
+            $scopeCode
         );
     }
 
@@ -256,6 +292,7 @@ class Data extends AbstractHelper
     public function setStoreId($storeId = null)
     {
         $this->storeId = $storeId;
+        return $this;
     }
 
     /**

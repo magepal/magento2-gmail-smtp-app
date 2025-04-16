@@ -13,6 +13,7 @@ use Laminas\Mime\Part as MinePart;
 use Magento\Backend\Block\Template;
 use Magento\Backend\Block\Template\Context;
 use Magento\Framework\Validator\EmailAddress;
+use Magento\Store\Model\ScopeInterface;
 use MagePal\GmailSmtpApp\Helper\Data;
 use MagePal\GmailSmtpApp\Model\Email;
 use Laminas\Mail\Message;
@@ -44,7 +45,7 @@ class ValidateConfig extends Template
     /**
      * @var string
      */
-    protected $storeId;
+    protected $storeId = null;
 
     /**
      * @var string
@@ -112,7 +113,7 @@ class ValidateConfig extends Template
     }
 
     /**
-     * @return int \ null
+     * @return string|null
      */
     public function getStoreId()
     {
@@ -156,10 +157,21 @@ class ValidateConfig extends Template
         $request = $this->getRequest();
         $formPostArray = (array) $request->getPost();
 
+        if ($request->getParam('website', false)) {
+            $scopeCode = $request->getParam('website');
+            $scopeType = ScopeInterface::SCOPE_WEBSITE;
+        } elseif ($request->getParam('store', false)) {
+            $scopeCode = $request->getParam('store');
+            $scopeType = ScopeInterface::SCOPE_STORE;
+        } else {
+            $scopeCode = null;
+            $scopeType = ScopeInterface::SCOPE_STORE;
+        }
+
         $fields = array_keys($this->configFields);
         foreach ($fields as $field) {
             if (!array_key_exists($field, $formPostArray)) {
-                $this->setConfig($field, $this->_dataHelper->getConfigValue($field), $this->getStoreId());
+                $this->setConfig($field, $this->_dataHelper->getConfigValue($field, $scopeType, $scopeCode));
             } else {
                 $this->setConfig($field, $request->getPost($field));
             }
@@ -167,7 +179,7 @@ class ValidateConfig extends Template
 
         //if password mask (6 stars)
         if ($this->getConfig('password') === '******') {
-            $password = $this->_dataHelper->getConfigPassword($this->getStoreId());
+            $password = $this->_dataHelper->getConfigPassword($scopeType, $scopeCode);
             $this->setConfig('password', $password);
         }
 
@@ -180,7 +192,6 @@ class ValidateConfig extends Template
     protected function init()
     {
         $request = $this->getRequest();
-        $this->setStoreId($request->getParam('store', null));
 
         $this->loadDefaultConfig();
 
