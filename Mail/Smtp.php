@@ -154,7 +154,7 @@ class Smtp
             if ($setFromEmail instanceof Address) {
                 $message->getHeaders()->addMailboxListHeader('Sender', [$setFromEmail]);
             } elseif (!empty($setFromEmail)) {
-                $name = $messageFromAddress instanceof Address ? $messageFromAddress->getAddress()->getName() : $setFromEmail;
+                $name = $messageFromAddress instanceof Address ? $messageFromAddress->getName() : $setFromEmail;
 
                 $message->getHeaders()->addMailboxListHeader(
                     'Sender',
@@ -193,7 +193,7 @@ class Smtp
             if ($returnPathEmail instanceof Address) {
                 $message->getHeaders()->addMailboxListHeader('reply-to', [$returnPathEmail]);
             } elseif (!empty($returnPathEmail)) {
-                $name = $messageFromAddress instanceof Address ? $messageFromAddress->getAddress()->getName() : $returnPathEmail;
+                $name = $messageFromAddress instanceof Address ? $messageFromAddress->getName() : $returnPathEmail;
 
                 $message->getHeaders()->addMailboxListHeader(
                     'reply-to',
