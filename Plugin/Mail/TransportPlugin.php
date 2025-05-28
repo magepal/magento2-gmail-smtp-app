@@ -9,13 +9,12 @@ namespace MagePal\GmailSmtpApp\Plugin\Mail;
 
 use Closure;
 use Magento\Framework\Exception\MailException;
-use Magento\Framework\Mail\EmailMessageInterface;
-use Magento\Framework\Mail\Message;
 use Magento\Framework\Mail\TransportInterface;
 use MagePal\GmailSmtpApp\Helper\Data;
 use MagePal\GmailSmtpApp\Mail\SmtpFactory;
 use MagePal\GmailSmtpApp\Mail\Smtp;
 use MagePal\GmailSmtpApp\Model\Store;
+use Symfony\Component\Mime\Message as SymfonyMessage;
 
 class TransportPlugin
 {
@@ -23,7 +22,7 @@ class TransportPlugin
     /**
      * @var Data
      */
-    protected Data $dataHelper;
+    protected $dataHelper;
 
     /**
      * @var Store
@@ -33,7 +32,7 @@ class TransportPlugin
     /**
      * @var Smtp
      */
-    private SmtpFactory $smtpFactory;
+    private $smtpFactory;
 
     /**
      * @param Data $dataHelper
@@ -64,9 +63,9 @@ class TransportPlugin
                 $this->storeModel->setStoreId($subject->getStoreId());
             }
 
-            $message = $subject->getMessage();
+            $message = $subject->getMessage()->getSymfonyMessage();
 
-            if ($message instanceof Message || $message instanceof EmailMessageInterface) {
+            if ($message instanceof SymfonyMessage) {
                 /** @var Smtp $smtp */
                 $smtp = $this->smtpFactory->create(
                     ['dataHelper' => $this->dataHelper, 'storeModel' => $this->storeModel]
