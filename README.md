@@ -11,7 +11,7 @@
 
 
 ### OAuth SMTP Extension
-Are you tired of dealing with the hassle of managing email password? Don't wait any longer to upgrade to OAuth. Contact us at <a href="mailto:oauth.smtp@MagePal.com">oauth.smtp@MagePal.com</a> to learn more about our revolutionary OAuth SMTP Extension.
+Tired of dealing with email password issues? Upgrade to our OAuth SMTP Extension for Magento 2 and enjoy secure, password-free email delivery. Learn more about our <a href="https://www.magepal.com/magento2/extensions/email.html?utm_source=smtp+oauth&utm_medium=github">OAuth SMTP Extension</a> and get started today!
 
 Configure Magento 2 / Adobe Commerce to send all transactional emails using Google App, Gmail, Amazon Simple Email Service (SES), Microsoft Office365 or any other SMTP servers.
 
