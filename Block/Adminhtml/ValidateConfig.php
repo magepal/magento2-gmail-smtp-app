@@ -303,13 +303,7 @@ class ValidateConfig extends Template
         $port = $this->getConfig('smtpport');
         $ssl = $this->getConfig('ssl');
 
-        $tls = false;
-        if ($auth !== 'none') {
-            $tls = true;
-        }
-        if ($ssl === 'starttls') {
-            $tls = false;
-        }
+        $tls = ($auth !== 'none') && ($ssl !== 'starttls');
 
         /** @var SymfonyTransportInterface $transport */
         $transport = new EsmtpTransport($host, $port, $tls);

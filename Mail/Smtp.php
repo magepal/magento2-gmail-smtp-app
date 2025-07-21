@@ -88,13 +88,7 @@ class Smtp
             $auth = strtolower($dataHelper->getConfigAuth());
             $ssl = $dataHelper->getConfigSsl();
 
-            $tls = false;
-            if ($auth !== 'none') {
-                $tls = true;
-            }
-            if ($ssl === 'starttls') {
-                $tls = false;
-            }
+            $tls = ($auth !== 'none') && ($ssl !== 'starttls');
 
             /** @var SymfonyTransportInterface $transport */
             $transport = new EsmtpTransport($host, $port, $tls);

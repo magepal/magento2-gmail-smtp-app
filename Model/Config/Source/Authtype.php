@@ -19,7 +19,7 @@ class Authtype implements ArrayInterface
             ['value' => 'none', 'label' => __('None')],
             ['value' => 'ssl', 'label' => 'SSL'],
             ['value' => 'tls', 'label' => 'TLS'],
-            ['value' => 'starttls', 'label' => 'STARTTLS'],
+            ['value' => 'starttls', 'label' => 'STARTTLS']
         ];
     }
 }
