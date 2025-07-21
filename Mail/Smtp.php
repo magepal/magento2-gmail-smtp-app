@@ -86,10 +86,14 @@ class Smtp
             $username = $dataHelper->getConfigUsername();
             $password = $dataHelper->getConfigPassword();
             $auth = strtolower($dataHelper->getConfigAuth());
+            $ssl = $dataHelper->getConfigSsl();
 
             $tls = false;
             if ($auth !== 'none') {
                 $tls = true;
+            }
+            if ($ssl === 'starttls') {
+                $tls = false;
             }
 
             /** @var SymfonyTransportInterface $transport */
