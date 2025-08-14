@@ -19,7 +19,7 @@
         "php": "~8.2.0||~8.3.0||~8.4.0",
         "magento/module-backend": "102.0.*",
         "magento/framework": "103.0.*",
-        "magento/module-email": "101.1.8*",
+        "magento/module-email": "101.1.8||101.1.8-p1||101.1.8-p2",
         "magepal/magento2-core":">1.1.0"
     },
     "type": "magento2-module",
