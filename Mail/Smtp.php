@@ -150,13 +150,13 @@ class Smtp
 
         if ($setFromEmail !== null && $dataHelper->getConfigSetFrom()) {
             if ($setFromEmail instanceof Address) {
-                $message->getHeaders()->addMailboxListHeader('Sender', [$setFromEmail]);
+                $message->getHeaders()->addMailboxHeader('Sender', $setFromEmail);
             } elseif (!empty($setFromEmail)) {
                 $name = $messageFromAddress instanceof Address ? $messageFromAddress->getName() : $setFromEmail;
 
-                $message->getHeaders()->addMailboxListHeader(
+                $message->getHeaders()->addMailboxHeader(
                     'Sender',
-                    [new Address($setFromEmail, $name)]
+                    new Address($setFromEmail, $name)
                 );
             }
         }
@@ -189,13 +189,13 @@ class Smtp
 
         if (empty($message->getHeaders()->get('reply-to')?->getAddresses()) && $dataHelper->getConfigSetReplyTo()) {
             if ($returnPathEmail instanceof Address) {
-                $message->getHeaders()->addMailboxListHeader('reply-to', [$returnPathEmail]);
+                $message->getHeaders()->addMailboxHeader('reply-to', $returnPathEmail);
             } elseif (!empty($returnPathEmail)) {
                 $name = $messageFromAddress instanceof Address ? $messageFromAddress->getName() : $returnPathEmail;
 
-                $message->getHeaders()->addMailboxListHeader(
+                $message->getHeaders()->addMailboxHeader(
                     'reply-to',
-                    [new Address($returnPathEmail, $name)]
+                    new Address($returnPathEmail, $name)
                 );
             }
         }
