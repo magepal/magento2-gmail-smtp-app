@@ -16,14 +16,15 @@
         "how to setup email magento2"
     ],
     "require": {
-        "php": "~8.2.0||~8.3.0||~8.4.0",
+        "php": "~8.2.0|~8.3.0|~8.4.0|~8.5.0",
         "magento/module-backend": "102.0.*",
         "magento/framework": "103.0.*",
-        "magento/module-email": "101.1.8||101.1.8-p1||101.1.8-p2||101.1.8-p3||101.1.8-p4",
+        "symfony/mailer": "^6.4|^7.4",
+        "symfony/mime": "^6.4|^7.4",
         "magepal/magento2-core":">1.1.0"
     },
     "type": "magento2-module",
-    "version": "3.0.5",
+    "version": "3.0.6",
     "license": [
         "proprietary"
     ],
